@@ -1,4 +1,3 @@
-
 ---
 title: Phone
 category: Contact Syncing

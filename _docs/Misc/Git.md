@@ -45,3 +45,6 @@ Change **pick** with **reword**
 {% highlight bash %}
 # git push --force 
 {% endhighlight %}
+
+> Cheat Sheets
+* https://www.git-tower.com/blog/git-cheat-sheet/

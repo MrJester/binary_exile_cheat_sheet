@@ -6,7 +6,7 @@ order: 2
 
 >test 
 
-| Option | Command |
+Option | Command 
 |:--------|:-------:|
 | See variables | show options | 
 | See database structure |	show schema

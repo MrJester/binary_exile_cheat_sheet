@@ -3,8 +3,7 @@ title: Git
 category: Misc
 order: 1
 ---
-
->Generating SSH Key
+> <b> Generating SSH Key </b>
 {% highlight bash %}
 # ssh-keygen -t rsa -C "github-user1" -f "github-user1"
 # chmod 400 github-user1"

@@ -31,6 +31,7 @@ Host github.com-user1
 # git status
 # git add "document to add" 
 # git push origin master
+# git add . && git commit -a -m "updated content" && git push
 {% endhighlight %}
 
 >Modifying Comment History

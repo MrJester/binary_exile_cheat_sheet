@@ -21,27 +21,27 @@ Host github.com-user1
 {% endhighlight %}
 
 {% highlight bash %}
-&#35 chmod 400 ~/.ssh/config
+# chmod 400 ~/.ssh/config
 {% endhighlight %}
 
 >Cloning, Commiting, and Pushing
 {% highlight bash %}
-&#35 git clone git@github.com:BinaryExile/BinaryExile.github.io.git CheatSheets_BinaryExile
-&#35 git git commit -a
-&#35 git add 
-&#35 git status
-&#35 git add "document to add" 
-&#35 git push origin master
+# git clone git@github.com:BinaryExile/BinaryExile.github.io.git CheatSheets_BinaryExile
+# git git commit -a
+# git add 
+# git status
+# git add "document to add" 
+# git push origin master
 {% endhighlight %}
 
 >Modifying Comment History
 {% highlight bash %}
-&#35 git rebase -i HEAD~30
-&#35 git git commit -a
+# git rebase -i HEAD~30
+# git git commit -a
 {% endhighlight %}
 
 Change **pick** with **reword** 
 
 {% highlight bash %}
-&#35 git push --force 
+# git push --force 
 {% endhighlight %}

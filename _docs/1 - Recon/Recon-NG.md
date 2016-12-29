@@ -7,7 +7,7 @@ order: 2
 >Commands 
 
 * See variables
-		show options 
+			show options 
 
 * See database structure
 		show schema
@@ -25,7 +25,7 @@ order: 2
 add netblocks <network block that you are interested in>
 run" {% endhighlight %}
 
-* Cache Snooping (like software and AV discovery) |{% highlight bash %} use discovery/info_disclosure/cache_snoop
+* Cache Snooping (like software and AV discovery) {% highlight bash %} use discovery/info_disclosure/cache_snoop
 set NAMESEVER <DNS Server>
 <option at AV domain to /opt/recon-ng-<version>/data/av_domains.lst>
 run"{% endhighlight %}

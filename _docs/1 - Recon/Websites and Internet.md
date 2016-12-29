@@ -22,8 +22,7 @@ LinkedIn, Facebook, Twitter, Google+, Pinterest, Myspace, Orkut
 >Google Hacking
 
 
-PGP and GnuPG private keys
-------
+* PGP and GnuPG private keys
 
 		intitle:index.of intext:"secring.skr" \| "secring.pgp" \| "secring.bak"
 

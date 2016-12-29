@@ -24,7 +24,7 @@ LinkedIn, Facebook, Twitter, Google+, Pinterest, Myspace, Orkut
 
 * PGP and GnuPG private keys
 
-intitle:index.of intext:"secring.skr" | "secring.pgp" | "secring.bak"
+intitle:index.of intext:"secring.skr" \| "secring.pgp" \| "secring.bak"
 
 
 * Shell History

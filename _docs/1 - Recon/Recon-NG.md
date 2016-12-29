@@ -7,15 +7,19 @@ order: 2
 >Commands 
 
 * See variables
-			show options 
+			
+		show options 
 
 * See database structure
+		
 		show schema
 
 * Search for a module
+		
 		search \<module\>
 
 * Shell Execution 
+		
 		Any shell comand
 
 >Useful Options

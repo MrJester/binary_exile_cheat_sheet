@@ -4,11 +4,9 @@ category: Misc
 order: 1
 ---
 
-Using git and github
-
 >Generating SSH Key
 {% highlight bash %}
-&#35 ssh-keygen -t rsa -C "github-user1" -f "github-user1"
+# ssh-keygen -t rsa -C "github-user1" -f "github-user1"
 &#35 chmod 400 github-user1"
 &#35 git config --global user.name "BinaryExile"
 &#35 git config user.email "binaryexile@noreply.noreply"

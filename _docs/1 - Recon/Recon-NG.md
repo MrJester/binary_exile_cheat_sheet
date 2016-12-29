@@ -17,6 +17,9 @@ order: 2
 
 * Shell Execution 
 		Any shell comand
+
+>Useful Options
+
 * Reverse Resolve (host identification) 
 {% highlight bash %}set NAMESEVER \<DNS Server\> use recon/netblocks-hosts/reverse_resolve
 add netblocks <network block that you are interested in>

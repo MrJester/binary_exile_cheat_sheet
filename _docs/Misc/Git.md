@@ -30,10 +30,10 @@ Host github.com-user1
 {% highlight bash %}
 &#35 git clone git@github.com:BinaryExile/BinaryExile.github.io.git CheatSheets_BinaryExile
 &#35 git git commit -a
-&#35git add 
+&#35 git add 
 &#35 git status
-&#35git add "document to add" 
-&#35git push origin master
+&#35 git add "document to add" 
+&#35 git push origin master
 {% endhighlight %}
 
 >Modifying Comment History

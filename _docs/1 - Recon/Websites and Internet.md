@@ -12,7 +12,7 @@ wget -nd -r -R htm, html, php, asp, aspx, cgi -P \<folder to store data\> \<targ
 >Google Website	
 
 
-site:**domain name** careers or jobs or openings
+site: \<domain name\> careers or jobs or openings
 
 > Search Social Networks
 

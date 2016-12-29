@@ -7,10 +7,10 @@ order: 1
 >Generating SSH Key
 {% highlight bash %}
 # ssh-keygen -t rsa -C "github-user1" -f "github-user1"
-&#35 chmod 400 github-user1"
-&#35 git config --global user.name "BinaryExile"
-&#35 git config user.email "binaryexile@noreply.noreply"
-&#35 vi ~/.ssh/config
+# chmod 400 github-user1"
+# git config --global user.name "BinaryExile"
+# git config user.email "binaryexile@noreply.noreply"
+# vi ~/.ssh/config
 {% endhighlight %}
 
 {% highlight bash %}

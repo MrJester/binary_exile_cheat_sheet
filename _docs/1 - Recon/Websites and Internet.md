@@ -7,8 +7,7 @@ order: 1
 >Obtain everything but html, php, asp, and cgi
 	
 
-wget -nd -r -R htm, html, php, asp, aspx, cgi -P {% highlight bash %}folder to store data
-{% endhighlight %} **target website**
+wget -nd -r -R htm, html, php, asp, aspx, cgi -P \<folder to store data\> \<target website\>
 
 >Google Website	
 

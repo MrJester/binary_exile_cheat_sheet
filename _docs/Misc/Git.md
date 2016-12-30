@@ -47,4 +47,6 @@ Change **pick** with **reword**
 {% endhighlight %}
 
 > Cheat Sheets
+
 * https://www.git-tower.com/blog/git-cheat-sheet/
+* https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers

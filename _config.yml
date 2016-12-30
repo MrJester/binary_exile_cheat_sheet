@@ -23,7 +23,7 @@ social:
 
 permalink: pretty
 
-highlighter: rouge
+highlighter: pygments
 
 gems:
   - jekyll-sitemap

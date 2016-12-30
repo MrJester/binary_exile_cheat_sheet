@@ -4,22 +4,21 @@ category: Recon
 order: 1
 ---
 
->Obtain everything but html, php, asp, and cgi
+> **Obtain Documents**
 	
 
 wget -nd -r -R htm, html, php, asp, aspx, cgi -P \<folder to store data\> \<target website\>
 
->Google Website	
+> **Google Website**
 
 
 site: \<domain name\> careers or jobs or openings
 
-> Search Social Networks
-
+> **Search Social Networks**
 
 LinkedIn, Facebook, Twitter, Google+, Pinterest, Myspace, Orkut
 
->Google Hacking
+> **Google Hacking**
 
 
 * PGP and GnuPG private keys

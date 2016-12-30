@@ -4,7 +4,7 @@ category: Recon
 order: 2
 ---
 
-> **Commands 
+> **Basic Commands** 
 
 * See variables
 			
@@ -22,7 +22,7 @@ order: 2
 		
 		Any shell comand
 
->Useful Commands
+> **Useful Commands**
 
 * Reverse Resolve (host identification) 
 

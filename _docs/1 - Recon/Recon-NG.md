@@ -6,25 +6,25 @@ order: 2
 
 > **Basic Commands** 
 
-* See variables
+See variables
 			
 		show options 
 
-* See database structure
+See database structure
 		
 		show schema
 
-* Search for a module
+Search for a module
 		
 		search \<module\>
 
-* Shell Execution 
+Shell Execution 
 		
 		Any shell comand
 
 > **Useful Commands**
 
-* Reverse Resolve (host identification) 
+Reverse Resolve (host identification) 
 
 {% highlight bash %}
 set NAMESEVER <DNS Server> use recon/netblocks-hosts/reverse_resolve
@@ -32,7 +32,7 @@ add netblocks <network block that you are interested in>
 run
 {% endhighlight %}
 
-* Cache Snooping (like software and AV discovery) 
+Cache Snooping (like software and AV discovery) 
 
 {% highlight bash %}
 use discovery/info_disclosure/cache_snoop

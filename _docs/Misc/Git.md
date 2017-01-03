@@ -4,6 +4,7 @@ category: Misc
 order: 1
 ---
 > <b> Generating SSH Key </b>
+
 {% highlight bash %}
 # ssh-keygen -t rsa -C "github-user1" -f "github-user1"
 # chmod 400 github-user1"
@@ -24,6 +25,7 @@ Host github.com-user1
 {% endhighlight %}
 
 >Cloning, Commiting, and Pushing
+
 {% highlight bash %}
 # git clone git@github.com:BinaryExile/BinaryExile.github.io.git CheatSheets_BinaryExile
 # git git commit -a
@@ -35,6 +37,7 @@ Host github.com-user1
 {% endhighlight %}
 
 >Modifying Comment History
+
 {% highlight bash %}
 # git rebase -i HEAD~30
 # git git commit -a

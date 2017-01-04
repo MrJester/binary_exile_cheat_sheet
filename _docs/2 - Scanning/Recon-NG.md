@@ -48,8 +48,11 @@ Multiple Targets | "packet=IP(dst=[""10.10.10.1"",""10.10.10.7""])
 packet=IP(dst=""10.10.10/24"")"
 Multiple Ports | "packet=IP(dst=""10.10.10.50"")/TCP(dport=(1,22)) <ports 1 - 22>
 packet=IP(dst=""10.10.10.50"")/TCP(dport=[1,22]) <ports 1 and 22>"
+
 Send Layer 3 and higher | send()
+
 Send Layer 2 | sendp()
+
 Send and wait for response | sr() or srp() or sr1() <for one response>
 
 BPF packet filter | Sr(packet, filter="host 10.10.10.50 and port 22")

@@ -9,7 +9,7 @@ order: 2
 example command | ./nmap -n -A -st -p 1-1024 10.10.10.1-255
 Ping | -Pn (no ping), -sP (ping sweep)
 Scans | -sS (syn), -sT (TCP), -sF (FIN), -sX (FIN,PUSH, URG), -sM (FIN, ACK), -sU (UDP)
-Check for firewall | --badsum <cr> (If you recieve a rest or ICMP unreachable, it is likely a firewall)
+Check for firewall | --badsum <br> (If you recieve a rest or ICMP unreachable, it is likely a firewall)
 Numbers instead of machine | -n
 Choose ports | -p <start>-<end>
 timing | -T <0-5>

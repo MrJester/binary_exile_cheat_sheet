@@ -17,3 +17,7 @@ Establish an SMB session | net use \\[targetIP] [password] /u:[user]
 Request domain/computer part of SID | user2sid \\[targerIP] [machine_name]
 Loop for users  [note: no dashes] | for /L %i in (1000,1,1010) do @sid2user \\[targetIP] [SID without RID] %i
 
+> **Useful Resources**
+
+[User Enumeration](http://pentestmonkey.net/category/tools/user-enumeration)
+

@@ -129,6 +129,7 @@ JSP | /usr/share/webshells/jsp/jsp-reverse.jsp
 * [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
 * [XSS Examples](http://www.xssed.com/)
 * [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
-* [SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
+* [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
+* [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
 * [SQLMap](http://http/sqlmap.org)
 

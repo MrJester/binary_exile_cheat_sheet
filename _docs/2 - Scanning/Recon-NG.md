@@ -35,11 +35,8 @@ Reason for result | --reason
 > **SCAPY**
 
 Example command | srloop(IP(dst="10.10.10.20")/ICMP()/"hello hello hello")
-
 List Protocols | ls()
-
 Fileds of a protocol | ls(<protocol>)
-
 List functions | lsc
 
 Help on function | help(<function>)

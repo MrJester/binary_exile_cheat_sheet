@@ -51,8 +51,8 @@ $ git push --force
 
 > Cheat Sheets
 
-* (Jekyll)<https://sourceforge.net/p/jekyllc/bugs/markdown_syntax#md_ex_tables>
+* [Jekyll](https://sourceforge.net/p/jekyllc/bugs/markdown_syntax#md_ex_tables)
 
-* (Git)<https://www.git-tower.com/blog/git-cheat-sheet/>
+* [Git](https://www.git-tower.com/blog/git-cheat-sheet/)
 
-* (Syntax Highlighting)<https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers>
+* [Syntax Highlighting](https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers)

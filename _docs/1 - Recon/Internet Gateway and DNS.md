@@ -1,41 +1,39 @@
 ---
-title: Recon-NG 
+title: Internet Gateway and DNS
 category: Recon
-order: 2
+order: 3
 ---
 
-> **Basic Commands** 
-
-See variables
-			
-		show options 
-
-See database structure
-		
-		show schema
-
-Search for a module
-		
-		search \<module\>
-
-Shell Execution 
-		
-		Any shell comand
-
-> **Useful Commands**
-
-Reverse Resolve (host identification) 
+> **Whois** 
 
 {% highlight bash %}
-set NAMESEVER <DNS Server> use recon/netblocks-hosts/reverse_resolve
-add netblocks <network block that you are interested in>
-run
+$ whois [-h whois_server] name
 {% endhighlight %}
 
-Cache Snooping (like software and AV discovery) 
+> **Registries Whois Databases**
+
+* Europe - [RIPE](http://www.ripe.net/)
+* Latin America - [LACNIC](http://www.lacnic.net/en/)
+* North America - [ARIN](https://www.arin.net/)
+* Asia - [APNIC](http://www.apnic.net/)
+* Africa - [AFRINIC](http://www.afrinic.net/)
+
+> **NSLOOKUP** 
 
 {% highlight bash %}
-use discovery/info_disclosure/cache_snoop
-set NAMESEVER <DNS Server> 
-<option at AV domain to /opt/recon-ng-<version>/data/av_domains.lst>
-run{% endhighlight %}
+$ nslookup
+$ server [server IP or Name]
+$ set type=any, MX
+#zone transfer
+$ ls -d [target domain] 
+{% endhighlight %}
+
+
+> **DIG** 
+
+{% highlight bash %}
+$ dig @[server] [type]
+#zone transfer
+$ dis @[server] domain -t AXFX  
+{% endhighlight %}
+

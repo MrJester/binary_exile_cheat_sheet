@@ -32,12 +32,8 @@ $ strings -n 3 [filename] | grep '@'
 * Sysinternals strings
 
 
-Topic | Command
-
------ | -------
-
+Topic		|Command
+-----		| -------
 Example Command	| tcpdump -nnX tcp and port 80 and host 10.10.10.10
-
-Protocols | ether, ip, ip6, arp, rarp, tcp, udp
-
-Type | host, net, port, portrange
+Protocols 	| ether, ip, ip6, arp, rarp, tcp, udp
+Type 		| host, net, port, portrange

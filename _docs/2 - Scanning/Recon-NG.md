@@ -4,23 +4,18 @@ category: Recon
 order: 2
 ---
 
-> **Basic Commands** 
+> **TCP Dump** 
 
-See variables
-			
-		show options 
-
-See database structure
-		
-		show schema
-
-Search for a module
-		
-		search \<module\>
-
-Shell Execution 
-		
-		Any shell comand
+Example Command	| tcpdump -nnX tcp and port 80 and host 10.10.10.10
+Protocols | ether, ip, ip6, arp, rarp, tcp, udp
+Type | host, net, port, portrange
+Direction | src, dst
+Use numbers for machines and ports | -nn
+Write to file | -w
+print out in ascII or hex | -A -X
+Choose interface | -i <interface>
+Full packets | -s 
+Network filter | Net 10.10.10
 
 > **Useful Commands**
 

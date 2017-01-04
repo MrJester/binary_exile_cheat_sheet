@@ -17,20 +17,17 @@ Choose interface | -i <interface>
 Full packets | -s 
 Network filter | Net 10.10.10
 
-> **Useful Commands**
+> **NMAP**
 
-Reverse Resolve (host identification) 
-
-{% highlight bash %}
-set NAMESEVER <DNS Server> use recon/netblocks-hosts/reverse_resolve
-add netblocks <network block that you are interested in>
-run
-{% endhighlight %}
-
-Cache Snooping (like software and AV discovery) 
-
-{% highlight bash %}
-use discovery/info_disclosure/cache_snoop
-set NAMESEVER <DNS Server> 
-<option at AV domain to /opt/recon-ng-<version>/data/av_domains.lst>
-run{% endhighlight %}
+example command | ./nmap -n -A -st -p 1-1024 10.10.10.1-255
+Ping | -Pn (no ping), -sP (ping sweep)
+Scans | -sS (syn), -sT (TCP), -sF (FIN), -sX (FIN,PUSH, URG), -sM (FIN, ACK), -sU (UDP)
+Check for firewall | --badsum (If you recieve a rest or ICMP unreachable, it is likely a firewall)
+Numbers instead of machine | -n
+Choose ports | -p <start>-<end>
+timing | -T <0-5>
+Store output | -oN (human readable), -oG (grepable), -oX (XML), -oA (all formats)
+Fingerprint | -O
+Version scaning | -sV
+Fingerprint, version, script, and traceeroute | -A
+Reason for result | --reason

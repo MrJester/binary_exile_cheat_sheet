@@ -1,7 +1,7 @@
 ---
 title: Nikto 
-category: Scanning
-order: 6
+category: Web Application
+order: 1
 ---
 
 > **Nikto**

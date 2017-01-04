@@ -11,17 +11,17 @@ order: 1
 * Known software vulnerabilities in existing and new devices
 
 * Unencrypted data transmission and service authorization flaws
-** XML and JSON that can be altered and replayed
+	* XML and JSON that can be altered and replayed
 
 * Shodan
-** Anesthesia
-** port:445 org:heath*/clinic/hospital
-** health*
-** clinic
-** hospital
-** medical
-** pediatric
-** nurology
+	* Anesthesia
+	* port:445 org:heath*/clinic/hospital
+	* health*
+	* clinic
+	* hospital
+	* medical
+	* pediatric
+	* nurology
 
 > **Top Devices** 
 
@@ -50,9 +50,9 @@ order: 1
 > **Device Document Review** 
 
 * Check installation procedures for:
-** Cannot change password
-** Password Never Expires
-** User cannot change password
+	* Cannot change password
+	* Password Never Expires
+	* User cannot change password
 
 * Check for ports and protocols 
 
@@ -61,7 +61,7 @@ order: 1
 > **Default Passwords**
 
 Large SCADA and Medical Device Username/Password List<br>
-https://github.com/scadastrangelove/SCADAPASS/blob/master/scadapass.csv
+<https://github.com/scadastrangelove/SCADAPASS/blob/master/scadapass.csv>
 
 GE Infinia II X4100 - Nuclear Imaging<br>
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-7253

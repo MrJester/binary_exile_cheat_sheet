@@ -55,4 +55,16 @@ Timeout in seconds | Sr(Packet, timeout=.1)
 Interface | Sr(Packet, iface="eth0")
 Response | Ans, unans=sr
 
+> **NSE**
+
+Example Command | ./NMAP -n -sV --script=[all, category, dir, script...] [target] -p [ports]
+All scripts  | ./NMAP -sC [target] -p [ports]
+Script details | --script-trace
+Script help | --script-help
+Script arguments | --script-args[arguments]
+Script database | /opt/NMAP/share/NMAP/scripts/script.db
+Script files | /opt/NMAP/share/NMAP/scripts/<name>.nse
+
+
+
 

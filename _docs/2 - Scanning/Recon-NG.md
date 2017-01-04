@@ -41,21 +41,11 @@ List functions | lsc
 Help on function | help(<function>)
 Crafta packet | packet=IP(dst="10.10.10.50")/TCP(dport=22)/"Hello"
 Look at a packet | ls(packet)
-
 Summary of packet | packet.summary()
-
 Details on packet | packet.show()
-
 Change a packet value | packet.sport=443, packet[TCP].flags="SA"
-
-Multiple Targets | "packet=IP(dst=[""10.10.10.1"",""10.10.10.7""])
-
-packet=IP(dst=""10.10.10/24"")"
-
-Multiple Ports | "packet=IP(dst=""10.10.10.50"")/TCP(dport=(1,22)) <ports 1 - 22>
-
-packet=IP(dst=""10.10.10.50"")/TCP(dport=[1,22]) <ports 1 and 22>"
-
+Multiple Targets | packet=IP(dst=[""10.10.10.1"",""10.10.10.7""]) <cr> packet=IP(dst=""10.10.10/24"")
+Multiple Ports | "packet=IP(dst=""10.10.10.50"")/TCP(dport=(1,22)) <ports 1 - 22> <cr> packet=IP(dst=""10.10.10.50"")/TCP(dport=[1,22]) <ports 1 and 22>"
 Send Layer 3 and higher | send()
 
 Send Layer 2 | sendp()

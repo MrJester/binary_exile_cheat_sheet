@@ -22,17 +22,17 @@ Reason for result | --reason
 
 > **NSE**
 
-Example Command | ./NMAP -n -sV --script=[all, category, dir, script...] [target] -p [ports]
-All scripts  | ./NMAP -sC [target] -p [ports]
-Script details | --script-trace
-Script help | --script-help
-Script arguments | --script-args[arguments]
-Script database | /opt/NMAP/share/NMAP/scripts/script.db
-Script files | /opt/NMAP/share/NMAP/scripts/<name>.nse
+Example Command | <code> ./NMAP -n -sV --script=[all, category, dir, script...] [target] -p [ports] </code>
+All scripts  | <code> ./NMAP -sC [target] -p [ports] </code>
+Script details | <code> --script-trace </code>
+Script help | <code> --script-help </code>
+Script arguments | <code> --script-args[arguments] </code>
+Script database | <code> /opt/NMAP/share/NMAP/scripts/script.db </code>
+Script files | <code> /opt/NMAP/share/NMAP/scripts/<name>.nse </code>
 
 > **MASSCAN**
 
-Example Command | <code> nohup masscan -p<ports> --rate 500 -vv --includefile <host list> --output-format list --output-filename <outputfile> > output.txt & <code>
+Example Command | <code> nohup masscan -p<ports> --rate 500 -vv --includefile <host list> --output-format list --output-filename <outputfile> > output.txt & </code>
 
 
 

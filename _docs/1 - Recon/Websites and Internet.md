@@ -16,7 +16,15 @@ site: \<domain name\> careers or jobs or openings
 
 > **Search Social Networks**
 
-LinkedIn, Facebook, Twitter, Google+, Pinterest, Myspace, Orkut
+* Monster
+* LinkedIn
+* Facebook
+* Twitter
+* Google+
+* Pinterest
+* Myspace
+* Orkut
+* Hot Jobs
 
 > **Google Hacking**
 
@@ -52,5 +60,6 @@ Nessus Results
 > **Useful Resources**
 
 * [Skip tracing framework](https://makensi.es/stf/)
+* [SearchDiggity](https://www.bishopfox.com/resources/tools/google-hacking-diggity/attack-tools/)
 
 

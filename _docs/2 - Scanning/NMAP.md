@@ -1,12 +1,13 @@
 ---
-title: NMAP
+title: Port Scanning
 category: Scanning
 order: 2
 ---
 
 > **NMAP**
 
-example command | ./nmap -n -A -st -p 1-1024 10.10.10.1-255
+example command | nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA <output file> -p 1-1024 10.10.10.1-255 > output.txt &&
+example command 2 | nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA <output file> -p 1-1024 -iL <hostlist>  > output.txt &
 Ping | -Pn (no ping), -sP (ping sweep)
 Scans | -sS (syn), -sT (TCP), -sF (FIN), -sX (FIN,PUSH, URG), -sM (FIN, ACK), -sU (UDP)
 Check for firewall | --badsum <br> (If you recieve a rest or ICMP unreachable, it is likely a firewall)
@@ -28,6 +29,10 @@ Script help | --script-help
 Script arguments | --script-args[arguments]
 Script database | /opt/NMAP/share/NMAP/scripts/script.db
 Script files | /opt/NMAP/share/NMAP/scripts/<name>.nse
+
+> **MASSCAN**
+
+Example Command | <code> nohup masscan -p<ports> --rate 500 -vv --includefile <host list> --output-format list --output-filename <outputfile> > output.txt & <code>
 
 
 

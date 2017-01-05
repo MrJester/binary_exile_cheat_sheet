@@ -37,3 +37,11 @@ $ dig @[server] [type]
 $ dis @[server] domain -t AXFX  
 {% endhighlight %}
 
+> **Useful Resources**
+
+The following resources could be used to traceroute from another host or determine if your are being blocked, or if the host is down:
+* [Traceroute.org](www.traceroute.org)
+* [Kloth Traceroute](www.kloth.net/services/traceroute.php)
+* [tracert.com](www.tracert.com)
+
+

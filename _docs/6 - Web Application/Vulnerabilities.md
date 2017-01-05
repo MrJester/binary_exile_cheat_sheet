@@ -4,6 +4,18 @@ category: Web Application
 order: 2
 ---
 
+> **SQL Injection: Test Strings**
+
+{% highlight bash %}
+' ` " ; /* --
+{% endhighlight %}
+
+> **SQL Injection: Database Identification**
+
+Oracle | ORA-01756: quoted string not properly terminated
+MS SQL Server | Incorrect syntax near 'something'
+PostgreSQL | 5-digit Hex Error Code
+
 > **CSRF**
 
 GET:
@@ -38,11 +50,7 @@ POST:
 <script>document.getElementById('CSRF').submit();</script>
 {% endhighlight %}
 
-> **SQL Injection Test Strings**
 
-{% highlight bash %}
-' ` " ; /* --
-{% endhighlight %}
 
 > **XSS Test Strings**
 

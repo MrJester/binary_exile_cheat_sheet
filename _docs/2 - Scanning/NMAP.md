@@ -35,5 +35,8 @@ Script files | <code> /opt/NMAP/share/NMAP/scripts/<name>.nse </code>
 Example Command | <code> nohup masscan -p<ports> --rate 500 -vv --includefile <host list> --output-format list --output-filename <outputfile> > output.txt & </code>
 
 
+> **Usefule Resources**
 
+* scanrand
+* zmap
 

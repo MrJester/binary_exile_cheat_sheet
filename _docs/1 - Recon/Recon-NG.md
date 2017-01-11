@@ -6,9 +6,7 @@ order: 2
 
 > **Basic Commands** 
 
-See variables
-			
-{% highlight bash %}show options{% endhighlight %}
+See variables | {% highlight bash %}show options{% endhighlight %}
 
 See database structure
 

@@ -16,7 +16,7 @@ See database structure
 
 Search for a module
 		
-{% highlight bash %}search <module>{% highlight bash %}
+{% highlight bash %}search <module>{% endhighlight %}
 
 Shell Execution 
 		

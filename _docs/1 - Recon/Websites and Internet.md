@@ -7,7 +7,7 @@ order: 1
 > **Obtain Documents**
 	
 
-{% highlight bash %} wget -nd -r -R htm, html, php, asp, aspx, cgi -P \<folder to store data\> \<target website\> {% endhighlight %}
+{% highlight bash %} wget -nd -r -R htm, html, php, asp, aspx, cgi -P <folder to store data> <target website> {% endhighlight %}
 
 > **Google Website**
 

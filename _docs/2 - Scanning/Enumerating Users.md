@@ -24,18 +24,18 @@ Active:
 > **Useful Commands**
 
 Linux:
-Local Linux | cat /etc/password
-Who's logged in | finger, who, w
-Remotely Linux | Finger @[targetIP]
-NIS | ypcat passwd, ypcat group
-LDAP | ldapsearch [criteria]
+Local Linux | <code> cat /etc/password </code>
+Who's logged in | <code> finger, who, w </code>
+Remotely Linux | <code> Finger @[targetIP] </code>
+NIS | <code> ypcat passwd, ypcat group </code>
+LDAP | <code> ldapsearch [criteria] </code>
 
 Windows:
-Windows null session | net use \\targetip "" /u:""
-SMB info | enum -U [targetIP], enum -G [targetIP],  enum -U [or] -G [targetIP] -U [user] -p [password]
-Establish an SMB session | net use \\[targetIP] [password] /u:[user]
-Request domain/computer part of SID | user2sid \\[targerIP] [machine_name]
-Loop for users  [note: no dashes] | for /L %i in (1000,1,1010) do @sid2user \\[targetIP] [SID without RID] %i
+Windows null session |  <code> net use \\targetip "" /u:"" </code>
+SMB info | <code> enum -U [targetIP], enum -G [targetIP],  enum -U [or] -G [targetIP] -U [user] -p [password] </code>
+Establish an SMB session | <code>net use \\[targetIP] [password] /u:[user] </code>
+Request domain/computer part of SID | <code> user2sid \\[targerIP] [machine_name]  </code>
+Loop for users  [note: no dashes] | <code> for /L %i in (1000,1,1010) do @sid2user \\[targetIP] [SID without RID] %i  </code>
 
 > **Useful Resources**
 

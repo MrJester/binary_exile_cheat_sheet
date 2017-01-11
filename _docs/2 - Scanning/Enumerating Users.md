@@ -7,12 +7,14 @@ order: 4
 > **Enumerating Users**
 
 Passive:
+
 * Email Addresses
 * Blogs
 * Newsgroups
 * Document Metadata
 
 Active:
+
 * /etc/password
 * Finger
 * Who

@@ -8,19 +8,19 @@ order: 2
 
 See variables
 			
-		show options 
+<code>show options</code> 
 
 See database structure
-		
-		show schema
+
+<code>show schema</code>
 
 Search for a module
 		
-		search \<module\>
+{% highlight bash %}search <module>{% highlight bash %}
 
 Shell Execution 
 		
-		Any shell comand
+<code>Any shell comand</code>
 
 > **Useful Commands**
 

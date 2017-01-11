@@ -7,11 +7,8 @@ order: 2
 > **Basic Commands** 
 
 See variables	| <code> show options </code>
-
 See database structure	| <code> show schema </code>
-
 Search for a module	| <code> search [module] </code>
-
 Shell Execution	| <code>Any shell comand</code>
 
 > **Useful Commands**

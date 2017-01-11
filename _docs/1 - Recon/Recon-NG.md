@@ -6,19 +6,13 @@ order: 2
 
 > **Basic Commands** 
 
-See variables | {% highlight bash %}show options{% endhighlight %}
+See variables | <code> show options </code>
 
-See database structure
+See database structure | <code> show schema </code>
 
-{% highlight bash %}show schema{% endhighlight %}
+Search for a module | <code> search [module] </code>
 
-Search for a module
-		
-{% highlight bash %}search <module>{% endhighlight %}
-
-Shell Execution 
-		
-<code>Any shell comand</code>
+Shell Execution | <code>Any shell comand</code>
 
 > **Useful Commands**
 

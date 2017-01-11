@@ -24,6 +24,7 @@ Active:
 > **Useful Commands**
 
 Linux:
+
 Local Linux | <code> cat /etc/password </code>
 Who's logged in | <code> finger, who, w </code>
 Remotely Linux | <code> Finger @[targetIP] </code>
@@ -31,6 +32,7 @@ NIS | <code> ypcat passwd, ypcat group </code>
 LDAP | <code> ldapsearch [criteria] </code>
 
 Windows:
+
 Windows null session |  <code> net use \\targetip "" /u:"" </code>
 SMB info | <code> enum -U [targetIP], enum -G [targetIP],  enum -U [or] -G [targetIP] -U [user] -p [password] </code>
 Establish an SMB session | <code>net use \\[targetIP] [password] /u:[user] </code>

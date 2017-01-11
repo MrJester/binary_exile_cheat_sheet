@@ -34,7 +34,7 @@ $ ls -d [target domain]
 {% highlight bash %}
 $ dig @[server] [type]
 #zone transfer
-$ dis @[server] domain -t AXFX  
+$ dig @[server] domain -t AXFX  
 {% endhighlight %}
 
 > **Useful Resources**

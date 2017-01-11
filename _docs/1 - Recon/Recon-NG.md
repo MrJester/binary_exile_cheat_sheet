@@ -8,11 +8,11 @@ order: 2
 
 See variables
 			
-<code>show options</code> 
+{% highlight bash %}show options{% endhighlight %}
 
 See database structure
 
-<code>show schema</code>
+{% highlight bash %}show schema{% endhighlight %}
 
 Search for a module
 		

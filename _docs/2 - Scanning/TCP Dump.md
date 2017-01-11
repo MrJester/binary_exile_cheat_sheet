@@ -13,7 +13,7 @@ Direction | src, dst
 Use numbers for machines and ports | -nn
 Write to file | -w
 print out in ascII or hex | -A -X
-Choose interface | -i <interface>
+Choose interface | -i [interface]
 Full packets | -s 
 Network filter | Net 10.10.10
 

@@ -1,7 +1,7 @@
 ---
 title: Android 
-category: Android
-order: 1
+category: Misc
+order: 3
 ---
 
 Decompile and MITM an Android Application:

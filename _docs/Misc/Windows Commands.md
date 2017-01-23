@@ -4,9 +4,10 @@ category: Misc
 order: 4
 ---
 
->**Windows Commands**
+>**Accounts and Privileges**
 
 Category | Topic | Command
+------------- | ------------- | -------------
 Accounts and Privileges | Lauch with Admin Privs | ctrl+shift+enter 
 Accounts and Privileges | SID | S-[revision level]-[authority level]-[domain/computer]-RID
 Accounts and Privileges | Admin RID | 500
@@ -20,6 +21,9 @@ Accounts and Privileges | List Administrators | net localgroup administrators
 Accounts and Privileges | List Account Policy | net accounts or net accounts /domain
 Accounts and Privileges | Password Guess | for /f %i in 9password.lst) do @echo %i & @net use \\[tartet_IP_addr] %i /u:[UserName] 2>nul && echo [UserName]: %i >> success.txt
 Accounts and Privileges | Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartcard "cmd /c echo Hello!"
+
+>**Accounts and Privileges**
+
 AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
 AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
 Inventory, File Search, and Counting | Count Lines | <code> type "file" | find /c /v "" </code>

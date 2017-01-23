@@ -1,7 +1,7 @@
 ---
 title: Jekyll and Git 
 category: Misc
-order: 1
+order: 2
 ---
 > <b> Generating SSH Key </b>
 

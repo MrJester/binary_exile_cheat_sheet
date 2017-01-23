@@ -1,6 +1,6 @@
 ---
 title: Medical
-category: Medical
+category: Misc
 order: 1
 ---
 

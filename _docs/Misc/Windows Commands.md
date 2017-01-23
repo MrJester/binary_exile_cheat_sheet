@@ -24,7 +24,7 @@ Accounts and Privileges | Run Progarm as another user | runas /u:fred "cmd /c ec
 AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
 AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
 
-Inventory, File Search, and Counting | Count Lines | type "file" | find /c /v ""
+Inventory, File Search, and Counting | Count Lines | <code> type "file" | find /c /v "" </code>
 Inventory, File Search, and Counting | Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
 Inventory, File Search, and Counting | Display File Contents | type [file], type *.[ext], type [file1] [file2]
 Inventory, File Search, and Counting | Search in FIle | <code> type [file] | find /i "[string]", type [file] | findstr [regex] </code>

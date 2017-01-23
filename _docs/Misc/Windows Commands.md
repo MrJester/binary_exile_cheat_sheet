@@ -20,10 +20,8 @@ Accounts and Privileges | List Administrators | net localgroup administrators
 Accounts and Privileges | List Account Policy | net accounts or net accounts /domain
 Accounts and Privileges | Password Guess | for /f %i in 9password.lst) do @echo %i & @net use \\[tartet_IP_addr] %i /u:[UserName] 2>nul && echo [UserName]: %i >> success.txt
 Accounts and Privileges | Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartcard "cmd /c echo Hello!"
-
 AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
 AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
-
 Inventory, File Search, and Counting | Count Lines | <code> type "file" | find /c /v "" </code>
 Inventory, File Search, and Counting | Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
 Inventory, File Search, and Counting | Display File Contents | type [file], type *.[ext], type [file1] [file2]

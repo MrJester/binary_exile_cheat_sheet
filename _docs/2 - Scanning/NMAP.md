@@ -6,7 +6,9 @@ order: 2
 
 > **NMAP**
 
-example command |  ``` nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA [OUTPUTFILE] -p 1-1024 10.10.10.1-255 > output.txt & ```
+example command |  ``` bash 
+nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA [OUTPUTFILE] -p 1-1024 10.10.10.1-255 > output.txt &
+ ```
 example command 2 | <code> nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA [OUTPUTFILE] > -p 1-1024 -iL [HOSTLIST]  > output.txt & </code>
 Ping |  -Pn (no ping), -sP (ping sweep) 
 Scans | -sS (syn), -sT (TCP), -sF (FIN), -sX (FIN,PUSH, URG), -sM (FIN, ACK), -sU (UDP) 

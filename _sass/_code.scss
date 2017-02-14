@@ -2,12 +2,12 @@ pre, code, tt {
 	font-family: Inconsolata, Consolas, Courier, "Courier New", "Liberation Mono", monospace;
 	font-size: 0.85em;
 	white-space: pre-wrap;
-	border-radius: 2px;
+	/* border-radius: 2px; */
 	line-height: 1.4;
 	font-weight: 400;
 	background-color: #404145;
 	color: #FAFAFA;
-	border-radius: 2px;
+	/* border-radius: 2px; */
 }
 
 pre {
@@ -32,6 +32,6 @@ pre {
 blockquote > code,
 li > code,
 p > code {
-	padding: 4px 6px;
+	/* padding: 4px 6px;*/
 	white-space: pre-wrap;
 }

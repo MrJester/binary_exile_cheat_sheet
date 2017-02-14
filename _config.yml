@@ -22,7 +22,7 @@ social:
 # Build
 
 permalink: pretty
-
+markdown: kramdown
 highlighter: rouge
 
 gems:

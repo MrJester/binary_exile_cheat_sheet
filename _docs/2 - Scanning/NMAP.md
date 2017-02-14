@@ -7,7 +7,7 @@ order: 2
 > **NMAP**
 
 example command |  
-```cpp
+``` 
 nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA [OUTPUTFILE] -p 1-1024 10.10.10.1-255 > output.txt &
  ```
 example command 2 | <code> nohup ./nmap -n --randomize-hosts --reasons -A -st -vv -oA [OUTPUTFILE] > -p 1-1024 -iL [HOSTLIST]  > output.txt & </code>

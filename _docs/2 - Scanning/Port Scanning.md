@@ -22,8 +22,8 @@ Reason for result | <code>--reason </code>
 
 > **NSE**
 
-Example Command | <code> ./NMAP -n -sV --script=[all, category, dir, script...] [target] -p [ports] </code>
-All scripts  | <code> ./NMAP -sC [target] -p [ports] </code>
+Example Command | <code>./NMAP -n -sV --script= [all, category, dir, script...] [target] -p [ports] </code>
+All scripts  | <code>./NMAP -sC [target] -p [ports] </code>
 Script details | <code>--script-trace </code>
 Script help |  <code>--script-help</code>
 Script arguments | <code>--script-args[arguments]</code>

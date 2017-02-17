@@ -37,7 +37,7 @@ LDAP | <code> ldapsearch [criteria] </code>
 
 Windows null session |  <code> net use \\targetip "" /u:"" </code>
 SMB info | <code> enum -U [targetIP], enum -G [targetIP],  enum -U [or] -G [targetIP] -U [user] -p [password] </code>
-Establish an SMB session | <code>net use \\[targetIP] [password] /u:[user] </code>
+Establish an SMB session | <code> net use \\[targetIP] [password] /u:[user] </code>
 Request domain/computer part of SID | <code> user2sid \\[targerIP] [machine_name]  </code>
 Loop for users  [note: no dashes] | <code> for /L %i in (1000,1,1010) do @sid2user \\[targetIP] [SID without RID] %i  </code>
 

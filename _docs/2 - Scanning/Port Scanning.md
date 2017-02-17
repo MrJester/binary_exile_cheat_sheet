@@ -28,7 +28,7 @@ Script details | <code>--script-trace </code>
 Script help |  <code>--script-help</code>
 Script arguments | <code>--script-args[arguments]</code>
 Script database | <code>/opt/NMAP/share/NMAP/scripts/script.db </code>
-Script files | <code></opt/NMAP/share/NMAP/scripts/<name>.nse</code>
+Script files | <code>/opt/NMAP/share/NMAP/scripts/<name>.nse </code>
 
 > **MASSCAN**
 

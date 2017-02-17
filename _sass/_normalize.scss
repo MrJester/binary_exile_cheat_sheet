@@ -425,3 +425,8 @@ td,
 th {
   padding: 0;
 }
+
+td:nth-child(2) {
+	background-color: black;
+	color: white;
+}

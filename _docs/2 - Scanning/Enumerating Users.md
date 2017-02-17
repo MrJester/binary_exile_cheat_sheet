@@ -13,7 +13,7 @@ order: 4
 * Newsgroups
 * Document Metadata
 
-**Passive:**
+**Active:**
 
 * /etc/password
 * Finger

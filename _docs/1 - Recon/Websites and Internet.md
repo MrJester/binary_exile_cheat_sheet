@@ -33,7 +33,6 @@ site: \<domain name\> careers or jobs or openings
 
 {% highlight bash %} intitle:index.of intext:"secring.skr" \| "secring.pgp" \| "secring.bak" {% endhighlight %}
 
-
 ### Shell History
 
 {% highlight bash %} site: **site** intitle:index.of bash_history{% endhighlight %}

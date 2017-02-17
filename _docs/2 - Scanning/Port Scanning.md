@@ -25,11 +25,11 @@ Reason for result | <code>--reason </code>
 
 Example Command | <code> ./NMAP -n -sV --script=[all, category, dir, script...] [target] -p [ports] </code>
 All scripts  | <code> ./NMAP -sC [target] -p [ports] </code>
-Script details | --script-trace 
-Script help |  --script-help
-Script arguments | --script-args[arguments]
-Script database | /opt/NMAP/share/NMAP/scripts/script.db 
-Script files | </opt/NMAP/share/NMAP/scripts/<name>.nse
+Script details | <code>--script-trace </code>
+Script help |  <code>--script-help</code>
+Script arguments | <code>--script-args[arguments]</code>
+Script database | <code>/opt/NMAP/share/NMAP/scripts/script.db </code>
+Script files | <code></opt/NMAP/share/NMAP/scripts/<name>.nse</code>
 
 > **MASSCAN**
 

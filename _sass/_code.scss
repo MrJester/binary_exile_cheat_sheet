@@ -7,7 +7,7 @@ pre, code, tt {
 	font-weight: 400;
 	background-color: #404145;
 	color: #fafafa;
-	
+	color: green;
 }
 
 pre {
@@ -38,4 +38,7 @@ li > code,
 p > code {
 	/* padding: 4px 6px;*/
 	white-space: pre-wrap;
+	white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+	white-space: -pre-wrap;                /* Opera 4 thru 6 */
+	white-space: -o-pre-wrap;              /* Opera 7 and up */
 }

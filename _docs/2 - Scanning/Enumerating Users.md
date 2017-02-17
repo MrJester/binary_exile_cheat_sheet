@@ -6,14 +6,14 @@ order: 4
 
 > **Enumerating Users**
 
-Passive:
+**Passive:**
 
 * Email Addresses
 * Blogs
 * Newsgroups
 * Document Metadata
 
-Active:
+**Passive:**
 
 * /etc/password
 * Finger

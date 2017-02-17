@@ -29,12 +29,12 @@ site: \<domain name\> careers or jobs or openings
 > **Google Hacking**
 
 
-## PGP and GnuPG private keys
+### PGP and GnuPG private keys
 
 {% highlight bash %} intitle:index.of intext:"secring.skr" \| "secring.pgp" \| "secring.bak" {% endhighlight %}
 
 
-## Shell History
+### Shell History
 
 {% highlight bash %} site: **site** intitle:index.of bash_history{% endhighlight %}
 

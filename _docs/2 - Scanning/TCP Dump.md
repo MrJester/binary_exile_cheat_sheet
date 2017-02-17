@@ -6,7 +6,7 @@ order: 1
 
 > **TCP Dump** 
 
-Example Command	| <code> tcpdump -nnX tcp and port 80 and host 10.10.10.10 </code>
+Example Command	| <code>tcpdump -nnX tcp and port 80 and host 10.10.10.10 </code>
 Protocols | ether, ip, ip6, arp, rarp, tcp, udp
 Type | host, net, port, portrange
 Direction | src, dst

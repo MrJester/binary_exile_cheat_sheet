@@ -41,9 +41,8 @@ site: \<domain name\> careers or jobs or openings
 
 {% highlight bash %} disallow filetype:txt {% endhighlight %}
 
-
-
-Password	
+Password
+-----------------	
 
 {% highlight bash %} intitle:index.of passwd {% endhighlight %}
 

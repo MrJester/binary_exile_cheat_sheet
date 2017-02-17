@@ -14,7 +14,7 @@ Check for firewall |  <code>--badsum <br> //If you recieve a rest or ICMP unreac
 Numbers instead of machine |  <code>-n </code>
 Choose ports | <code>-p [START]-[END]</code>
 timing | <code>-T (0-5)</code>
-Store output | <code>-oN (human readable)<br> -oG (grepable)<br> -oX (XML)<br> -oA (all formats)</code>
+Store output | <code> -oN (human readable)<br> -oG (grepable)<br> -oX (XML)<br> -oA (all formats)</code>
 Fingerprint |  <code>-O</code>
 Version scaning | <code>-sV </code>
 Fingerprint, version, script, and traceeroute | <code>-A </code>

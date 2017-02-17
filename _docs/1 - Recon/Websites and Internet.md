@@ -12,7 +12,7 @@ order: 1
 > **Google Website**
 
 
-site: \<domain name\> careers or jobs or openings
+site: [domain name] careers or jobs or openings
 
 > **Search Social Networks**
 

@@ -6,7 +6,7 @@ order: 2
 > <b> Generating SSH Key </b>
 
 {% highlight bash %}
-$ ssh-keygen -t rsa -C "github-user1" -f "github-user1"
+$ ssh-keygen -t rsa -C "github-user1" -f "id_rsa"
 $ chmod 400 github-user1"
 $ git config --global user.name "BinaryExile"
 $ git config user.email "binaryexile@noreply.noreply"
@@ -24,10 +24,11 @@ Host github.com-user1
 $ chmod 400 ~/.ssh/config
 {% endhighlight %}
 
->Cloning, Commiting, and Pushing
+>Cloning, Pulling, Commiting, and Pushing
 
 {% highlight bash %}
 $ git clone git@github.com:BinaryExile/BinaryExile.github.io.git CheatSheets_BinaryExile
+$ git pull
 $ git git commit -a
 $ git add 
 $ git status

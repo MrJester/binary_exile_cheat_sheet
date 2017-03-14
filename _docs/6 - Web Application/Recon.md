@@ -73,7 +73,17 @@ not (negate)
 
 **The Harvester**
 
+{% highlight bash %}
+theHarvester -d site.org -b all
+{% endhighlight %}
 
+**FOCA**
+
+*[FOCA](https://www.elevenpaths.com/labstools/foca/index.html)
+
+{% highlight bash %}
+theHarvester -d site.org -b all
+{% endhighlight %}
 
 > **SQL Injection: Database Identification**
 

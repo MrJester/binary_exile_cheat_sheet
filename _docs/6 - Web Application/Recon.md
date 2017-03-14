@@ -79,17 +79,99 @@ theHarvester -d site.org -b all
 
 **FOCA**
 
-*[FOCA](https://www.elevenpaths.com/labstools/foca/index.html)
+* [FOCA](https://www.elevenpaths.com/labstools/foca/index.html)
+
+**Recon-ng**
 
 {% highlight bash %}
-theHarvester -d site.org -b all
+# Usage
+# Use [module - recon/[input]-[output]/module]
+# show info
+
+#Contacts
+recon/contacts-social/dev-diver
+recon/contacts-contacts/namechk
+recon/companies-contacts/linkedin_auth
+recon/companies-contacts/jigsaw
+recon/domains-contacts/pgp_search
+
+#Creds
+recon/contacts-creds/
+recon/creds-creds/
+recon/domains-creds/pwnedlist/
+
+#host
+recon/hosts-hosts/resolve
+recon/domain-hosts/netcraft
+recon/hosts-hosts/bin_ip
+recon/domain-hosts/shodan_hostname
+
+#Geo
+recon/locations-pushpins/picasa
+recon/locations-pushpins/shodan
+recon/locations-pushpins/twitter
+recon/location-pushpins/youtube
 {% endhighlight %}
 
-> **SQL Injection: Database Identification**
 
-Oracle | ORA-01756: quoted string not properly terminated
-MS SQL Server | Incorrect syntax near 'something'
-PostgreSQL | 5-digit Hex Error Code
+
+> **Framework and Configuration**
+
+**User Agent Differences**
+
+{% highlight bash %}
+nmap -p80 --script http-useragent-tester.nse [host]
+{% endhighlight %}
+
+
+**SSL/TLS Version**
+
+{% highlight bash %}
+#openssl
+openssl s_client -connect www.site.org:443-ssl2
+openssl s_client -connect www.site.org:443 -cipher NULL
+
+#nmap
+nmap -p 443 --script=ssl-enum-ciphers www.site.org
+{% endhighlight %}
+
+SSLLabs
+* [SSLLabs](www.ssllabs.com)
+
+
+**Framework and Configuration**
+
+{% highlight bash %}
+#Look for the following:
+# known vulnerabilities
+# Technologies versions to customize attacks (OS, platform, web server) such as case sensativity
+# Supported methods (Put, Delete)
+# Ports and Services
+
+#NMAP
+#Heartbleed
+nmap -p 443 --script=ssl-heartbleed.nse www.site.org
+#Service Detection
+nmap -sV scanme.nmap.org
+#Enum - like Nikto
+nmap --script=http-enum www.sec542.org
+#Methods
+nmap --script=http-method www.sec542.org
+
+# netcraft
+toolbar.netcraft.com/site_report
+
+#Wappalizer 
+https://wappalizer.com
+{% endhighlight %}
+
+
+
+
+
+
+
+
 
 > **CSRF**
 

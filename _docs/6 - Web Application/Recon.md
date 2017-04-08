@@ -29,12 +29,15 @@ dig @[DNSServerIP] version.bind chaos txt
 
 **NMAP, DNSRecon, and Metasploit:**
 
+
+
 {% highlight bash %}
 # NMAP
-# locate .nse | grep DNS to find scripts
+#Locate NSE Scripts
+locate .nse | grep DNS to find scripts
 # less the script and look at args and usage
-# use DNSRecon list as well /dnsrecon/namelist.txt
 nmap --script=dns-brute www.site.org 
+# use DNSRecon list as well /dnsrecon/namelist.txt
 nmap -sl 192.168.1.0/24 | grep \)
 
 # domain list is much larger than nmap
@@ -55,22 +58,20 @@ Note:  Keep a running list of DNS information discovered
 
 **Google and Bing Hacking**
 
-{% highlight bash %}
-#Google Directives
-site:www.sans.org
-inurl:phpinfo
-intitle:"Admin Login"
-link:sans.org
-ext:xls
-- (negate)
+Google Directives
+* site:www.sans.org
+* inurl:phpinfo
+* intitle:"Admin Login"
+* link:sans.org
+* ext:xls
+* - (negate)
 
-# Bing Directives 
-site:www.sans.org
-inanchor:phpinfo
-intitle:"Admin Login"
-filetype:xls
-not (negate)
-{% endhighlight %}
+Bing Directives: 
+* site:www.sans.org
+* inanchor:phpinfo
+* intitle:"Admin Login"
+* filetype:xls
+* not (negate)
 
 **The Harvester**
 
@@ -122,10 +123,10 @@ recon/location-pushpins/youtube
 
 {% highlight bash %}
 nmap -p80 --script http-useragent-tester.nse [host]
-
-#User Agent Strings	http://www.useragentstring.com/index.php?id=19732
 {% endhighlight %}
 
+User Agent Strings:
+* [User Agent Strings](http://www.useragentstring.com/index.php?id=19732)
 
 **SSL/TLS Version**
 
@@ -138,20 +139,20 @@ openssl s_client -connect www.site.org:443 -cipher NULL
 nmap -p 443 --script=ssl-enum-ciphers www.site.org
 {% endhighlight %}
 
-SSLLabs
+SSLLabs:
 * [SSLLabs](www.ssllabs.com)
 
 
 **Framework and Configuration**
 
-{% highlight bash %}
-#Look for the following:
-# known vulnerabilities
-# Technologies versions to customize attacks (OS, platform, web server) such as case sensativity
-# Supported methods (Put, Delete)
-# Default pages 
-# Ports and Services
+Look for the following:
+* known vulnerabilities
+* Technologies versions to customize attacks (OS, platform, web server) such as case sensativity
+* Supported methods (Put, Delete)
+* Default pages 
+* Ports and Services
 
+{% highlight bash %}
 #NMAP
 #Heartbleed
 nmap -p 443 --script=ssl-heartbleed.nse www.site.org
@@ -161,6 +162,14 @@ nmap -sV scanme.nmap.org
 nmap --script=http-enum www.sec542.org
 #Methods
 nmap --script=http-method www.sec542.org
+
+#nikto set up proxy (if needed)
+vim /etc/nikto/config.txt
+PROXYHOST=85.28.28.209
+PROXYPORT=8080
+
+#nikto
+nikto -useproxy -h http://targetsite.com -o results.txt
 
 # netcraft
 toolbar.netcraft.com/site_report
@@ -187,9 +196,10 @@ wget -r http://www.sec542.org -l 3
 
 # CeWL - Creates a Custom Word List from Site for usernames and passwords
 cewl http://www.sec542.org
-
-#w3af - Creates a visual site map
 {% endhighlight %}
+
+w3af (creates a visual site map):
+* [w3af](http://docs.w3af.org/en/latest/basic-ui.html)
 
 >  **Comments and Robots.txt**
 
@@ -215,18 +225,7 @@ nmap --script =http-robots.txt www.sec542.org
 
 * [User Agent Strings](http://www.useragentstring.com/index.php?id=19732) 
 
-* [Command Injection](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [Fuzzing List](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)
-* [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
-* [XSS Examples](http://www.xssed.com/)
-* [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
-* [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
-* [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
-[Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)
-[LFI Cheat Sheet](https://highon.coffee/blog/lfi-cheat-sheet/)
-[CGI-Bin](https://www.hellboundhackers.org/articles/read-article.php?article_id=7)
-
 > **Useful Tools**
-* [SQLMap](http://sqlmap.org)
+
+
 

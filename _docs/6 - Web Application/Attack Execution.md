@@ -21,7 +21,7 @@ ZAP:
 Burp (Pro only):
 * Right click -> Engagement tools -> Discover Content
 
-> **Fuzzing**
+> **Fuzzing and Password Guessing**
 
 Burp Fuzzing:
 1. Right click on request -> send to intruder
@@ -63,7 +63,7 @@ Tools:
 * Google Hacking Database
 * dirb
 * dirbuster
-* [fuzzdb]( (https://github.com/fuzzdb-project/fuzzdb))
+* [fuzzdb](https://github.com/fuzzdb-project/fuzzdb)
 * jbrofuzz
 * wmap
 * Nikto

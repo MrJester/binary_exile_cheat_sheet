@@ -16,59 +16,7 @@ Oracle | ORA-01756: quoted string not properly terminated
 MS SQL Server | Incorrect syntax near 'something'
 PostgreSQL | 5-digit Hex Error Code
 
-> **Forced Browseing and Content Discovery**
 
-ZAP:
-* Tools -> options -> forced browse and verify options
-* Right click -> attack ->  forced browse "
-
-Burp (Pro only):
-* Right click -> Engagement tools -> Discover Content
-
-> **Fuzzing**
-
-Burp Fuzzing:
-1. Right click on request -> send to intruder
-2. Click Posistion -> select attack type based on attack (e.g., number of posistions, combination)
-3. Select Posistions 
-4. Click Payloads -> select appropriate payload
-5. Click Options -> Verify Grep (what you are looking for)
-6. Sort on the field you were grepping for"
-
-ZAP Fuzzing (best for timing based attacks):
-1. Send a request that has the posistions you want to fuzz (right click on request -> tailor -> resend)
-2. Right click on request -> fuzz
-3. Highlight text you want to fuzz
-4. Click add -> select payload
-5. Repeat for number of fields to fuzz
-6. Click start fuzz
-7. Sort on relevant field
-
-Fuzzing Payloads:
-* fuzzdb
-* jbro fuzz
-* wraph
-
-
-> **Directory Browsing**
-
-Test for Directory Browsing:
-1. Navigate to directories and look for local file references
-2. Google site:gov intitle:""Index of"" ""last modified""
-3. CVEs for leakage based on recon
-
-Tools:
-* Google Hacking Database
-* dirb
-* dirbuster
-* fuzzdb
-* jbrofuzz
-* wmap
-* Nikto
-* w3af
-* ZAP
-* Metasploit WMAP
-* Metasploit msfcrawler
 
 > **CSRF**
 

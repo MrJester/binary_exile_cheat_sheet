@@ -203,14 +203,14 @@ w3af (creates a visual site map):
 
 >  **Comments and Robots.txt**
 
-{% highlight bash %}
-#Look for:
-# -useful/sensitive code/links/urls
-# -disabled functions
-# -linked servers (contant and application servers)
-# -passwords
-# -other interesting information
+When reviewing comments look for:
+* useful/sensitive code/links/urls
+* disabled functions
+* linked servers (contant and application servers)
+* passwords
+* other interesting information
 
+{% highlight bash %}
 #NMAP Comments	
 nmap --script=http-comments-displayer www.sec542.org
 

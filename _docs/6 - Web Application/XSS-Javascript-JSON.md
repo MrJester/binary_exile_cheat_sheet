@@ -15,7 +15,7 @@ order: 5
 **Using Burp - Step 2 Filter Test:**
 1. Repeat above with sniper and the following payloads (simple list):
 * <code> &lt;&gt;[]{}()$--'#&#34;&amp;;/ </code>
-* <code> '';!--"<XSS>=&{()} </code>
+* <code> '';!--&#34;&lt;XSS&gt;=&amp;{()}</code>
 * <code> <x>'"()= </code>
 * <code> ;[]{}'"() </code>
 * <code> jAvaSCript:prompt(9vqkz) </code>

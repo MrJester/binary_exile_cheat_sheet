@@ -108,8 +108,8 @@ PostgreSQL | 5-digit Hex Error Code
 
 > **SQL Injection: Database, Table, and Columns
 
-Database Type | Database | Table | Columns
-============= | ======== | ===== | =======
+**Database Type** | **Database** | **Table** | **Columns**
+============= | ======== | ===== | ======= | =========
 MySQL |	schema_name FROM information_schema.schemata | table_name FROM information_schema.tables | column_name From information_schema.columns
 SQL Server | name FROM sys.databases | name FROM sys.tables | name FROM sys.coumns
 Oracle DB | owner FROM all_tables | table_name FROM all_tables | column_name FROM all_tab_columns

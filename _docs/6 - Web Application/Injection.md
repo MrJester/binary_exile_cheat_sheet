@@ -74,13 +74,13 @@ LFI Shell:
 
 > **SQL Injection: Test Location and Strings**
 
-Locations:
+**Test Locations:**
 * GET URL query parameters
 * POST parameters
 * Cookie (session information)
 * User-Agent
 
-Visable Test Strings:
+**Visable Test Strings:**
 {% highlight bash %}
 ' ` " ; /* --
 {% endhighlight %}

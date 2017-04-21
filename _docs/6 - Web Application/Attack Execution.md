@@ -1,7 +1,7 @@
 ---
 title: Attack Execution
 category: Web Application
-order: 3
+order: 4
 ---
 
 > **Configuration**
@@ -108,6 +108,51 @@ Analyze authentication (valid and invalid) in proxy for multiple users:
 	* Intercept the generation of request and access token
 	* JavaScript information leak
 	* Spoof the site
+
+> **Session Fixation**
+
+1. Get a session token from site 
+2. Document session token
+3. Log-in 
+3. Document session token
+4. Did it change using burp compare?  If not, session fixation may be possible.
+	* Note: If there are a bunch, just start deleting some of them, the ones that causes a logout would be the session token.
+5. Can you set the session via URL, hidden form fields, or XSS
+
+> **Session Predictability**
+
+1. Get a lot of session tokens (script or burp sequencer to gather tokens)
+2. Use burp sequencer to analyze
+3. Known hashes may look non-predictable, but may just be a hash of incrimenting or static values (e.g., 1..9, username)
+
+Using Burp Sequencer:
+1. Right click on login request -> send to sequencer 
+2. In token locaiton within response -> select the token
+3. Look for the red results
+	* Note: If it doesn't work use a script and load a file into burp instead.
+
+> **Authentication Bypass**
+
+Blackbox
+1. Forced browsing (see ZAP forced browsing or Burp Burp Discovery)
+2. Look at keys and ids in url and cookies (e.g., Admin=true)
+
+Whitebox
+1. Spider at each authentication level as separate sitemaps (saved)
+2. Attempt to access with a lower level (not just pages, but functions - javascript -forms)
+
+> **Command Injection**
+
+Prefixs before attack payload (command seperator): 
+&, &&, ||,  <, >, ;, $()
+
+Test Visable:
+; ls /ect/passwd or /ect/hosts
+
+Test Blind:
+; ping y.o.ur.ip 
+on your attack system "sudo tcpdump -n host [victimIP] and icmp"
+; nslookup (you need a public facing system to see nslookup)
 
 > **SQL Injection: Test Strings**
 

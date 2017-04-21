@@ -76,8 +76,8 @@ Tools:
 
 1. Use company website, email, google, linked-in, Facebook, Twitter to find potential usernames 
 2. Find Lists:
-	* [skullsecurity](https://downloads.skullsecurity.org/passwords/):ron facebook usernames census
-	*[SecList](https://github.com/danielmiessler/SecLists/tree/master/Usernames) 
+	* [SkullSecurity](https://downloads.skullsecurity.org/passwords/):ron facebook usernames census
+	* [SecList](https://github.com/danielmiessler/SecLists/tree/master/Usernames) 
 3. Test a valid username vs invalid in login, password reset, create user pages:
 	* Look for different HTML 
 	* Look for different response variables
@@ -85,6 +85,29 @@ Tools:
 	* Look for differences in form fields (e.g., Username field)
 	* Look for iming differences in response time [calculating hashin](https://littlemaninmyhead.wordpress.com/2015/07/26/account-enumeration-via-timing-attacks/) 
 4. Fuzz using Burp or Zap
+
+> **Assess Authentication**
+
+Analyze authentication (valid and invalid) in proxy for multiple users:
+1. Is it form based, basic, digest?
+2. Are they using cookies? What is in the cookie? URI paramters?  Hidden form fields?
+3. Any other interesting fields
+4. Is the cookie marked as secure or HTTP only? 
+	* set-cookie: [values]; HttpOnly; Secure
+	* If yes, is the value located in the HTML anywhere (e.g., hidden form field)? 
+5. Look for:
+	* Session Fixation
+	* Session Randomness
+	* Predictability
+	* Bruteforece 
+
+> **Break OAUTH 1.0**
+
+* Find secret key:
+	* Insecure storage of key
+	* Intercept the generation of request and access token
+	* JavaScript information leak
+	* Spoof the site
 
 > **SQL Injection: Test Strings**
 
@@ -131,7 +154,6 @@ POST:
 </form>
 <script>document.getElementById('CSRF').submit();</script>
 {% endhighlight %}
-
 
 
 > **XSS Test Strings**

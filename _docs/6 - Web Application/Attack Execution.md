@@ -73,6 +73,7 @@ Tools:
 * Metasploit msfcrawler
 
 > **Username Harvesting**
+
 1) Use company website, email, google, linked-in, Facebook, Twitter to find potential usernames 
 2) Find Lists:
 	* [skullsecurity](https://downloads.skullsecurity.org/passwords/):ron facebook usernames census

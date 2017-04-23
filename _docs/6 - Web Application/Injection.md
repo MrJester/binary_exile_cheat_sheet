@@ -155,19 +155,19 @@ PostgreSQL | 5-digit Hex Error Code
 
 > **SQL Injection: Database, Table, and Columns**
 
-MySQL:
+**MySQL:**
 
 Database | schema_name FROM information_schema.schemata 
 Table | table_name FROM information_schema.tables
 Columns | column_name From information_schema.columns
 
-SQL Server:
+**SQL Server:**
 
 Database | name FROM sys.databases 
 Table | name FROM sys.tables 
 Columns | name FROM sys.coumns
 
-Oracle DB:
+**Oracle DB:**
 
 Database | owner FROM all_tables 
 Table | table_name FROM all_tables 

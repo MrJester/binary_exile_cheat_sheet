@@ -145,19 +145,14 @@ xmlhttp.responseText
 
 > **Useful Resources**
 
-* [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [Command Injection](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [Fuzzing List](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
-* [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)
-* 
+* [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors) 
 * [XSS Examples](http://www.xssed.com/)
-* [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
-* [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
-* [Access Injection Cheat Sheet](http://nibblesec.org/files/MSAccessSQLi/MSAccessSQLi.html)
-[Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)
-[LFI Cheat Sheet](https://highon.coffee/blog/lfi-cheat-sheet/)
-[CGI-Bin](https://www.hellboundhackers.org/articles/read-article.php?article_id=7)
+* [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
+* [XSS Examples](http://www.xssed.com/)
 
 > **Useful Tools**
-* [SQLMap](http://sqlmap.org)
+* XSSer 
+* xssniper
+* XSScrapy (xsssniper -u "http://sec542.com" --crawl --forms -http-proxy 127.0.0.1:8082)
+
 

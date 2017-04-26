@@ -37,6 +37,8 @@ echo Installing Wappalyzer
 wget https://addons.mozilla.org/firefox/downloads/latest/wappalyzer/addon-10229-latest.xpi && firefox -install-global-extension addon-10229-latest.xpi && rm *.xpi
 echo Installing foxyproxy
 wget https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/addon-2464-latest.xpi && firefox -install-global-extension addon-2464-latest.xpi && rm *.xpi
+echo Installing Developer Toolbar
+wget https://addons.mozilla.org/firefox/downloads/latest/web-developer/addon-60-latest.xpi && firefox -install-global-extension addon-60-latest.xpi && rm *.xpi
 {% endhighlight %}
 
 

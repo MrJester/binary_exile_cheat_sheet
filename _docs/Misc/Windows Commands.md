@@ -36,7 +36,8 @@ Inventory, File Search, and Counting | Read Registry Key | reg query [keyName]
 Inventory, File Search, and Counting | Change Registry Key | reg add [KeyName] /v [ValueName] /t [type] /d [data]
 Inventory, File Search, and Counting | Export Registry Keys | reg export [keyName] [filename.reg] 
 Inventory, File Search, and Counting | Import Registry Keys | reg import [filename.reg]
-Inventory, File Search, and Counting | Find a String  | find "[string]", findstr [regex] 
+Inventory, File Search, and Counting | Find a String  | find "[string]", findstr [regex]
+ 
 Network and Firewalls | Network Activity | <code> netstat -na | find ":[port]"</code> 
 Network and Firewalls | DNS cahce | ipconfig /displaydns
 Network and Firewalls | Turn firewall off | netsh advfirewall set allprofiles state off

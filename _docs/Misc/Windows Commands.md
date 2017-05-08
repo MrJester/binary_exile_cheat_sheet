@@ -100,8 +100,8 @@ Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\ii
 >**Scripting and Shell**
 
 Navigate History | <code> F7  Scripting and Shell </code> 
-For Loops | <code> "for /L %i in ([start], [step], [stop]) do [command]) <br> *note: step of zero runs forever*  <br> for /L %i in (1, 1, 255) do echo %i </code
-For Loops Iterate | for /F ["options"] %i in ([stuff]) do [command] 
+For Loops | <code> for /L %i in ([start], [step], [stop]) do [command]) <br> *note: step of zero runs forever*  <br> for /L %i in (1, 1, 255) do echo %i </code>
+For Loops Iterate | <code> for /F ["options"] %i in ([stuff]) do [command] </code>  
 Pause/Break | timeout /t 4 /nobreak 
 Turn off command echo | @ | for /L %i in (1, 1, 255) do @echo %i
 Multiple Commands | & | for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak

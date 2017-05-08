@@ -102,11 +102,11 @@ Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\ii
 Navigate History | <code> F7  Scripting and Shell </code> 
 For Loops | <code> for /L %i in ([start], [step], [stop]) do [command]) <br> *note: step of zero runs forever*  <br> for /L %i in (1, 1, 255) do echo %i </code>
 For Loops Iterate | <code> for /F ["options"] %i in ([stuff]) do [command] </code>  
-Pause/Break | timeout /t 4 /nobreak 
-Turn off command echo | @ | for /L %i in (1, 1, 255) do @echo %i
-Multiple Commands | & | for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak
-Multiple Successful Commands | && 
-Throw Away Output | >nul | for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak > null
-Print Blank Line or Beap | echo., echo CTRL-G 
-CR/LF (0d0a) | Windows use CR/LF as EOF characters. 
+Pause/Break | <code> timeout /t 4 /nobreak </code>  
+Turn off command echo | <code>  @ - for /L %i in (1, 1, 255) do @echo %i </code> 
+Multiple Commands | & | <code> for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak </code> 
+Multiple Successful Commands | <code>  && </code> 
+Throw Away Output | <code> >nul - for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak > null </code> 
+Print Blank Line or Beap | <code> echo., echo CTRL-G </code> 
+CR/LF (0d0a) | <code> Windows use CR/LF as EOF characters. </code>  
 

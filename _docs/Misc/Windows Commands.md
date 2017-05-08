@@ -108,7 +108,7 @@ For Loops | <code> for /L %i in ([start], [step], [stop]) do [command]) <br> *no
 For Loops Iterate | <code> for /F ["options"] %i in ([stuff]) do [command] </code>  
 Pause/Break | <code> timeout /t 4 /nobreak </code>  
 Turn off command echo | <code>  @ - for /L %i in (1, 1, 255) do @echo %i </code> 
-Multiple Commands | & | <code> for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak </code> 
+Multiple Commands | <code> &  for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak </code> 
 Multiple Successful Commands | <code>  && </code> 
 Throw Away Output | <code> >nul - for /L %i in (1, 1, 255) do @echo %i & timeout /t 4 /nobreak > null </code> 
 Print Blank Line or Beap | <code> echo., echo CTRL-G </code> 

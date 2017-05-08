@@ -78,6 +78,8 @@ Kill a Process | <code> taskkill /PID [process_ID] </code>
 
 >**Remote Access, SMB, and WMIC**
 
+Topic | Command
+------------- | -------------
 See Current Privileges | <code> whoami </code>
 Windows null session | <code> net use \\targetip "" /u:"" </code> 
 Establish an SMB session | <code> net use \\[targetIP] [password] /u:[user] </code>
@@ -99,6 +101,8 @@ Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\ii
 
 >**Scripting and Shell**
 
+Topic | Command
+------------- | -------------
 Navigate History | <code> F7  Scripting and Shell </code> 
 For Loops | <code> for /L %i in ([start], [step], [stop]) do [command]) <br> *note: step of zero runs forever*  <br> for /L %i in (1, 1, 255) do echo %i </code>
 For Loops Iterate | <code> for /F ["options"] %i in ([stuff]) do [command] </code>  

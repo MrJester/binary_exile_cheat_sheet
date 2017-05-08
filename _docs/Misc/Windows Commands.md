@@ -50,18 +50,16 @@ Find a String  | find "[string]", findstr [regex]
 Topic | Command
 ------------- | -------------
 Network Activity | <code> netstat -na | find ":[port]"</code> 
-DNS cahce | ipconfig /displaydns
-Turn firewall off | netsh advfirewall set allprofiles state off
-Firewall Rule | netsh advfirewall firewall add rule name="[name]" <br> dir=in action=allow remoteip=[yourIPaddress] protocol=TCP localport=[port number] <br> Example: 3389, 23
-Delete Firewall Rule | netsh advfirewall firewall del rule name="[name]" 
-Disable Firewall | netsh advfirewall set allprofiles state off 
-
-Firewall Rule Registry | reg add HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\ Parameters\FirewallPolicy\StandardProfile\GloballyOpenPorts\List /V 2000:TCP /T REG_SZ /F /D "2000:TCP:*:Enabled" 
+DNS cahce | <code> ipconfig /displaydns </code>
+Turn firewall off | <code> netsh advfirewall set allprofiles state off </code>
+Firewall Rule | <code> netsh advfirewall firewall add rule name="[name]" <br> dir=in action=allow remoteip=[yourIPaddress] protocol=TCP localport=[port number] <br> Example: 3389, 23 </code>
+Delete Firewall Rule | <code> netsh advfirewall firewall del rule name="[name]" 
+Disable Firewall | <code> netsh advfirewall set allprofiles state off 
+Firewall Rule Registry | <code> reg add HKLM\ SYSTEM\ CurrentControlSet\ Services\ SharedAccess\ Parameters\ FirewallPolicy\ StandardProfile\ GloballyOpenPorts\ List /V 2000:TCP /T REG_SZ /F /D "2000:TCP:*:Enabled" 
 View Firewall Configuration | netsh advfirewall show allprofiles 
-
 Ping Sweep | <code> for /L %i in (1, 1, 255) do @ping -n 1 192.168.2.%i | find "TTL" </code>
 DNS Lookup | <code> for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.10.10.%i  2>nul | find "Name" </code>
- Netsh pivot | netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
+ Netsh pivot | <code> netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
 
 >**Process and Services**
 

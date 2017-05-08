@@ -197,6 +197,7 @@ Image tag
 
 IFRAME
 <iframe src="https;//a.tld/t.php?acct=12345&amt1000">
+{% endhighlight %}
 
 POST:
 {% highlight html %}

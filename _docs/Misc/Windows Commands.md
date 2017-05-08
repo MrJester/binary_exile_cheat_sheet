@@ -8,59 +8,67 @@ order: 4
 
 Category | Topic | Command
 ------------- | ------------- | -------------
-Accounts and Privileges | Lauch with Admin Privs | ctrl+shift+enter 
-Accounts and Privileges | SID | S-[revision level]-[authority level]-[domain/computer]-RID
-Accounts and Privileges | Admin RID | 500
-Accounts and Privileges | Guest RID | 501 
-Accounts and Privileges | Users RID | 1001 and up
-Accounts and Privileges | Add or Remove a User | net user [username] [password] /add or /del <br> termservice, telnet
-Accounts and Privileges | Add or Remove user to a group | net localgroup [group] [username] /add or /del <br> Examples: <br> Remote Desktop Users, TelnetClients, Administrators
-Accounts and Privileges | List Local Users | net user
-Accounts and Privileges | List Groups | net localgroup
-Accounts and Privileges | List Administrators | net localgroup administrators 
-Accounts and Privileges | List Account Policy | net accounts or net accounts /domain
-Accounts and Privileges | Password Guess | for /f %i in 9password.lst) do @echo %i & @net use \\[tartet_IP_addr] %i /u:[UserName] 2>nul && echo [UserName]: %i >> success.txt
-Accounts and Privileges | Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartcard "cmd /c echo Hello!"
+Lauch with Admin Privs | ctrl+shift+enter 
+SID | S-[revision level]-[authority level]-[domain/computer]-RID
+Admin RID | 500
+Guest RID | 501 
+Users RID | 1001 and up
+Add or Remove a User | net user [username] [password] /add or /del <br> termservice, telnet
+Add or Remove user to a group | net localgroup [group] [username] /add or /del <br> Examples: <br> Remote Desktop Users, TelnetClients, Administrators
+List Local Users | net user
+List Groups | net localgroup
+List Administrators | net localgroup administrators 
+List Account Policy | net accounts or net accounts /domain
+Password Guess | for /f %i in 9password.lst) do @echo %i & @net use \\[tartet_IP_addr] %i /u:[UserName] 2>nul && echo [UserName]: %i >> success.txt
+Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartcard "cmd /c echo Hello!"
 
->**Accounts and Privileges**
+>**Antivirus**
 
 AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
 AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
-Inventory, File Search, and Counting | Count Lines | <code> type "file" | find /c /v "" </code>
-Inventory, File Search, and Counting | Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
-Inventory, File Search, and Counting | Display File Contents | type [file], type *.[ext], type [file1] [file2]
-Inventory, File Search, and Counting | Search in FIle | <code> type [file] | find /i "[string]", type [file] | findstr [regex] </code>
-Inventory, File Search, and Counting | See Environment Variables | set, set [variable_name] <br> Example: username, path
-Inventory, File Search, and Counting | Search for File | dir /b /s [directory]\[file]  (use ^ to escape spaces) <br> Example: dir /b /s %systemroot%\hosts
-Inventory, File Search, and Counting | Read Registry Key | reg query [keyName] 
-Inventory, File Search, and Counting | Change Registry Key | reg add [KeyName] /v [ValueName] /t [type] /d [data]
-Inventory, File Search, and Counting | Export Registry Keys | reg export [keyName] [filename.reg] 
-Inventory, File Search, and Counting | Import Registry Keys | reg import [filename.reg]
-Inventory, File Search, and Counting | Find a String  | find "[string]", findstr [regex]
+
+>**Inventory, File Search, and Counting**
+
+Count Lines | <code> type "file" | find /c /v "" </code>
+Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
+Display File Contents | type [file], type *.[ext], type [file1] [file2]
+Search in FIle | <code> type [file] | find /i "[string]", type [file] | findstr [regex] </code>
+See Environment Variables | set, set [variable_name] <br> Example: username, path
+Search for File | dir /b /s [directory]\[file]  (use ^ to escape spaces) <br> Example: dir /b /s %systemroot%\hosts
+Read Registry Key | reg query [keyName] 
+Change Registry Key | reg add [KeyName] /v [ValueName] /t [type] /d [data]
+Export Registry Keys | reg export [keyName] [filename.reg] 
+Import Registry Keys | reg import [filename.reg]
+Find a String  | find "[string]", findstr [regex]
 Network and Firewalls | Network Activity | <code> netstat -na | find ":[port]"</code> 
 Network and Firewalls | DNS cahce | ipconfig /displaydns
 Network and Firewalls | Turn firewall off | netsh advfirewall set allprofiles state off
 Network and Firewalls | Firewall Rule | netsh advfirewall firewall add rule name="[name]" <br> dir=in action=allow remoteip=[yourIPaddress] protocol=TCP localport=[port number] <br> Example: 3389, 23
-
 Network and Firewalls | Delete Firewall Rule | netsh advfirewall firewall del rule name="[name]" 
 Network and Firewalls | Disable Firewall | netsh advfirewall set allprofiles state off 
 Network and Firewalls | Firewall Rule Registry | reg add HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\GloballyOpenPorts\List /V 2000:TCP /T REG_SZ /F /D "2000:TCP:*:Enabled" 
 Network and Firewalls | View Firewall Configuration | netsh advfirewall show allprofiles 
+
 Network and Firewalls | Ping Sweep | <code> for /L %i in (1, 1, 255) do @ping -n 1 192.168.2.%i | find "TTL" </code>
 Network and Firewalls | DNS Lookup | for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.10.10.%i  2>nul | find "Name"
 Network and Firewalls | Netsh pivot | netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
 
-Process and Service | Install a service | "pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer" | 
-Process and Service | List Running Services | sc query | 
-Process and Service | List All Services | sc query state= all | 
-Process and Service | List Remote Services  | sc \\[targetIP] query | 
-Process and Service | Check status of service | sc query [service name] | 
-Process and Service | Start/Stop a service | sc start/stop [service name] | 
-Process and Service | Change Startup type of service | sc config [servicename] start= demand | termservice, telnet
-Process and Service | Delete Service | sc delete [service name] | 
-Process and Service | List Processes | tasklist | 
-Process and Service | Kill a Process | taskkill /PID [process_ID] | 
-Remote Access, SMB, and WMIC | See Current Privileges | whoami | 
+>**Process and Services**
+
+Install a service | "pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer"
+List Running Services | sc query 
+List All Services | sc query state= all
+List Remote Services  | sc \\[targetIP] query
+Check status of service | sc query [service name]
+Start/Stop a service | sc start/stop [service name]
+Change Startup type of service | sc config [servicename] start= demand (termservice, telnet)
+Delete Service | sc delete [service name]
+List Processes | tasklist
+Kill a Process | taskkill /PID [process_ID] 
+
+>**Remote Access, SMB, and WMIC**
+
+See Current Privileges | whoami | 
 Remote Access, SMB, and WMIC | Windows null session | net use \\targetip "" /u:"" | 
 Remote Access, SMB, and WMIC | Establish an SMB session | net use \\[targetIP] [password] /u:[user] | 
 Remote Access, SMB, and WMIC | Mount a Share on Target | "net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user]" | 

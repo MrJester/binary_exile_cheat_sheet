@@ -236,9 +236,10 @@ message<td><input name="message" value="test :D " size="100"></tr>
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors) 
 * [XSS Examples](http://www.xssed.com/)
 * [XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
-* [XSS Examples](http://www.xssed.com/)
+
 
 > **Useful Tools**
+
 * XSSer 
 * xssniper
 * XSScrapy (xsssniper -u "http://sec542.com" --crawl --forms -http-proxy 127.0.0.1:8082)

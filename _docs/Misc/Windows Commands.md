@@ -26,8 +26,8 @@ Run Progarm as another user | runas /u:fred "cmd /c echo Hello!", runas /smartca
 
 Topic | Command
 ------------- | -------------
-AntiVirus | Turn off Windows Defender | control /name Microsoft.WindowsDefender
-AntiVirus | Turn off Smart Screen | control /name Microsoft.ActionCenter
+Turn off Windows Defender | control /name Microsoft.WindowsDefender
+Turn off Smart Screen | control /name Microsoft.ActionCenter
 
 >**Inventory, File Search, and Counting**
 

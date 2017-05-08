@@ -92,13 +92,18 @@ WMIC Service Query | <code> wmic services where (displayname like "%[whatever]%"
 WMIC List Processes | <code> wmic /node:[targetIP] /user:[admin_user] /password:[password] process list brief </code> 
 WMIC Kill Processes | wmic /node:[targetIP] /user:[admin_user] /password:[password] process where name="[name]" delete or processID="[PID]" delete </code>
 WMIC Monitor Process | <code> wmic process where name="[name]" list brief /every:1 | "nc.exe" </code>
+
 at (windows 7 and lower)(all commands at SYSTEM) | <code> "net use \\[targetIP] [password] /u:[admin_user] <br> sc \\[targetIP] query schedule (*make sure it is running*) <br> *sc \\[targetIP] start schedule* <br> at [\\targetIP] [HH:MM] [A|P] [command] <br> at \\[machine] [time] cmd /c ""[command]"" <br> at \\[targetIP} (*check status*)" </code> 
-schtasksStart TIme - HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE | <code> > net use \\[targetIP] [password] /u:[admin_user] 
+
+schtasksStart time - HH:MM:SSFrequency: MINUTE, HOURLY, DAILY, ONCE, ONSTART, ONLOGON, ONIDLE | <code> > net use \\[targetIP] [password] /u:[admin_user] 
 <br> > sc \\[targetIP] query schedule (*make sure it is running*)
 <br> > *sc \\[targetIP] start schedule*
 <br> > schtasks /creat /tn [taskname] /s [targetIP] /u [user] /p [password] /sc [frequency]  /st [starttime] /sd [startdate] /tr [command]
 <br> > schtasks /query /s [targetIP] </code> 
 Simple Windows IIS Express Server | <code> C:\Program Files (x86)\IIS Express\iisexpress.exe" /path:C:\tools /port:8001 </code> 
+
+
+>**Remote Access, SMB, and WMIC**
 
 Scripting and Shell | Navigate History | F7 | 
 Scripting and Shell | For Loops | "for /L %i in ([start], [step], [stop]) do [command]) 

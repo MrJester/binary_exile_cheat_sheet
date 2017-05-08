@@ -44,18 +44,20 @@ Change Registry Key | reg add [KeyName] /v [ValueName] /t [type] /d [data]
 Export Registry Keys | reg export [keyName] [filename.reg] 
 Import Registry Keys | reg import [filename.reg]
 Find a String  | find "[string]", findstr [regex]
-Network and Firewalls | Network Activity | <code> netstat -na | find ":[port]"</code> 
-Network and Firewalls | DNS cahce | ipconfig /displaydns
-Network and Firewalls | Turn firewall off | netsh advfirewall set allprofiles state off
-Network and Firewalls | Firewall Rule | netsh advfirewall firewall add rule name="[name]" <br> dir=in action=allow remoteip=[yourIPaddress] protocol=TCP localport=[port number] <br> Example: 3389, 23
-Network and Firewalls | Delete Firewall Rule | netsh advfirewall firewall del rule name="[name]" 
-Network and Firewalls | Disable Firewall | netsh advfirewall set allprofiles state off 
-Network and Firewalls | Firewall Rule Registry | reg add HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\GloballyOpenPorts\List /V 2000:TCP /T REG_SZ /F /D "2000:TCP:*:Enabled" 
-Network and Firewalls | View Firewall Configuration | netsh advfirewall show allprofiles 
 
-Network and Firewalls | Ping Sweep | <code> for /L %i in (1, 1, 255) do @ping -n 1 192.168.2.%i | find "TTL" </code>
-Network and Firewalls | DNS Lookup | for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.10.10.%i  2>nul | find "Name"
-Network and Firewalls | Netsh pivot | netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
+>**Inventory, File Search, and Counting**
+
+Network Activity | <code> netstat -na | find ":[port]"</code> 
+DNS cahce | ipconfig /displaydns
+Turn firewall off | netsh advfirewall set allprofiles state off
+Firewall Rule | netsh advfirewall firewall add rule name="[name]" <br> dir=in action=allow remoteip=[yourIPaddress] protocol=TCP localport=[port number] <br> Example: 3389, 23
+Delete Firewall Rule | netsh advfirewall firewall del rule name="[name]" 
+Disable Firewall | netsh advfirewall set allprofiles state off 
+Firewall Rule Registry | reg add HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\GloballyOpenPorts\List /V 2000:TCP /T REG_SZ /F /D "2000:TCP:*:Enabled" 
+View Firewall Configuration | netsh advfirewall show allprofiles 
+Ping Sweep | <code> for /L %i in (1, 1, 255) do @ping -n 1 192.168.2.%i | find "TTL" </code>
+DNS Lookup | for /L %i in (1, 1, 255) do @echo 10.10.10.%i & nslookup 10.10.10.%i  2>nul | find "Name"
+ Netsh pivot | netsh interface portproxy add v4tov4 listenport=<LPORT> listenaddress=0.0.0.0 connectport=[RPORT] connectaddress=[RHOST] 
 
 >**Process and Services**
 

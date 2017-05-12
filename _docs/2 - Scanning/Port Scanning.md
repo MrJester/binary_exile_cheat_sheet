@@ -34,6 +34,11 @@ Script files | <code>/opt/NMAP/share/NMAP/scripts/[name].nse </code>
 
 Example Command | <code> nohup masscan -p [PORTS] --rate 500 -vv --includefile [HOSTLIST] --output-format list --output-filename [OUTPUTFILE] > output.txt & </code>
 
+>**Netcat Port Scan**
+
+{% highlight bash %}
+nc -v -z -n -w 1 10.0.0.10 1-65535 2>&1 | grep "succeeded"
+{% endhighlight %}
 
 > **Usefule Resources**
 

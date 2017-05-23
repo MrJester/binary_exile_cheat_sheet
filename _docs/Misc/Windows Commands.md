@@ -114,3 +114,10 @@ Throw Away Output | <code> >nul - for /L %i in (1, 1, 255) do @echo %i & timeout
 Print Blank Line or Beap | <code> echo., echo CTRL-G </code> 
 CR/LF (0d0a) | <code> Windows use CR/LF as EOF characters. </code>  
 
+>**Password Reset**
+
+*[Hiren](http://www.hirensbootcd.org/resetting-windows-password/)
+*[Pogostick](http://pogostick.net/~pnh/ntpasswd/)
+
+
+

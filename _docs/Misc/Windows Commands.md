@@ -45,7 +45,7 @@ Export Registry Keys | reg export [keyName] [filename.reg]
 Import Registry Keys | reg import [filename.reg]
 Find a String  | find "[string]", findstr [regex]
 
->**Inventory, File Search, and Counting**
+>**Network and Firewalls**
 
 Topic | Command
 ------------- | -------------
@@ -116,8 +116,8 @@ CR/LF (0d0a) | <code> Windows use CR/LF as EOF characters. </code>
 
 >**Password Reset**
 
-*[Hiren](http://www.hirensbootcd.org/resetting-windows-password/)
-*[Pogostick](http://pogostick.net/~pnh/ntpasswd/)
+* [Hiren](http://www.hirensbootcd.org/resetting-windows-password/)
+* [Pogostick](http://pogostick.net/~pnh/ntpasswd/)
 
 
 

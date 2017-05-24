@@ -19,12 +19,91 @@ Logging Screen Output | Ctrl-a H
 Kill current screen: | Ctrl-a K
 Kill a screen: | screen -X -S 12937 quit 
 
->**Files and Folders**
+>**Accounts and Privileges**
+
+Function | Command
+------------- | -------------
+User Information | <code>id, whoami </code>
+Add User (root) | <code>useradd -o -u 0 [login_name] </code>
+Change Password | <code>passwd <login name> </code>
+Generat SSH-Key | <code>ssh-keygen </code>
+
+
+>**Files, Inventory, Search, and Counting**
+
+Function | Command
+------------- | -------------
+Most Common word in file | <code>cat /home/ruk/dinner_receipts/Gandalf.txt | sort | uniq -c | sort -nr </code>
+Locate a file | <code>find / -name <application> </code>
+search files | <code>grep <word> * </code>
+Line count | <code>wc -l </code>
+Display File | <code>type <file> </code>
+Delete a file | <code>Shred --remove </code>
+
+>**Network and Firewalls**
+
+Function | Command
+------------- | -------------
+Ports | <code>netstat -nap | less </code>
+List open files with network usage and port numbers | <code>lsof -Pi </code>
+ssh config file | <code>/ect/ssh/sshd_config </code>
+SimpleHTTPServer | <code>python -m SimpleHTTPServer 8000 </code>
+Firewall rule drop | <code>iptables -A INPUT -s 10.10.76.1 -p tcp --dport 22 -j DROP </code>
+Firewall rule accept | <code>iptables -A INPUT 1 -s 10.10.76.1 -p tcp --dport 22 -j ACCEPT </code>
+Firewall rule remove | <code>iptables -D INPUT 1 -s 10.10.76.1 -p tcp --dport 22 -j ACCEPT </code>
+Firewall list rules | <code>iptables -n list </code>
+
+**SSH and proxy**
+Open terminal through SSH connection:
+{% highlight bash %}
+$ ssh -i [path to private key] -p [ssh port] [username]@server.com -D 9000
+{% endhighlight %}
+Note: Private key permissions should be set to 400.
+Note: The "-D 9000" option created a local SOCKS5 proxy on port 9000, which Firefox can be configured to use to access internal assets. 
+
+
+>**Processes and Services**
+
+Function | Command
+------------- | -------------
+Running Processes | <code>ps aux | less </code>
+Background a process | <code>CTRL-Z and resume with bg </code>
+Background Running | <code><command> &, jobs, fg job# </code>
+View Background Processes | <code>jobs </code>
+Move Process to foreground | <code>fg </code>
+Restart process | <code>Killall -HUP sshd </code>
+Start/Stop Service | <code>service sshd start/stop, /etc/init.d/sshd start </code>
+Run command in background | <code>nohup <command> & </code>
+Kill process | <code>killall <processname> </code>
+
+
+>**Remote commands and file upload**
 
 Function | Command
 --------- | -------
 Mount Windows CIFS/SMB Share | <code> mount -t cifs -o username=user,password=pass,domain=blah //192.168.1.X/share-name /mnt/cifs </code>
 Mount NFS share | <code> mount 192.168.1.1:/vol/share /mnt/nfs </code>
 GUI for SMB shares | apt-get install smb4k -y
+Copy file over network | <code>$ scp -r foo your_username@remotehost.edu:/some/remote/directory/bar <br> $ sftp tecmint@27.48.137.6 </code>
+LF/CR (0a0d) | <code>Scripts developed on Windows will not execute unless the CR/LF are converted to LF (0a). FTP does this automatically. </code>
+
+
+>**Scripting and Shell**
+
+Function | Command
+------------- | -------------
+Search History | <code>CTRL-R </code>
+Clear Screen | <code>CTRL-L </code>
+Start of Command | <code>Home </code>
+End of Command | <code>End </code>
+locate command | <code>locate <application>, updatedb </code>
+locate command in path | <code>which ls </code>
+Untarring (.tar) | <code>tar xvf [file] </code>
+Untarring (.tar.gz) | <code>tar xvfz [file] </code>
+search for command | <code>apropos <topic> or man -k network </code>
+Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
+Learn More | <code>man, info, whitis, apropos <topic> </code>
+Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
+Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
 
 

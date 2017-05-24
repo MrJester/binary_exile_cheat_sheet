@@ -1,11 +1,10 @@
 ---
 title: Inventory and Identification
-category: Exploitation
-order: 1
+category: Recon
+order: 0
 ---
 
 > **Inventory and Identification** 
-
 
 * Interview Administrator on Software Versions
 * Recon Phase: Document Metadata (see metadata)
@@ -15,8 +14,9 @@ order: 1
 
 > **Windows Inventory**
 
-<code>
+
+{% highlight bash %}
 dir /s "c:\Program Files" > inventory.txt<br>
 dir /s "c:\Program Files (x86)" >> inventory.txt<br>
 ipconfig /displaydns
-</code>
+{% endhighlight %}

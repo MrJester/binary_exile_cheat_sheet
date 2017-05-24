@@ -11,7 +11,7 @@ Function | Command
 Create Screen: | screen 
 Create Window | Ctrl-a c
 Switch Window: | Ctrl-a n
-Split Screen: | <code> Ctrl-a S or | </code>
+Split Screen: | <code> Ctrl-a S [horiz] or | [vertical] </code>
 Switch Split Window:| Ctrl-a tab
 Detatch from screen: | Ctrl-a d
 Attach to screen: | screen -r  31844.pts-0.name
@@ -54,11 +54,12 @@ Firewall rule remove | <code>iptables -D INPUT 1 -s 10.10.76.1 -p tcp --dport 22
 Firewall list rules | <code>iptables -n list </code>
 
 **SSH and proxy**
+
 Open terminal through SSH connection:
 {% highlight bash %}
 $ ssh -i [path to private key] -p [ssh port] [username]@server.com -D 9000
 {% endhighlight %}
-Note: Private key permissions should be set to 400.
+Note: Private key permissions should be set to 400.<br>
 Note: The "-D 9000" option created a local SOCKS5 proxy on port 9000, which Firefox can be configured to use to access internal assets. 
 
 
@@ -105,5 +106,14 @@ Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
 Learn More | <code>man, info, whitis, apropos <topic> </code>
 Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
 Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
+
+>**Password Reset**
+
+1. Reboot, holding down the left Shift key as Linux boots. 
+2. When you see the "GNU GRUB" prompt, press "e" on the first entry to edit it. 
+3. Arrow down to the line beginning with "linux", append the word "init=/bin/bash" to the end of the line, change "ro" to "rw" in the same line, and press Ctrl-x. The system will a bash shell as root. 
+4. Run passwd and enter your desired password twice. 
+5. Run sync to make sure your changes to /etc/shadow (via passwd) are flushed to disk. 
+6. Reboot the machine. This procedure is valid on most Linux systems.
 
 

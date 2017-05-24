@@ -19,3 +19,12 @@ Logging Screen Output | Ctrl-a H
 Kill current screen: | Ctrl-a K
 Kill a screen: | screen -X -S 12937 quit 
 
+>**Files and Folders**
+
+Function | Command
+--------- | -------
+Mount Windows CIFS/SMB Share | <code> mount -t cifs -o username=user,password=pass,domain=blah //192.168.1.X/share-name /mnt/cifs </code>
+Mount NFS share | <code> mount 192.168.1.1:/vol/share /mnt/nfs </code>
+GUI for SMB shares | apt-get install smb4k -y
+
+

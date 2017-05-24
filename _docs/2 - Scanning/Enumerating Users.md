@@ -43,5 +43,6 @@ Loop for users  [note: no dashes] | <code> for /L %i in (1000,1,1010) do @sid2us
 
 > **Useful Resources**
 
-[User Enumeration](http://pentestmonkey.net/category/tools/user-enumeration)
+* [User Enumeration](http://pentestmonkey.net/category/tools/user-enumeration)
+* [Username Enumeration](https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/#username-enumeration)
 

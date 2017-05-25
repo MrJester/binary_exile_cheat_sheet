@@ -39,6 +39,7 @@ search files | <code>grep <word> * </code>
 Line count | <code>wc -l </code>
 Display File | <code>type <file> </code>
 Delete a file | <code>Shred --remove </code>
+Determine file type | <code>file [filename]</code>
 
 >**Network and Firewalls**
 

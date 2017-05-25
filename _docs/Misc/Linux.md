@@ -119,4 +119,9 @@ Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </
 5. Run sync to make sure your changes to /etc/shadow (via passwd) are flushed to disk. 
 6. Reboot the machine. This procedure is valid on most Linux systems.
 
+References: 
+* https://help.ubuntu.com/community/LostPassword
+* https://askubuntu.com/questions/91188/authentication-token-manipulation-error
+* https://wiki.archlinux.org/index.php/Reset_root_password Look
+
 

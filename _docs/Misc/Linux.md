@@ -48,7 +48,7 @@ Determine file type | <code>file [filename]</code>
 Function | Command
 ------------- | -------------
 Ports | <code>netstat -nap | less </code>
-List open files with network usage and port numbers | <code>lsof -Pi </code>
+List open files with network usage and port numbers | <code>lsof -Pi [ | grep PORTNUM]</code>
 ssh config file | <code>/ect/ssh/sshd_config </code>
 SimpleHTTPServer | <code>python -m SimpleHTTPServer 8000 </code>
 Firewall rule drop | <code>iptables -A INPUT -s 10.10.76.1 -p tcp --dport 22 -j DROP </code>

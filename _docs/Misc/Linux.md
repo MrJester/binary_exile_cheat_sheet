@@ -17,7 +17,8 @@ Detatch from screen: | Ctrl-a d
 Attach to screen: | screen -r  31844.pts-0.name
 Logging Screen Output | Ctrl-a H
 Kill current screen: | Ctrl-a K
-Kill a screen: | screen -X -S 12937 quit 
+Kill a screen: | screen -X -S 12937 quit
+Reattach to Screen: | screen -r -d 30608
 
 >**Accounts and Privileges**
 

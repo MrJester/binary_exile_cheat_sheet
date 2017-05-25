@@ -10,15 +10,16 @@ Function | Command
 ------------- | -------------
 Create Screen: | screen 
 Create Window | Ctrl-a c
+Kill a screen: | screen -X -S 12937 quit
+Attach to screen: | screen -r  31844.pts-0.name
+Reattach to Screen: | screen -r -d 30608
 Switch Window: | Ctrl-a n
 Split Screen: | <code> Ctrl-a S [horiz] or | [vertical] </code>
 Switch Split Window:| Ctrl-a tab
 Detatch from screen: | Ctrl-a d
-Attach to screen: | screen -r  31844.pts-0.name
 Logging Screen Output | Ctrl-a H
 Kill current screen: | Ctrl-a K
-Kill a screen: | screen -X -S 12937 quit
-Reattach to Screen: | screen -r -d 30608
+Scroll | Ctrl-a Esc [Enter to end]
 
 >**Accounts and Privileges**
 

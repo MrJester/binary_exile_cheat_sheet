@@ -191,8 +191,7 @@ Table | table_name FROM all_tables
 Columns | column_name FROM all_tab_columns
 
 > **SQL Injection Filter Bypass**
-
-Unicode for select and union:
+UTF-16 URL encoding for select and union:
 %u0055Nion %u0053elect
 
 Spaces:

@@ -190,6 +190,14 @@ Database | owner FROM all_tables
 Table | table_name FROM all_tables 
 Columns | column_name FROM all_tab_columns
 
+> **SQL Injection Filter Bypass**
+
+Unicode for select and union:
+%u0055Nion %u0053elect
+
+Spaces:
+union/**/select
+
 > **SQL Injection Union**
 
 1) Once you have identified SQL injection, use order by or UNION select to determine the number of columns:

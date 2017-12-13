@@ -80,8 +80,10 @@ View Background Processes | <code>jobs </code>
 Move Process to foreground | <code>fg </code>
 Restart process | <code>Killall -HUP sshd </code>
 Start/Stop Service | <code>service sshd start/stop, /etc/init.d/sshd start </code>
-Run command in background | <code>nohup <command> & </code>
-Kill process | <code>killall <processname> </code>
+Run command in background | <code>nohup [command] & </code>
+Kill process | <code>killall [processname] </code>
+Start/Stop Apache | <code> service apache2 start </code>
+Apache Document Root | <code> /var/www/ </code>
 
 
 >**Remote commands and file upload**
@@ -103,13 +105,13 @@ Search History | <code>CTRL-R </code>
 Clear Screen | <code>CTRL-L </code>
 Start of Command | <code>Home </code>
 End of Command | <code>End </code>
-locate command | <code>locate <application>, updatedb </code>
+locate command | <code>locate [application], updatedb </code>
 locate command in path | <code>which ls </code>
 Untarring (.tar) | <code>tar xvf [file] </code>
 Untarring (.tar.gz) | <code>tar xvfz [file] </code>
 search for command | <code>apropos <topic> or man -k network </code>
 Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
-Learn More | <code>man, info, whitis, apropos <topic> </code>
+Learn More | <code>man, info, whitis, apropos [topic] </code>
 Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
 Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
 

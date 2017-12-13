@@ -84,7 +84,7 @@ Run command in background | <code>nohup [command] & </code>
 Kill process | <code>killall [processname] </code>
 Start/Stop Apache | <code> service apache2 start </code>
 Apache Document Root | <code> /var/www/ </code>
-
+Persistent Service Start | <code> update-rc.d ssh enable </code>
 
 >**Remote commands and file upload**
 

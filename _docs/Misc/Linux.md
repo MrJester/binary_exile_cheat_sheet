@@ -41,16 +41,21 @@ Locate a file | <code> updatedb && locate [application] </code>
 Locate a file based on path | <code> which [application] </code>
 Locate a file and execute command | <code> find [path] -name [application] -exec [command] {} \;</code>
 search files | <code>grep [word] * </code>
+Search files Regex | <code> grep -o '[expression]' [file] <code>
 Line count | <code>wc -l </code>
 Display File | <code>type [file] </code>
 Delete a file | <code>Shred --remove </code>
 Determine file type | <code>file [filename]</code>
+Extract Sections from Line | <code>cut -d["delimiter"] -f[field you are interested in - eg 3] </code>
+Unique Entries | <code> sort -u </code>
 
 >**Network and Firewalls**
 
 Function | Command
 ------------- | -------------
 Ports | <code>netstat -nap | less </code>
+TCP/UDP Ports | <code>netstat -an[t/u]p | less </code>
+IP address and alias from host name | <code>host [domain] </code>
 List open files with network usage and port numbers | <code>lsof -Pi [ | grep PORTNUM]</code>
 ssh config file | <code>/ect/ssh/sshd_config </code>
 SimpleHTTPServer | <code>python -m SimpleHTTPServer 8000 </code>
@@ -85,6 +90,7 @@ Kill process | <code>killall [processname] </code>
 Start/Stop Apache | <code> service apache2 start </code>
 Apache Document Root | <code> /var/www/ </code>
 Persistent Service Start | <code> update-rc.d ssh enable </code>
+View persistent for All Services | <code> rcconf </code>
 
 >**Remote commands and file upload**
 
@@ -101,6 +107,7 @@ LF/CR (0a0d) | <code>Scripts developed on Windows will not execute unless the CR
 
 Function | Command
 ------------- | -------------
+Start Bash Script | <code> #!/bin/bash </code>
 Search History | <code>CTRL-R </code>
 Clear Screen | <code>CTRL-L </code>
 Start of Command | <code>Home </code>
@@ -114,6 +121,8 @@ Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
 Learn More | <code>man, info, whitis, apropos [topic] </code>
 Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
 Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
+For loop | <code>  for [variable] in $([command]); do [command] [variable] | [additional commands] done </code>
+
 
 >**Password Reset**
 

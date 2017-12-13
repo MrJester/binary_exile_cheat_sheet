@@ -36,7 +36,10 @@ Generat SSH-Key | <code>ssh-keygen </code>
 Function | Command
 ------------- | -------------
 Most Common word in file | <code>cat /home/ruk/dinner_receipts/Gandalf.txt | sort | uniq -c | sort -nr </code>
-Locate a file | <code>find / -name <application> </code>
+Locate a file | <code>find [path] -name <application> </code>
+Locate a file | <code> updatedb && locate [application] </code>
+Locate a file based on path | <code> which [application] </code>
+Locate a file and execute command | <code> find [path] -name [application] -exec [command] {} \;</code>
 search files | <code>grep <word> * </code>
 Line count | <code>wc -l </code>
 Display File | <code>type <file> </code>

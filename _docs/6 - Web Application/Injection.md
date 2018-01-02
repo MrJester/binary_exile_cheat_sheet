@@ -288,6 +288,15 @@ Online:
 * [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
 * [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 
+> **XXE**
+* [SANS XXE](https://pen-testing.sans.org/blog/2017/12/08/entity-inception-exploiting-iis-net-with-xxe-vulnerabilities)
+* [OWASP XXE](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing)
+* [OWASP XML Cheat Sheet](https://www.owasp.org/index.php/XML_Security_Cheat_Sheet)
+* [Youtube XXE](https://www.youtube.com/watch?v=DJaX4HN2gwQ)
+* [Microsoft XML Entity](https://msdn.microsoft.com/en-us/library/ms256483(v=vs.110).aspx)
+* [w3schools XML DTD](https://www.w3schools.com/xml/xml_dtd.asp)
+
+
 > **Useful Resources**
 
 * [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)

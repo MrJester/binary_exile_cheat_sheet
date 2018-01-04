@@ -96,6 +96,10 @@ OS Pwn | <code> --os-pwn </code>
 3. Right click on request in history -> view note
 4. Set up for each function you do frequently (e.g., tables, count, read file) 
 
+>**Tamper Scripts**
+
+* [SANS](https://pen-testing.sans.org/blog/2017/10/13/sqlmap-tamper-scripts-for-the-win)
+
 
 > **Tools**
 * [SQLMap](https://github.com/sqlmapproject/sqlmap)

@@ -258,6 +258,10 @@ message<td><input name="message" value="test :D " size="100"></tr>
 </html>
 {% endhighlight %}
 
+Useful Resource:
+
+* [Multi Post CSRF](https://www.lanmaster53.com/2013/07/multi-post-csrf/)
+
 > **Useful Resources**
 
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors) 

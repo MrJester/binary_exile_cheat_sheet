@@ -303,6 +303,9 @@ Online:
 * [OWASP](https://www.owasp.org/index.php/Testing_for_LDAP_Injection_(OTG-INPVAL-006))
 
 
+> **PHP Autoload**
+* [PHP Autoload](https://hakre.wordpress.com/2013/02/10/php-autoload-invalid-classname-injection/)
+
 > **Useful Resources**
 
 * [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)

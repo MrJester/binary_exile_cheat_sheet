@@ -303,8 +303,9 @@ Online:
 * [OWASP](https://www.owasp.org/index.php/Testing_for_LDAP_Injection_(OTG-INPVAL-006))
 
 
-> **PHP Autoload**
+> **PHP Autoload and Object Injection**
 * [PHP Autoload](https://hakre.wordpress.com/2013/02/10/php-autoload-invalid-classname-injection/)
+* [PHP Autoload](https://prezi.com/5hif_vurb56p/php-object-injection-revisited/)
 
 > **Useful Resources**
 

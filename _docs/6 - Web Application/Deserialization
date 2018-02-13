@@ -1,0 +1,18 @@
+---
+title: Deserialization
+category: Web Application
+order: 97
+---
+
+
+> **Useful Resources**
+
+* [Exotic Bugs - PHP Unserialize](https://www.alertlogic.com/amp/blog/writing-exploits-for-exotic-bug-classes-unserialize()/)
+* [Java Deserialization](https://nickbloor.co.uk/2017/08/13/attacking-java-deserialization/)
+* [Practicing Java Deserialization Attacks](https://www.google.com/amp/s/diablohorn.com/2017/09/09/understanding-practicing-java-deserialization-exploits/amp/)
+* [Bomgar](http://codewhitesec.blogspot.com/2015/05/cve-2015-0935-bomgar-remote-support-portal.html?m=1)
+
+> **Useful Tools**
+
+* [SQLMap](http://sqlmap.org)
+* [Commix](http://www.kitploit.com/2015/04/commix-automated-all-in-one-os-command.html)

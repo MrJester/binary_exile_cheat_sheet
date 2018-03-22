@@ -265,6 +265,18 @@ SQL Server Reading:
 BULK INSERT
 {% endhighlight %}
 
+> **MSSQL Enable xp_cmdshell**
+
+{% highlight sql %}
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+
+{% endhighlight %}
+
+
+
 > **SQL Injection Cheat Sheets**
 
 * [websec](https://websec.ca/kb/sql_injection)

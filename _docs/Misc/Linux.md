@@ -27,7 +27,7 @@ Function | Command
 ------------- | -------------
 User Information | <code>id, whoami </code>
 Add User (root) | <code>useradd -o -u 0 [login_name] </code>
-Change Password | <code>passwd <login name> </code>
+Change Password | <code>passwd [login name] </code>
 Generat SSH-Key | <code>ssh-keygen </code>
 
 
@@ -36,18 +36,26 @@ Generat SSH-Key | <code>ssh-keygen </code>
 Function | Command
 ------------- | -------------
 Most Common word in file | <code>cat /home/ruk/dinner_receipts/Gandalf.txt | sort | uniq -c | sort -nr </code>
-Locate a file | <code>find / -name <application> </code>
-search files | <code>grep <word> * </code>
+Locate a file | <code>find [path] -name [application] </code>
+Locate a file | <code> updatedb && locate [application] </code>
+Locate a file based on path | <code> which [application] </code>
+Locate a file and execute command | <code> find [path] -name [application] -exec [command] {} \;</code>
+search files | <code>grep [word] * </code>
+Search files Regex | <code> grep -o '[expression]' [file] <code>
 Line count | <code>wc -l </code>
-Display File | <code>type <file> </code>
+Display File | <code>type [file] </code>
 Delete a file | <code>Shred --remove </code>
 Determine file type | <code>file [filename]</code>
+Extract Sections from Line | <code>cut -d["delimiter"] -f[field you are interested in - eg 3] </code>
+Unique Entries | <code> sort -u </code>
 
 >**Network and Firewalls**
 
 Function | Command
 ------------- | -------------
 Ports | <code>netstat -nap | less </code>
+TCP/UDP Ports | <code>netstat -an[t/u]p | less </code>
+IP address and alias from host name | <code>host [domain] </code>
 List open files with network usage and port numbers | <code>lsof -Pi [ | grep PORTNUM]</code>
 ssh config file | <code>/ect/ssh/sshd_config </code>
 SimpleHTTPServer | <code>python -m SimpleHTTPServer 8000 </code>
@@ -77,9 +85,12 @@ View Background Processes | <code>jobs </code>
 Move Process to foreground | <code>fg </code>
 Restart process | <code>Killall -HUP sshd </code>
 Start/Stop Service | <code>service sshd start/stop, /etc/init.d/sshd start </code>
-Run command in background | <code>nohup <command> & </code>
-Kill process | <code>killall <processname> </code>
-
+Run command in background | <code>nohup [command] & </code>
+Kill process | <code>killall [processname] </code>
+Start/Stop Apache | <code> service apache2 start </code>
+Apache Document Root | <code> /var/www/ </code>
+Persistent Service Start | <code> update-rc.d ssh enable </code>
+View persistent for All Services | <code> rcconf </code>
 
 >**Remote commands and file upload**
 
@@ -96,19 +107,22 @@ LF/CR (0a0d) | <code>Scripts developed on Windows will not execute unless the CR
 
 Function | Command
 ------------- | -------------
+Start Bash Script | <code> #!/bin/bash </code>
 Search History | <code>CTRL-R </code>
 Clear Screen | <code>CTRL-L </code>
 Start of Command | <code>Home </code>
 End of Command | <code>End </code>
-locate command | <code>locate <application>, updatedb </code>
+locate command | <code>locate [application], updatedb </code>
 locate command in path | <code>which ls </code>
 Untarring (.tar) | <code>tar xvf [file] </code>
 Untarring (.tar.gz) | <code>tar xvfz [file] </code>
 search for command | <code>apropos <topic> or man -k network </code>
 Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
-Learn More | <code>man, info, whitis, apropos <topic> </code>
+Learn More | <code>man, info, whitis, apropos [topic] </code>
 Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
 Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
+For loop | <code>  for [variable] in $([command]); do [command] [variable] | [additional commands] done </code>
+
 
 >**Password Reset**
 

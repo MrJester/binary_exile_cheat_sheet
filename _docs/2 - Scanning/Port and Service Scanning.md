@@ -67,6 +67,8 @@ rpcclient -U "" [IP]
 > srvinfo
 > enumdomusers
 > getdompwinfo
+
+enum4linux -v [IP]
 {% endhighlight %}
 
 > **Usefule Resources**

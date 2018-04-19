@@ -1,5 +1,5 @@
 ---
-title: Port Scanning
+title: Port and Service Scanning
 category: Scanning
 order: 2
 ---
@@ -55,6 +55,11 @@ nc -u -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
 
 {% highlight bash %}
 1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("192.168.1.1", $_)) "Port $_ is open" } 2>$null 
+{% endhighlight %}
+
+> **SMB Scanning**
+{% highlight bash %}
+nbtscan [IP Range]
 {% endhighlight %}
 
 > **Usefule Resources**

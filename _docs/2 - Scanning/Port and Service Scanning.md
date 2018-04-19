@@ -60,6 +60,13 @@ nc -u -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
 > **SMB Scanning**
 {% highlight bash %}
 nbtscan [IP Range]
+
+rpcclient -U "" [IP]
+[empty password]
+#usefule commands
+> srvinfo
+> enumdomusers
+> getdompwinfo
 {% endhighlight %}
 
 > **Usefule Resources**

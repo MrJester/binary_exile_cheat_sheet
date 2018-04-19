@@ -47,6 +47,12 @@ Example Command | <code> nohup masscan -p [PORTS] --rate 500 -vv --includefile [
 nc -v -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
 {% endhighlight %}
 
+> **Powershell Port Scan**
+
+{% highlight bash %}
+1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("192.168.1.1", $_)) "Port $_ is open" } 2>$null 
+{% endhighlight %}
+
 > **Usefule Resources**
 * scanrand
 * zmap

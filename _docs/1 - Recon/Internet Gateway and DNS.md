@@ -38,16 +38,6 @@ $ host -t mx megacorpone.com
 #returns IP for host name
 $ host www.megacorpone.com 
 
-#Bruteforce domains using list like https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS
-
-for name in $(cat list.txt); do
-   Host $name.domain.com | grep “has address” |  cut -d “ “ -f1,4
-done   
-#Reverse lookups
-
-for ip in $(seq 79 92); do
- host X.Y.Z.$ip  | grep “domain” | cut -d” “ -f1,5
-done  
 
 #Zone Transfer
 $ host -t ns domain.com 

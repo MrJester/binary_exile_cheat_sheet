@@ -29,8 +29,6 @@ dig @[DNSServerIP] version.bind chaos txt
 
 **NMAP, DNSRecon, and Metasploit:**
 
-
-
 {% highlight bash %}
 # NMAP
 #Locate NSE Scripts
@@ -43,6 +41,9 @@ nmap -sl 192.168.1.0/24 | grep \)
 # domain list is much larger than nmap
 dnsrecon.py -d site.org -t brt
 dnsrecon.py -r 192.168.1.0/24
+
+#DNSENUM
+dnsenum.pl --noreverse -o mydomain.xml example.com
 
 # metasploit
 auxiliary/gather/dns-bruteforce

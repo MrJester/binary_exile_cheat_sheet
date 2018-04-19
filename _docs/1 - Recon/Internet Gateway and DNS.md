@@ -124,6 +124,10 @@ recon/location-pushpins/youtube
 {% endhighlight %}
 
 
+> **netcraft**
+
+* [netcraft](toolbar.netcraft.com/site_report)
+
 > **Useful Resources**
 
 The following resources could be used to traceroute from another host or determine if your are being blocked, or if the host is down:

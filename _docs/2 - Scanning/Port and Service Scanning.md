@@ -27,6 +27,7 @@ Fingerprint |  <code>-O</code>
 Version scaning | <code>-sV </code>
 Fingerprint, version, script, and traceeroute | <code>-A </code>
 Reason for result | <code>--reason </code>
+vulnerability Scan | <code> --script vuln </code>
 
 > **NSE**
 
@@ -75,8 +76,9 @@ rpcclient -U "" [IP]
 enum4linux -v [IP]
 
 #NMAP
-nmap -p 139,445 --script=smb-enum-users [IP]
-nmap -p 139,445 --script=smb-check-vulns --script-args=unsafe=1 [IP]
+nmap -p 139,445 --script smb-enum-users [IP]
+nmap -p 139,445 --script smb-os-discovery.nse [IP]
+nmap -p 139,445 --script vulns --script-args=unsafe=1 [IP]
 {% endhighlight %}
 
 > **Usefule Resources**

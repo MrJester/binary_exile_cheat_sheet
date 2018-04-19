@@ -13,6 +13,7 @@ Port/Version Scan | <code> nmap -PN -n -A -iL apple-alive -oA apple-nmap-advance
 
 > **NMAP**
 
+Update Scripts | <code> nmap --script-updatedb </code>
 example command |  <code>nohup ./nmap -n --randomize-hosts --reason -A -st -vv -oA [OUTPUTFILE] -p 1-1024 10.10.10.1-255 > output.txt & </code>
 example command 2 | <code>nohup ./nmap -n --randomize-hosts --reason -A -st -vv -oA [OUTPUTFILE] > -p 1-1024 -iL [HOSTLIST]  > output.txt & </code>
 Ping |  <code>-Pn (no ping), -sP (ping sweep) </code>
@@ -59,8 +60,10 @@ nc -u -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
 
 > **SMB Scanning**
 {% highlight bash %}
+#NBTSCAN
 nbtscan [IP Range]
 
+#RPCclient
 rpcclient -U "" [IP]
 [empty password]
 #usefule commands
@@ -68,7 +71,12 @@ rpcclient -U "" [IP]
 > enumdomusers
 > getdompwinfo
 
+#ENUM4LINUX
 enum4linux -v [IP]
+
+#NMAP
+nmap -p 139,445 --script=smb-enum-users [IP]
+nmap -p 139,445 --script=smb-check-vulns --script-args=unsafe=1 [IP]
 {% endhighlight %}
 
 > **Usefule Resources**

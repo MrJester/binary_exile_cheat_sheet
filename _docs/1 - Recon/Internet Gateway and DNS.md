@@ -28,6 +28,7 @@ $ set type=any, MX
 $ ls -d [target domain] 
 {% endhighlight %}
 
+Test
 
 > **DIG** 
 

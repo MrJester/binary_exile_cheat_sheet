@@ -44,7 +44,11 @@ Example Command | <code> nohup masscan -p [PORTS] --rate 500 -vv --includefile [
 >**Netcat Port Scan**
 
 {% highlight bash %}
-nc -v -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
+#TCP
+nc -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
+#UDP
+nc -u -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
+
 {% endhighlight %}
 
 > **Powershell Port Scan**

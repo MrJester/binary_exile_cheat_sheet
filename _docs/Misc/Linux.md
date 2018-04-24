@@ -60,10 +60,12 @@ List open files with network usage and port numbers | <code>lsof -Pi [ | grep PO
 ssh config file | <code>/ect/ssh/sshd_config </code>
 SimpleHTTPServer | <code>python -m SimpleHTTPServer 8000 </code>
 Firewall rule drop | <code>iptables -A INPUT -s 10.10.76.1 -p tcp --dport 22 -j DROP </code>
+Firewall rule drop negate | <code> iptables -A INPUT -p tcp --destination-port 13327 \! -d 127.0.0.1 -j DROP </code>
 Firewall rule accept | <code>iptables -A INPUT 1 -s 10.10.76.1 -p tcp --dport 22 -j ACCEPT </code>
 Firewall rule remove | <code>iptables -D INPUT 1 -s 10.10.76.1 -p tcp --dport 22 -j ACCEPT </code>
 Firewall list rules | <code>iptables -n list </code>
-
+Firewall Account Traffic | <code> iptables -I INPUT 1 -s 10.0.0.19 -j ACCEPT <br> iptables -I OUTPUT 1 -d 10.0.0.19 -j ACCEPT <br> iptables -Z  <br> After Done:  iptables -vn -L </code> 
+  
 **SSH and proxy**
 
 Open terminal through SSH connection:

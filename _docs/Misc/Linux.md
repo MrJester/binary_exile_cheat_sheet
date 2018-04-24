@@ -120,8 +120,23 @@ search for command | <code>apropos <topic> or man -k network </code>
 Path | <code>echo $PATH, PATH=$PATH:[another_dir] </code>
 Learn More | <code>man, info, whitis, apropos [topic] </code>
 Shutdown/reboot | <code>shutdown -h now, shutdown -r now, reboot </code>
-Linux Terminal from Shell | <code>python -c "import pty; pty.spawn('in/sh');" </code>
 For loop | <code>  for [variable] in $([command]); do [command] [variable] | [additional commands] done </code>
+
+>**Terminal from Shell**
+
+Function | Command
+------------- | -------------
+Linux Terminal from Shell - Python | <code> python -c 'import pty; pty.spawn("/bin/sh")' </code>
+Linux Terminal from Shell - echo| <code> echo os.system('/bin/bash')</code>
+Linux Terminal from Shell - /bin/sh| <code> /bin/sh -i </code>
+Linux Terminal from Shell - Perl 1| <code> perl —e 'exec "/bin/sh";' </code>
+Linux Terminal from Shell - Perl 2| <code> perl: exec "/bin/sh"; </code>
+Linux Terminal from Shell - Ruby| <code> ruby: exec "/bin/sh" </code>
+Linux Terminal from Shell - lua| <code> lua: os.execute('/bin/sh') </code>
+Linux Terminal from Shell - From within IRB | <code> exec "/bin/sh" </code>
+Linux Terminal from Shell - From within VI | <code> :!bash </code>
+Linux Terminal from Shell - From within VI | <code> :set shell=/bin/bash:shell </code>
+Linux Terminal from Shell - From within nmap | <code> !sh </code>
 
 
 >**Password Reset**

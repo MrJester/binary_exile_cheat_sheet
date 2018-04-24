@@ -1,4 +1,4 @@
----
+ ---
 title: Port and Service Scanning
 category: Scanning
 order: 2
@@ -61,6 +61,7 @@ nc -u -vv -z -n -w 1 127.0.0.1 1-65535 2>&1 | grep " open"
 
 > **SMB Scanning**
 {% highlight bash %}
+#NULL Sessions are mostly Windows 2000 and Windows XP SP1-2 and eariler
 #NBTSCAN
 nbtscan [IP Range]
 

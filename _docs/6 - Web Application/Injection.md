@@ -97,7 +97,7 @@ Examples:<br>
 index.php
 {% endhighlight %}
 
-**Auto-Extension (.php) Bypass:**
+**Auto-Extension (.php) Bypass (PHP version < 5.3):**
 * NULL "%00"
 
 >**Shell from RFI and LFI**

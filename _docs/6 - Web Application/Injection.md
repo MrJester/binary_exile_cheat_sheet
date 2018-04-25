@@ -173,6 +173,10 @@ Dent' AND 1=0;#
 #Look for differences
 {% endhighlight %}
 
+> **Online Tool to test syntax***
+
+* [sqlfiddle](http://sqlfiddle.com/#!9/a6c585/51364)
+
 > **SQL Injection: Database Identification**
 
 MS SQL Server | Incorrect syntax near 'something'

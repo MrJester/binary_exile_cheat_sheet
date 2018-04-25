@@ -33,6 +33,18 @@ echo Lists of fuzzing parameters, paswords, ect to /opt/SecLists
 git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
 echo Installs Discover
 git clone https://github.com/leebaird/discover.git /opt/discover && /opt/discover/update.sh
+echo Installing Pure FTP
+apt-get install pure-ftpd 
+groupadd ftpgroup useradd -g ftpgroup -d /dev/null -s /etc ftpuser 
+pure-pw useradd ftpuser -u ftpuser -d /ftphome 
+pure-pw mkdb 
+cd /etc/pure-ftpd/auth/ 
+ln -s ../conf/PureDB 60pdb 
+mkdir -p /ftphome 
+chown -R ftpuser:ftpgroup /ftphome/ 
+/etc/init.d/pure-ftpd restart 
+chmod 755 setup-ftp 
+./setup-ftp 
 echo Installing Wappalyzer
 wget https://addons.mozilla.org/firefox/downloads/latest/wappalyzer/addon-10229-latest.xpi && firefox -install-global-extension addon-10229-latest.xpi && rm *.xpi
 echo Installing foxyproxy

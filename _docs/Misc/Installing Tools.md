@@ -43,8 +43,6 @@ ln -s ../conf/PureDB 60pdb
 mkdir -p /ftphome 
 chown -R ftpuser:ftpgroup /ftphome/ 
 /etc/init.d/pure-ftpd restart 
-chmod 755 setup-ftp 
-./setup-ftp 
 echo Installing mingw
 apt-get install mingw-w64
 echo Installing Wappalyzer

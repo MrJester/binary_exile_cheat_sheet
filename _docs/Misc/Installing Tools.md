@@ -45,6 +45,8 @@ chown -R ftpuser:ftpgroup /ftphome/
 /etc/init.d/pure-ftpd restart 
 chmod 755 setup-ftp 
 ./setup-ftp 
+echo Installing mingw
+apt-get install mingw-w64
 echo Installing Wappalyzer
 wget https://addons.mozilla.org/firefox/downloads/latest/wappalyzer/addon-10229-latest.xpi && firefox -install-global-extension addon-10229-latest.xpi && rm *.xpi
 echo Installing foxyproxy

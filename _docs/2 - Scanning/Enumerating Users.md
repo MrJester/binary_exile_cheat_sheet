@@ -35,7 +35,10 @@ LDAP | <code> ldapsearch [criteria] </code>
 
 **Windows:**
 
+**SMB:**
+
 NBTSCAN for SMB | <code> nbtscan [IP Range] </code>
+Metasploit | <code>use auxiliary/scanner/smb/smb_version </code>
 Windows null session (<XPsp3 or 2003) |  <code> net use \\targetip "" /u:"" </code>
 SMB info - enum | <code> enum -U [targetIP], enum -G [targetIP],  enum -U [or] -G [targetIP] -U [user] -p [password] </code>
 SMB info - rpcclient | <code> rpcclient -U "" [IP] <br> Empty Password <br> srvinfo, enumdomusers, getdompwinfo </code>
@@ -52,11 +55,13 @@ Python | [Python SMPT Enum](https://github.com/BinaryExile/Scripts/tree/master/R
 
 **SNMP:**
 
-note: 1, 2, 2c have no encryption
+***note: 1, 2, 2c have no encryption***
+
 Find SNMP Machines | <code>nmap -sU --open -p 161 192.168.31.200-254 --open</code>
 Bruteforce Community Strings | <code> onesixyone -c community =i ips [MiB Value] </code>
 Common Community Strings | [Common Strings](https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt)
 MiB Values | [MiB Values](http://www.oidview.com/mibs/311/md-311-1.html)
+Metasploit | <code>use auxiliary/scanner/snmp/snmp_enum </code>
 
 
 > **Useful Resources**

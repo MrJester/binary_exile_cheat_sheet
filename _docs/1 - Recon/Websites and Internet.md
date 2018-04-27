@@ -41,7 +41,7 @@ Bing Directives:
 * inanchor:phpinfo
 * intitle:"Admin Login"
 * filetype:xls
-* not (negate)
+* <code> not (negate) </code>
 
 > **Google Hacking Examples**
 

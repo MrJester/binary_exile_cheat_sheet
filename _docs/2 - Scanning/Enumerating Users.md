@@ -53,16 +53,6 @@ Loop for users  [note: no dashes] | <code> for /L %i in (1000,1,1010) do @sid2us
 Bash | <code>for user in $(cat users.txt); do echo VRFY $user | nc -nv -w 1 192.168.31.215 25 2>/dev/null | grep ^"250"; done </code>
 Python | [Python SMPT Enum](https://github.com/BinaryExile/Scripts/tree/master/Recon)
 
-**SNMP:**
-
-***note: 1, 2, 2c have no encryption***
-
-Find SNMP Machines | <code>nmap -sU --open -p 161 192.168.31.200-254 --open</code>
-Bruteforce Community Strings | <code> onesixyone -c community =i ips [MiB Value] </code>
-Common Community Strings | [Common Strings](https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt)
-MiB Values | [MiB Values](http://www.oidview.com/mibs/311/md-311-1.html)
-Metasploit | <code>use auxiliary/scanner/snmp/snmp_enum </code>
-
 
 > **Useful Resources**
 

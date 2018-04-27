@@ -34,14 +34,14 @@ Google Directives
 * intitle:"Admin Login"
 * link:sans.org
 * ext:xls
-* - (negate)
+* <code>- (negate)</code>
 
 Bing Directives: 
 * site:www.sans.org
 * inanchor:phpinfo
 * intitle:"Admin Login"
 * filetype:xls
-* <code> not (negate) </code>
+* not (negate)
 
 > **Google Hacking Examples**
 

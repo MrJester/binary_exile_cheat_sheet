@@ -1,7 +1,7 @@
 ---
 title: Enumerating Users 
 category: Scanning
-order: 4
+order: 3
 ---
 
 > **Enumerating Users**

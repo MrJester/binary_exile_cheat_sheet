@@ -82,6 +82,18 @@ nmap -p 139,445 --script smb-os-discovery.nse [IP]
 nmap -p 139,445 --script vulns --script-args=unsafe=1 [IP]
 {% endhighlight %}
 
+> **SNMP:**
+
+***note: 1, 2, 2c have no encryption***
+
+Find SNMP Machines | <code>nmap -sU --open -p 161 192.168.31.200-254 --open</code>
+Bruteforce Community Strings | <code> onesixyone -c community =i ips [MiB Value] </code>
+Common Community Strings | [Common Strings](https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt)
+MiB Values | [MiB Values](http://www.oidview.com/mibs/311/md-311-1.html)
+Metasploit | <code>use auxiliary/scanner/snmp/snmp_enum </code>
+
+
+
 > **Usefule Resources**
 * scanrand
 * zmap

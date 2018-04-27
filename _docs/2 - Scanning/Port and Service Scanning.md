@@ -1,5 +1,5 @@
  ---
-title: Port and Service Scanning
+title: Port-Service Scanning
 category: Scanning
 order: 1
 ---

@@ -80,6 +80,9 @@ enum4linux -v [IP]
 nmap -p 139,445 --script smb-enum-users [IP]
 nmap -p 139,445 --script smb-os-discovery.nse [IP]
 nmap -p 139,445 --script vulns --script-args=unsafe=1 [IP]
+
+#SMBClient
+smbclient --list=[IP]
 {% endhighlight %}
 
 > **SNMP:**

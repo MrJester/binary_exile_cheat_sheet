@@ -48,6 +48,8 @@ Delete a file | <code>Shred --remove </code>
 Determine file type | <code>file [filename]</code>
 Extract Sections from Line | <code>cut -d["delimiter"] -f[field you are interested in - eg 3] </code>
 Unique Entries | <code> sort -u </code>
+(Old) Find files only reable by root (flags for ctf) | <code> find / -user root -perm +400 ! -perm +044 </code>
+Find files only reable by root (flags for ctf) | <code> find / -user root -perm /400 ! -perm /044 </code>
 
 >**Network and Firewalls**
 

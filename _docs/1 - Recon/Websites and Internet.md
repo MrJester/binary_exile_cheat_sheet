@@ -11,7 +11,6 @@ order: 1
 
 > **Google Website**
 
-
 site: [domain name] careers or jobs or openings
 
 > **Search Social Networks and Job Postings**
@@ -28,10 +27,6 @@ site: [domain name] careers or jobs or openings
 * Pinterest
 * Myspace
 * Orkut
-
-> **Reverse DNS**
-
-* http://viewdns.info/
 
 > **Google and Bing Hacking Usage**
 

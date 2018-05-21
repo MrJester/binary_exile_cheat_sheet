@@ -14,9 +14,13 @@ order: 1
 
 site: [domain name] careers or jobs or openings
 
-> **Search Social Networks**
+> **Search Social Networks and Job Postings**
 
 * Monster
+* Dice.com
+* simplyhired.com
+* Hot Jobs
+* Glass Door
 * LinkedIn
 * Facebook
 * Twitter
@@ -24,7 +28,10 @@ site: [domain name] careers or jobs or openings
 * Pinterest
 * Myspace
 * Orkut
-* Hot Jobs
+
+> **Reverse DNS**
+
+* http://viewdns.info/
 
 > **Google and Bing Hacking Usage**
 

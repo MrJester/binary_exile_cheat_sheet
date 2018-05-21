@@ -45,8 +45,7 @@ sysctl net.ipv4.ip_forward=1
 
 * https://github.com/bluscreenofjeff/Red-Team-Infrastructure-Wiki
 * https://bluescreenofjeff.com/2017-01-24-how-to-write-malleable-c2-profilesfor-cobalt-strike/
-* https://blog.cobaltstrike.com/2013/02/12/a-vision-for-distributed-red-team-o
-* perations/
+* https://blog.cobaltstrike.com/2013/02/12/a-vision-for-distributed-red-team-operations/
 * https://blog.cobaltstrike.com/2014/09/09/infrastructure-for-ongoing-red-team-operations/
 * Advanced Threat Tactics (2 of 9): Infrastructure - Raphael Mudge
 * https://www.youtube.com/watch?v=3gBJOJb8Oi0

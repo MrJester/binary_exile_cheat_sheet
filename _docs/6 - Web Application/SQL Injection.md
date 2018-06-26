@@ -6,6 +6,8 @@ order: 5
 
 > **SQL Injection: Test Location and Strings**
 
+**Pull usernames and passwords if successful**
+
 **Test Locations:**
 * GET URL query parameters
 * POST parameters

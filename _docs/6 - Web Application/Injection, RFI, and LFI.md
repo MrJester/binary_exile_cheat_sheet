@@ -57,6 +57,8 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 //PHP
 require() 
 include()
+<?PHP include ( $_GET["page"] ); ?>
+//blog.php?page=blog1
 {% endhighlight %}
 
 {% highlight C# %}

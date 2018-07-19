@@ -21,6 +21,10 @@ order: 6
 * <code> jAvaSCript:prompt(9vqkz) </code>
 * <code> &lt;script&gt;alert(42);&lt;/script&gt; </code>
 
+**DOM Based:**
+
+* Look for document.[] like document.write in the client side javascript
+
 **Additional Payloads:**
 * Fuzzdb /attack-payloads/xss
 * JBroFuzz (built into ZAP)

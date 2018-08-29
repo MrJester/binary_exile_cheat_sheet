@@ -40,7 +40,7 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 
 > **NodeJS Code Injection**
 
-Look for javascript errors in output:
+Look for javascript errors in output with sqli or xss test strings:
 "SyntaxError: Unexpected token function"
 "SyntaxError: Unexpected end of input"
 

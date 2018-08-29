@@ -1,5 +1,5 @@
 ---
-title: Configuration and Authentication
+title: Configuration, Authentication, and Logic Flaws
 category: Web Application
 order: 3
 ---
@@ -140,4 +140,21 @@ Blackbox
 Whitebox
 1. Spider at each authentication level as separate sitemaps (saved)
 2. Attempt to access with a lower level (not just pages, but functions - javascript -forms)
+
+> **Mass Assignment**
+
+If scaffolding code is used without whitelisting attributes:
+
+{% highlight ruby %}
+#Creates a new user with all the attributes set to the values that got transmitted.
+@user = User.new(params[:user])
+{% endhighlight %}
+
+Then you may be able to do something like:
+
+{% highlight ruby %}
+#Attacker intercepts request and makes himself admin
+params[:user] = { name: 'Evil', email: 'evil@example.com', description: 'I am an admin soon', admin: true}
+{% endhighlight %}
+
 

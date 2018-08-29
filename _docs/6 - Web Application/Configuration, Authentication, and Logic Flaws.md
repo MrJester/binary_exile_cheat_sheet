@@ -12,6 +12,23 @@ Use Recon information to test for vulnerabilities in:
 * Application Server Misconfiguration (e.g., admin portal, phpinfo)
 * FrontEnd Frameworks (e.g., jQuery, MooTools) - look at wappalizer, src, and xmlhttprequests
 
+> **Wordpress**
+
+* Look for functionality added outside of wordpress
+* Plugins 
+
+> **Sharepoint**
+
+* Focus on web parts (sharepoint plugins
+* Improper Permissions (content)
+** Going through different departments (sensative departments - manufacturing processes, network admins - router backups, developers - connect to source code repository, IT - default passwords) and looking for bad permissions
+** Use the search feature in sharepoint (not burp spider) like password
+* Default Pages
+* Vulnerabilities in web parts and sharepoint
+* Content Issues
+
+
+
 > **Forced Browseing and Content Discovery**
 
 ZAP:

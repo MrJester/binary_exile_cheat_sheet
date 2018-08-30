@@ -15,6 +15,18 @@ Using SEC642 as a base string:
 * Hex Encoding: 5345336343220723c3e3c3e2b21 (length isn't changed from ascii representation)
 * MIME Encoding (Base64): =?UTF-8?B?U0VDNjQyIHI8Pjw+KyE=?=
 
+> **Identification of Ciphers**
+
+Using SEC642 as a base string:
+
+* Block Ciper: Usually divisable 8
+** DES and 3DES is 64 bits/8 bytes
+** AES-128 and AES-256 is 128 bits/16 bytes
+* ECB
+** Look for repition to determine the number of bytes
+* Stream Cipher: 1 bit to 1 bit
+
+
 Note: Burp smart detect looks for 95% ascii characters so it wont work on crypto/hashing
 
 > **Location in code**

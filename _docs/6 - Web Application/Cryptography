@@ -4,6 +4,14 @@ category: Web Application
 order: 109
 ---
 
+Shoud be a grey or crystal/clear box test for crytpo, otherwise it is time consuming.  The goal should be to pivot off encryption for SQLi, Filenames for LFI/RFI, XSS...
+
+> **Where to look for crypto**
+
+* Account management pages
+* Password reset/recovery
+* Shopping carts
+* URL parameters, cookies, headers, and hidden fields
 
 > **Identification of Encoding**
 
@@ -24,14 +32,14 @@ Using SEC642 as a base string:
 ** AES-128 and AES-256 is 128 bits/16 bytes
 * ECB
 ** Look for repition to determine the number of bytes
-* Stream Cipher: 1 bit to 1 bit
+* Stream Cipher: 1 bit to 1 bit plus an initialization vector  
 
 Note: Burp smart detect looks for 95% ascii characters so it wont work on crypto/hashing
 
 > **Identification of Ciphers vs Hashing**
 
 * Find the clear text and try to manipulate it with 8 characters.
-* Then try 9 characters, and see how much it grew 
+* Then try 9 characters, and see how much it grew  
   * Grows by 8 cryptographic block cipher
   * Doesn't grow it is a hash
   * Grows by an equal amount than it is a stream cipher
@@ -81,41 +89,18 @@ ent english-words.txt.gzip
 Entropy =7.999022 bits per byte
 {% endhighlight %}
 
-> **Location in code**
+> **After Identification: Analysing Responses**
 
-* Usually in the $where operator
-* mapReduce
-* DB.eval
+* Burp Comparer using the hex comparison
+* Session IDs are usually the time/date hashed with UserID, so it could possibly be bruteforced. 
+* How was the key selected
+* Who selected the key
+* Is the key rotated with any frequency
 
-> **NoSQL Queries vs SQL**
-
-MySQL | MongoDB
-<code> select * from users where ID = 1; </code> | <code> db.find.user({user_id: 1,}) </code>
-<code> update set users password = '[input]' where id = 1; </code> | <code> db.update.user({user_id, [#]}, {$set {password: '[input]'}}) </code>
-
-> **NoSQL Injection: Test Location and Strings**
-
-Errors:
-{% highlight bash %}
-'
-"
-{
-}
-[$ne]
-[$regex]
-[$gt]
-//
-;
-||'1'=='1
-{% endhighlight %}
-
-Not Equals | <code> http://site.org/User[$ne]=1 </code>
-RegEx | <code> http://site.org/user.php?type[$regex]=.*&username[$regex]=.*
-Combined | <code> http://site.org/login.php?type[$ne]=user&username[$ne]=asdf&password=asdf'||'1'=='1' %26%26 'b' == 'b </code>
 
 > **Tools**
 
-* NoSQLMAP 
-* NoSQL Exploitation Framework
-* FuzzDB list
-* Burp Suite Pro
+* Burp 
+* ENT
+* Python passlib
+* SlavaSoft HASHCALC 

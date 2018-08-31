@@ -26,8 +26,60 @@ Using SEC642 as a base string:
 ** Look for repition to determine the number of bytes
 * Stream Cipher: 1 bit to 1 bit
 
-
 Note: Burp smart detect looks for 95% ascii characters so it wont work on crypto/hashing
+
+> **Identification of Ciphers vs Hashing**
+
+* Find the clear text and try to manipulate it with 8 characters.
+* Then try 9 characters, and see how much it grew 
+  * Grows by 8 cryptographic block cipher
+  * Doesn't grow it is a hash
+  * Grows by an equal amount than it is a stream cipher
+* If crypto: then try a large number of characters and look for repition
+  * Repitition my be ECB
+
+Algorith | Type | Output Length
+---------|------|---------------
+RC4 | Stream Cipher | Matches input length (odd size)
+DES/3DES | Block Cipher | 8 bytes per block
+AES-128/192/246 | Block Cipher | 16 bytes per block
+MD2/4/5 | Hash | 16 bytes
+SHA/1 | Hash | 20 bytes
+SHA2-224/512 SHA3-224 | Hash | 29 bytes
+SHA2-256/512 SHA3-256 | Hash | 32 bytes
+SHA2/3-384 | Hash | 48 bytes
+SHA2/3-512 | Hash | 64 bytes
+RIPEMD160 | Hash | 20 bytes
+
+*If it is hashing and you know the plain text use SlavaSoft HASHCALC, OpenSSL,  or python passlib to compare.*
+*Some software impliments their own hashing (vBulletin, MySQL 4.1, PHPass)*
+
+
+> **Using ENT to perform entropy analysis**
+
+Using ENT to perform entropy analysis with large datasets (not recommended for small data sets)
+
+{% highlight bash %}
+Entropy
+#English words have entropies betweeen 4.5 and 5.5
+#Higher than 5.5 is probably not clear text
+#GZIP, random data, and other compressions can look encrypted
+
+Chi Square
+#Compressed data has 95-100% or 0-5% Chi square
+#Encrpted data has 85-95% or 5-15% Chi square
+#Random data has 15-85% chi square
+
+ent english-words.txt 
+Entropy = 5.05
+
+ent english-words.txt.aes 
+Entropy =7.99983 bits per byte
+Chi Squeare = 
+
+ent english-words.txt.gzip 
+Entropy =7.999022 bits per byte
+{% endhighlight %}
 
 > **Location in code**
 

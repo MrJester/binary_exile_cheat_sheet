@@ -98,6 +98,33 @@ Entropy =7.999022 bits per byte
 * Is the key rotated with any frequency
 
 
+> **ECB Attacks: Block Shuffling**
+
+* Identify is ECB is used. The best way is repeating the same string across blocks, and if it is the same then ECB is likely used.
+* Fuzz to determine what information is in what block
+* Deterine if you can swap blocks (ECB Block Shuffling) (e.g., try to make a variable equal another value in a different block) 
+   * Burp: Highlight ciphertext and send it to Intruder, in playload select ECB block shuffler 
+   * Burp: Use grep extract to see if values change
+   
+{% highlight bash %}
+#Break hex tring into block sizes, 16 here
+echo [hexstring] | sed 's/.\{16\}/& /g'
+{% endhighlight %}
+
+* If you determine that one of the blocks is displayed unencrypted on the page.  You could suffle other blocks into the the block that is diplayed.
+
+
+> **CBC Attacks: Bit FLipping**
+
+* Identify if CDC is being used.  The best way is repeating the same string acrross blocks, and if it is different then see if there is an IV. 
+* IV length is usually one block
+* Modify the IV by flippng some bits (e.g., FF) across the entire IV 
+* See if the value modification causes any effect on the applicaiton (e.g., changing user ID) and relevant
+* If it is relevant, then try to bit flip the IV to cause a desired effect (e.g., changing user ID)
+* Use Burp Intruder to perform the bit flipping to see if any effect is desired (one byte at a time)
+* Then use burp intruder to perform an increment across the desired block.
+
+
 > **Tools**
 
 * Burp 

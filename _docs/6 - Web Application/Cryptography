@@ -124,6 +124,28 @@ echo [hexstring] | sed 's/.\{16\}/& /g'
 * Use Burp Intruder to perform the bit flipping to see if any effect is desired (one byte at a time)
 * Then use burp intruder to perform an increment across the desired block.
 
+> **Oracle Padding**
+
+* If a value appears to be encrpyted, modify it and see if an error comes back (e.g., 500) and says something about padding or cryptography
+* Use padbuster to exploit
+
+
+{% highlight bash %}
+padbuster.py 'http://app.com/captcha.php?captcha=foobar&enc=4f4a4d7952634749d15735bf713f13f0' 4f4a4d7952634749d15735bf713f13f0 8 -encoding 1 -error 'ERROR: padding invalid.' -plaintext textplain
+{% endhighlight %}
+
+> **Hash Extension**
+
+*  Can be used with algorithms such as MD5, SHA1..  when MAC is produced with a key and variable 
+*  The key is often a fixed length (6-16 bytes)
+*  Try to bruteforce the key length with hash-extender
+   * -d [data]
+   * -s [original signature]
+   * -a [data to append]
+   * -f [hash format]
+   * -l [length of secret]
+   * --out-data-format=html [URL encode output]
+* Can use the output from hash-entender as an input to intruder 
 
 > **Tools**
 
@@ -131,3 +153,4 @@ echo [hexstring] | sed 's/.\{16\}/& /g'
 * ENT
 * Python passlib
 * SlavaSoft HASHCALC 
+* padbuster

@@ -110,7 +110,7 @@ if (strcmp($_POST['password'], 'sekret') == 0) {
 
 Then you could do something like this:
 
-{% highlight bash %}
+{% highlight php %}
 curl -d password[]=wrong http://andersk.scripts.mit.edu/strcmp.php
 Welcome, authorized user!
 {% endhighlight %}

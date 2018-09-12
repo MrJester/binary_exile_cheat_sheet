@@ -121,7 +121,9 @@ Welcome, authorized user!
 Look for 3 in the result:
 
 {% highlight bash %}
+{% raw %}
 http://localhost:8080/example/HelloWorld.action?message=${%{1+2}}
+{% endraw %}
 {% endhighlight %}
 
 > **File Inclusion**

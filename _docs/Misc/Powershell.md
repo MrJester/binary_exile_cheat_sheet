@@ -77,3 +77,9 @@ Function | Command
 --------- | -------
 Create a Service | <code>PS C:\>New-Service -Name "TestService" -BinaryPathName "C:\WINDOWS\System32\svchost.exe -k netsvcs" -StartupType manual </code>
 Start a Service | <code>Start-Service TestService </code>
+
+>**Code Review**
+
+Function | Command
+-------- | -------
+Find text in a file and create a spreadsheet of results | <code> Get-ChildItem -recurse | Select-String -pattern "STOMP" | select path,filename,pattern,line,linenumber | Export-Csv Stomp.csv </code>

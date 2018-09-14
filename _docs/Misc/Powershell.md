@@ -83,3 +83,5 @@ Start a Service | <code>Start-Service TestService </code>
 Function | Command
 -------- | -------
 Find text in a file and create a spreadsheet of results | <code> Get-ChildItem -recurse | Select-String -pattern "STOMP" | select path,filename,pattern,line,linenumber | Export-Csv Stomp.csv </code>
+Find text in a type of file |  <code> Get-ChildItem -recurse |  Where-Object {$_.Extension -eq ".java"} | Select-String -pattern "@Web
+Servlet" | select path,filename,pattern,line,linenumber | Export-Csv ServletMappingoutput.csv </code>

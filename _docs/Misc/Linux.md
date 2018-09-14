@@ -31,7 +31,7 @@ Change Password | <code>passwd [login name] </code>
 Generat SSH-Key | <code>ssh-keygen </code>
 
 
->**Files, Inventory, Search, and Counting**
+>**Drives, Files, Inventory, Search, and Counting**
 
 Function | Command
 ------------- | -------------
@@ -50,6 +50,10 @@ Extract Sections from Line | <code>cut -d["delimiter"] -f[field you are interest
 Unique Entries | <code> sort -u </code>
 (Old) Find files only reable by root (flags for ctf) | <code> find / -user root -perm +400 ! -perm +044 </code>
 Find files only reable by root (flags for ctf) | <code> find / -user root -perm /400 ! -perm /044 </code>
+Find a drive | <code> sudo fdisk -l </code>
+Clone a drive | <code> dd if=/dev/sda of=/dev/sdd bs=1M </code>
+Create and Image | <code> sudo dd if=/dev/sdb of=~/USB_image </code>
+Mount an Image | <code> mount ~/USB_image /mnt/USB_image -o loop </code>
 
 >**Network and Firewalls**
 

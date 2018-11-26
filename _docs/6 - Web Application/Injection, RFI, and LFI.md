@@ -19,6 +19,73 @@ commix --level=3 --url="http://website/?arg=INJECT_HERE&arg2=argument"
 python commix.py --url="http://192.168.178.58/DVWA-1.0.8/vulnerabilities/exec/#" --data="ip=INJECT_HERE&submit=submit" --cookie="security=medium; PHPSESSID=nq30op434117mo7o2oe5bl7is4"
 {% endhighlight %}
 
+> **Command Injection from Code Review
+
+**Java**
+
+{% highlight java %}
+Runtime.exec()
+getParameter
+getRuntime.exec()
+ProcessBuilder.start()
+setAttribute putValue getValue
+java.net.Socket java.io.fileInputStream java.io.FileReader
+{% endhighlight %}
+
+**C/C++**
+
+{% highlight C %}
+system
+exec
+ShellExecute
+execlp
+{% endhighlight %}
+
+**Python** 
+
+{% highlight python %}
+exec
+eval
+os.system
+os.popen
+subprocess.popen
+subprocess.call
+{% endhighlight %}
+
+
+**PHP**
+
+{% highlight PHP %}
+system
+shell_exec
+exec
+proc_open
+eval
+passthru
+proc_open
+expect_open
+ssh2_exec
+popen
+{% endhighlight %}
+
+**Perl**
+
+{% highlight Perl %}
+CGI.pm
+referer
+cookie
+ReadParse
+{% endhighlight %}
+
+**ASP.NET**
+
+{% highlight bash %}
+HttpRequest.Params
+HttpRequest.Url
+HttpRequest.Item
+{% endhighlight %}
+
+
 > **Exploit Command Injection**
 
 {% highlight bash %}

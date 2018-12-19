@@ -12,6 +12,29 @@ Use Recon information to test for vulnerabilities in:
 * Application Server Misconfiguration (e.g., admin portal, phpinfo)
 * FrontEnd Frameworks (e.g., jQuery, MooTools) - look at wappalizer, src, and xmlhttprequests
 
+> **HTTP2 and Websockets**
+
+{% highlight php %}
+For websockets look for:
+WS:// or WSS://
+Upgrade: websocket
+Sec-WebSocket-Key: SYZk7WHCUKqF+DH0PIvIA++
+Origin: http://127.0.0.1 (optional but crucial)
+ZAP works better for websockets - make sure to add a delay when fuzzing
+{% endhighlight %}
+
+HTTP2 Compatable Tools:
+* Mitmproxy
+* Charles proxy
+* Curl
+* Nghttp
+* python hyper
+* Ruby nethttp2
+* Wireshark
+* Http2fuzz
+
+
+
 > **Wordpress**
 
 Test Strategy:
@@ -30,6 +53,7 @@ Test Strategy:
 {% highlight bash %}
 wpscan --update  && wpscan  --url wordpress.sec642.org --enumerate p --enumerate t --enumerate u --enumerate tt
 {% endhighlight %}
+
 
 > **Sharepoint**
 

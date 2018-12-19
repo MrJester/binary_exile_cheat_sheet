@@ -12,6 +12,17 @@ Use Recon information to test for vulnerabilities in:
 * Application Server Misconfiguration (e.g., admin portal, phpinfo)
 * FrontEnd Frameworks (e.g., jQuery, MooTools) - look at wappalizer, src, and xmlhttprequests
 
+> **WAF Identification**
+
+Fuzz with fake parameters using XSS, LFI, Command Injection, SQL Injection lists.  This won't hurt the application and will help identify rule sets.
+
+Bypass:
+HTTP2 and Websockets are often not checked
+https://html5sec.org/
+websec.github.io/unicode-security-guide/character-transformations/
+
+
+
 > **HTTP2 and Websockets**
 
 {% highlight php %}

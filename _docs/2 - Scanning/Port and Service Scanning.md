@@ -41,6 +41,10 @@ Script arguments | <code>--script-args[arguments]</code>
 Script database | <code>/opt/NMAP/share/NMAP/scripts/script.db </code>
 Script files | <code>/opt/NMAP/share/NMAP/scripts/[name].nse </code>
 
+> **Service Specific Scans**
+
+* [FTP, HTTP,MSSQL, MYSQL, NTP, ORACLE, RDP,SMB, SMTP, SNMP, VNC](https://github.com/BinaryExile/pentest/tree/master/enumeration)
+
 > **MASSCAN**
 
 Example Command | <code> nohup masscan -p [PORTS] --rate 500 -vv --includefile [HOSTLIST] --output-format list --output-filename [OUTPUTFILE] > output.txt & </code>

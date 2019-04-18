@@ -5,14 +5,14 @@ order: 0
 ---
 
 > **OpenSSH**
-When getting error message:
+When getting error message:<br>
 packet_write_wait: Connection to <HOSTNAME/IP> port <NUMBER>: Broken pipe
 
 Within your ssh client configuration file /etc/ssh/ssh_config
 Add the following
 
-<code><pre>Host *
+<pre><code>Host *
     ServerAliveInterval 120
     ServerAliveCountMax 5
     TCPKeepAlive yes
-    IPQoS throughput</pre></code>
+    IPQoS throughput</code></pre>
